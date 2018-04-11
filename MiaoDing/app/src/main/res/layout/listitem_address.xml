@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_select_address"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:id="@+id/ll_user_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="收货人: "
+                android:textColor="@color/dark_gray_22"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:id="@+id/tv_user_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:maxLength="5"
+                android:singleLine="true"
+                android:textColor="@color/hint_gray"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:id="@+id/tv_user_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/dark_gray_22"
+                android:textSize="14sp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="地址: "
+                android:textColor="@color/dark_gray_22"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:id="@+id/tv_user_address"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:id="@+id/tv_default_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/text_black"
+                android:layout_marginLeft="12dp"
+                android:paddingLeft="3dp"
+                android:paddingRight="3dp"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+                android:text="默认"
+                android:textColor="@android:color/white"
+                android:textSize="6sp"
+                android:visibility="gone"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/view_address_line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#E8E8E8"
+        android:visibility="gone"/>
+
+    <LinearLayout
+        android:id="@+id/ll_edit_address"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv_set_default"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="12dp"
+            android:drawableLeft="@mipmap/icon_default_address"
+            android:drawablePadding="4dp"
+            android:gravity="center_vertical"
+            android:text="默认"
+            android:textColor="@color/light_gray_85"
+            android:textSize="10sp"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/tv_delete_address"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:drawablePadding="6dp"
+            android:gravity="center_vertical"
+            android:text="删除"
+            android:drawableLeft="@mipmap/icon_delete_address"
+            android:textColor="@color/light_gray_85"
+            android:textSize="10sp"
+            android:layout_marginRight="17dp"/>
+
+        <TextView
+            android:id="@+id/tv_edit_address"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:drawablePadding="6dp"
+            android:gravity="center_vertical"
+            android:text="编辑"
+            android:drawableLeft="@mipmap/icon_edit_address"
+            android:textColor="@color/light_gray_85"
+            android:textSize="10sp"/>
+
+    </LinearLayout>
+
+</LinearLayout>
+

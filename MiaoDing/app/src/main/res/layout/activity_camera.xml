@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent">
+
+    <cn.cloudworkshop.miaoding.camera.CustomCameraView
+        android:id="@+id/custom_camera_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </cn.cloudworkshop.miaoding.camera.CustomCameraView>
+
+    <cn.cloudworkshop.miaoding.view.SensorView
+        android:id="@+id/bubble_sensor"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+
+    <View
+        android:id="@+id/view_stroke"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/rectangle_stroke"/>
+
+
+    <ImageView
+        android:id="@+id/img_position"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitCenter"
+        android:src="@mipmap/camera_positive"/>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_marginBottom="20dp"
+        android:paddingLeft="70dp"
+        android:paddingRight="70dp">
+
+        <TextView
+            android:id="@+id/tv_take_again"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/btn_black_bg"
+            android:gravity="center"
+            android:text="重拍"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
+            android:visibility="gone"/>
+
+        <ImageView
+            android:id="@+id/img_take_photo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:scaleType="center"/>
+
+        <TextView
+            android:id="@+id/tv_take_next"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/btn_black_bg"
+            android:gravity="center"
+            android:text="下一步"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
+            android:visibility="gone"/>
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/et_block_size"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="7"
+        android:textColor="@color/dark_gray_22"/>
+
+    <EditText
+        android:id="@+id/et_delta"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="50dp"
+        android:text="3"
+        android:textColor="@color/dark_gray_22"/>
+
+    <include
+        layout="@layout/loading_view"/>
+
+    <ImageView
+        android:id="@+id/img_cancel_take"
+        android:layout_width="40dp"
+        android:layout_height="80dp"
+        android:scaleType="center"
+        android:src="@mipmap/icon_back_black"/>
+
+</FrameLayout>

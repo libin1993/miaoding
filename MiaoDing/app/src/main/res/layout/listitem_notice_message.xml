@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_notice_time"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:textColor="@android:color/darker_gray"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:textSize="13sp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/btn_white_1dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp">
+        <TextView
+            android:id="@+id/tv_notice_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="亲爱的用户："
+            android:textColor="@color/dark_gray_22"
+            android:textSize="15sp"/>
+
+        <TextView
+            android:id="@+id/tv_notice_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text=""
+            android:textColor="@color/dark_gray_22"
+            android:textSize="13sp"
+            android:lineSpacingExtra="5dp"/>
+
+        <TextView
+            android:id="@+id/tv_notice_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:textColor="@color/dark_gray_22"
+            android:textSize="13sp"
+            android:layout_marginTop="20dp"/>
+        <TextView
+            android:id="@+id/tv_notice_company"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="云工场科技有限公司"
+            android:textColor="@color/dark_gray_22"
+            android:textSize="13sp"
+            android:layout_gravity="right"
+            android:layout_marginTop="10dp"/>
+
+    </LinearLayout>
+</LinearLayout>

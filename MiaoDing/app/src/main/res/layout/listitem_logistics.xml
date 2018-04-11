@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:background="@android:color/white">
+
+    <ImageView
+        android:id="@+id/img_logistics_address"
+        android:layout_width="20dp"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="23dp"
+        android:layout_marginRight="10dp"
+        android:scaleType="fitCenter"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/img_logistics_address"
+        android:orientation="vertical"
+        android:gravity="center_vertical">
+        <TextView
+            android:id="@+id/tv_logistics_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#B3B3B3"
+            android:textSize="12sp"/>
+        <TextView
+            android:id="@+id/tv_logistics_details"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#7E7E7E"
+            android:textSize="14sp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="5dp"/>
+
+
+    </LinearLayout>
+
+</RelativeLayout>

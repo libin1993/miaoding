@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="1dp">
+
+    <ImageView
+        android:id="@+id/img_home_item"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:scaleType="centerCrop"/>
+
+    <!--<TextView-->
+        <!--android:id="@+id/tv_recommend_title"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@id/img_home_item"-->
+        <!--android:ellipsize="end"-->
+        <!--android:paddingLeft="16dp"-->
+        <!--android:paddingRight="16dp"-->
+        <!--android:paddingTop="17dp"-->
+        <!--android:singleLine="true"-->
+        <!--android:textColor="#3D3D3D"-->
+        <!--android:textSize="14sp"-->
+        <!--android:textStyle="bold"/>-->
+
+    <!--<TextView-->
+        <!--android:id="@+id/tv_recommend_content"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@id/tv_recommend_title"-->
+        <!--android:gravity="center_vertical"-->
+        <!--android:paddingBottom="12dp"-->
+        <!--android:paddingLeft="16dp"-->
+        <!--android:paddingRight="16dp"-->
+        <!--android:paddingTop="9dp"-->
+        <!--android:singleLine="true"-->
+        <!--android:textColor="@color/light_gray_93"-->
+        <!--android:textSize="10sp"/>-->
+</RelativeLayout>
+
+

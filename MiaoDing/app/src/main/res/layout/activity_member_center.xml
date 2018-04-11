@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/white"
+                android:fitsSystemWindows="true">
+
+    <include
+        layout="@layout/widget_header_layout"/>
+
+
+    <cn.cloudworkshop.miaoding.view.ShadowLayout
+        android:id="@+id/sl_member_center"
+        android:layout_width="match_parent"
+        android:layout_height="176dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="87dp"
+        app:sl_shadowRadius="5dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white">
+
+            <ProgressBar
+                android:id="@+id/progress_member_grade"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:layout_width="293dp"
+                android:layout_height="4dp"
+                android:layout_centerInParent="true"
+                android:max="100"
+                android:progressDrawable="@drawable/progressbar_horizontal"/>
+
+            <TextView
+                android:id="@+id/tv_member_total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignRight="@id/progress_member_grade"
+                android:layout_below="@id/progress_member_grade"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/dark_gray_22"
+                android:textSize="10sp"/>
+
+            <TextView
+                android:id="@+id/tv_member_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/tv_member_total"
+                android:layout_toLeftOf="@id/tv_member_total"
+                android:textColor="@color/dark_gray_22"
+                android:textSize="10sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/tv_check_member"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="20dp"
+                android:text="MORE >>"
+                android:textColor="@color/light_gray_3d"
+                android:textSize="10sp"/>
+        </RelativeLayout>
+
+    </cn.cloudworkshop.miaoding.view.ShadowLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_center_user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="58dp">
+
+        <cn.cloudworkshop.miaoding.view.CircleImageView
+            android:id="@+id/img_member_icon"
+            android:layout_width="68dp"
+            android:layout_height="68dp"
+            android:layout_centerHorizontal="true"
+            android:scaleType="centerCrop"/>
+
+        <TextView
+            android:id="@+id/tv_member_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/img_member_icon"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="9dp"
+            android:textColor="@color/dark_gray_22"
+            android:textSize="20sp"/>
+
+        <ImageView
+            android:id="@+id/img_grade_icon"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/img_member_icon"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/tv_member_name"
+            android:scaleType="fitCenter"/>
+    </RelativeLayout>
+
+
+    <cn.cloudworkshop.miaoding.view.ShadowLayout
+        android:id="@+id/sl_member_rights"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="263dp"
+        app:sl_shadowRadius="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:paddingBottom="20dp"
+            android:orientation="vertical">
+
+            <com.flyco.tablayout.CommonTabLayout
+                android:id="@+id/tab_member_grade"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="8dp"
+                android:paddingTop="21dp"
+                app:tl_indicator_color="#414141"
+                app:tl_indicator_height="2dp"
+                app:tl_indicator_margin_top="2dp"
+                app:tl_indicator_width="51dp"
+                app:tl_tab_space_equal="true"
+                app:tl_textBold="SELECT"
+                app:tl_textSelectColor="#4F4F4F"
+                app:tl_textUnselectColor="@color/light_gray_7a"
+                app:tl_textsize="13sp">
+            </com.flyco.tablayout.CommonTabLayout>
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/vp_member_rights"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:overScrollMode="never"
+                android:layout_marginTop="24dp">
+            </android.support.v4.view.ViewPager>
+
+        </LinearLayout>
+
+    </cn.cloudworkshop.miaoding.view.ShadowLayout>
+
+    <include
+        layout="@layout/loading_error"/>
+
+</RelativeLayout>

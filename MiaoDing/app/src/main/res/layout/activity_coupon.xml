@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/light_gray_ed"
+                android:fitsSystemWindows="true"
+                android:orientation="vertical">
+
+    <include
+        layout="@layout/widget_header_layout"/>
+
+
+    <LinearLayout
+        android:id="@+id/ll_no_coupon"
+        android:layout_width="match_parent"
+        android:layout_height="53dp"
+        android:layout_marginTop="53dp"
+        android:background="@android:color/white"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/et_coupon_pwd"
+            android:layout_width="0dp"
+            android:layout_height="33dp"
+            android:layout_marginLeft="12dp"
+            android:layout_weight="1"
+            android:background="@drawable/frame_gray"
+            android:hint="请输入兑换码"
+            android:maxLength="20"
+            android:paddingLeft="17dp"
+            android:singleLine="true"
+            android:textColor="@color/dark_gray_22"
+            android:textColorHint="@color/light_gray_a6"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/tv_coupon_exchange"
+            android:layout_width="94dp"
+            android:layout_height="33dp"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="12dp"
+            android:background="@drawable/btn_gray_bg"
+            android:gravity="center"
+            android:text="兑换"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"/>
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/sv_null_coupon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ll_no_coupon"
+        android:layout_marginTop="9dp"
+        android:overScrollMode="never"
+        android:scrollbars="none">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_coupon_usable"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:overScrollMode="never">
+            </android.support.v7.widget.RecyclerView>
+
+            <TextView
+                android:id="@+id/tv_more_coupon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rv_coupon_usable"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="11dp"
+                android:text="没有更多优惠券了 | 查看无效券 ＞＞"
+                android:layout_marginBottom="20dp"
+                android:textColor="@color/light_gray_4f"
+                android:textSize="12sp"/>
+        </RelativeLayout>
+
+    </ScrollView>
+
+
+    <ImageView
+        android:id="@+id/img_null_coupon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:src="@mipmap/icon_null_coupon"
+        android:visibility="gone"/>
+
+    <include
+        layout="@layout/loading_error"/>
+
+
+</RelativeLayout>

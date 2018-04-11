@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:layout_width="wrap_content"
+              android:layout_height="match_parent">
+    <cn.cloudworkshop.miaoding.view.CircleImageView
+        android:id="@+id/img_avatar_collect"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginRight="12dp"
+        app:civ_border_width="1px"
+        app:civ_border_color="@color/light_gray_97"/>
+</LinearLayout>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent">
+
+    <cn.cloudworkshop.miaoding.camera.CustomCameraView
+        android:id="@+id/camera_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </cn.cloudworkshop.miaoding.camera.CustomCameraView>
+
+    <cn.cloudworkshop.miaoding.view.SensorView
+        android:id="@+id/sensor_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <ImageView
+        android:id="@+id/img_man_position"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitCenter"
+        android:src="@mipmap/camera_positive"/>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_marginBottom="20dp">
+
+        <ImageView
+            android:id="@+id/img_take_again"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="60dp"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/camera_take_again"
+            android:visibility="gone"/>
+
+        <ImageView
+            android:id="@+id/img_take_picture"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_centerInParent="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/selector_take_photo"/>
+
+        <ImageView
+            android:id="@+id/img_take_success"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="60dp"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/camera_take_success"
+            android:visibility="gone"/>
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/img_take_back"
+        android:layout_width="50dp"
+        android:layout_height="60dp"
+        android:scaleType="center"
+        android:src="@mipmap/icon_back_white"/>
+
+    <View
+        android:id="@+id/view_user_stroke"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rectangle_stroke"/>
+
+    <include
+        layout="@layout/loading_view"/>
+
+</FrameLayout>

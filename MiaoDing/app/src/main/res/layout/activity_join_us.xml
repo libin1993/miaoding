@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/app_bg"
+                android:fitsSystemWindows="true"
+                android:orientation="vertical">
+
+    <include
+        layout="@layout/widget_header_layout"/>
+
+    <TextView
+        android:id="@+id/tv_apply_join"
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/dark_gray_15"
+        android:gravity="center"
+        android:text="我要申请入驻"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/tv_apply_join"
+        android:layout_marginTop="44dp"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        android:overScrollMode="never">
+
+
+        <ImageView
+            android:id="@+id/img_join_us"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"/>
+
+    </ScrollView>
+
+    <include
+        layout="@layout/loading_error"/>
+
+</RelativeLayout>

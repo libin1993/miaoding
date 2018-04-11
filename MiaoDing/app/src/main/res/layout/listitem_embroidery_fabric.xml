@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="70dp"
+              android:layout_height="match_parent"
+              android:layout_marginLeft="22dp"
+              android:layout_marginRight="22dp"
+              android:gravity="center_vertical"
+              android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="vertical">
+
+        <cn.cloudworkshop.miaoding.view.CircleImageView
+            android:id="@+id/img_embroidery_fabric"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
+            android:scaleType="centerCrop"
+            app:civ_border_color="@color/dark_gray_22"
+            app:civ_border_width="1dp"/>
+
+        <cn.cloudworkshop.miaoding.view.CircleImageView
+            android:id="@+id/img_current_fabric"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/bg_checked"
+            android:visibility="gone"/>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_current_fabric"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center_horizontal"
+        android:textColor="@color/dark_gray_22"
+        android:singleLine="true"
+        android:maxLength="4"
+        android:textSize="14sp"/>
+
+</LinearLayout>

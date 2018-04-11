@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/light_gray_ed">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/img_center_bg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/bg_mycenter"/>
+
+            <RelativeLayout
+                android:id="@+id/rl_user_center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="59dp">
+
+                <cn.cloudworkshop.miaoding.view.CircleImageView
+                    android:id="@+id/img_user_icon"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_centerHorizontal="true"
+                    android:scaleType="centerCrop"/>
+
+                <TextView
+                    android:id="@+id/tv_center_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/img_user_icon"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="16dp"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"/>
+
+                <ImageView
+                    android:id="@+id/img_grade_center"
+                    android:layout_width="40dp"
+                    android:layout_height="20dp"
+                    android:layout_below="@id/img_user_icon"
+                    android:layout_marginTop="5dp"
+                    android:layout_toRightOf="@id/tv_center_name"
+                    android:scaleType="fitCenter"/>
+
+            </RelativeLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/img_center_bg"
+                android:layout_marginTop="8dp"
+                android:overScrollMode="never">
+            </android.support.v7.widget.RecyclerView>
+
+        </RelativeLayout>
+    </ScrollView>
+
+
+    <ImageView
+        android:id="@+id/img_center_set"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="40dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="40dp"
+        android:paddingTop="20dp"
+        android:scaleType="center"
+        android:src="@mipmap/icon_mycenter_set"/>
+
+    <ImageView
+        android:id="@+id/img_center_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:paddingBottom="40dp"
+        android:paddingLeft="40dp"
+        android:paddingRight="12dp"
+        android:paddingTop="20dp"
+        android:scaleType="center"
+        android:src="@mipmap/icon_mycenter_message"/>
+
+    <RelativeLayout
+        android:id="@+id/rl_logout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:visibility="gone">
+    </RelativeLayout>
+
+    <include
+        layout="@layout/loading_error"/>
+
+</RelativeLayout>

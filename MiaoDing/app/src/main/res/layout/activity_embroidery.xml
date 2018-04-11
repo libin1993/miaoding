@@ -1,0 +1,525 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:fresco="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/light_gray_ed"
+                android:fitsSystemWindows="true">
+
+    <include
+        layout="@layout/widget_header_layout"/>
+
+
+    <ScrollView
+        android:id="@+id/scroll_embroidery"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:layout_marginTop="44dp"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="50dp">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:background="@android:color/white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:text="输入基本信息"
+                    android:textColor="@color/dark_gray_22"
+                    android:textSize="13sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:singleLine="true"
+                    android:text="为了确保衣服合身，请准确输入您的净身高、净体重"
+                    android:textColor="@color/red_b1"
+                    android:textSize="10sp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
+                android:layout_marginTop="1dp"
+                android:background="@android:color/white"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="38dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginRight="7dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bound_97_3dp"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/et_user_height"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:digits="0123456789."
+                        android:gravity="center_vertical"
+                        android:hint="净身高"
+                        android:maxLength="6"
+                        android:paddingLeft="26dp"
+                        android:singleLine="true"
+                        android:textColor="@color/dark_gray_22"
+                        android:textColorHint="@color/light_gray_97"
+                        android:textSize="13sp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="38dp"
+                        android:text="CM"
+                        android:textColor="@color/dark_gray_22"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="38dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bound_97_3dp"
+                    android:orientation="horizontal">
+
+
+                    <EditText
+                        android:id="@+id/et_user_weight"
+                        android:layout_width="0dp"
+                        android:layout_height="35dp"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:digits="0123456789."
+                        android:hint="净体重"
+                        android:maxLength="6"
+                        android:paddingLeft="26dp"
+                        android:singleLine="true"
+                        android:textColor="@color/dark_gray_22"
+                        android:textColorHint="@color/light_gray_97"
+                        android:textSize="13sp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="38dp"
+                        android:text="KG"
+                        android:textColor="@color/dark_gray_22"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:layout_marginTop="9dp"
+                android:background="@android:color/white">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="12dp"
+                    android:text="拍照量体"
+                    android:textColor="@color/dark_gray_22"
+                    android:textSize="13sp"/>
+
+                <TextView
+                    android:id="@+id/tv_photo_help"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="12dp"
+                    android:drawableLeft="@drawable/ring_black"
+                    android:drawablePadding="6dp"
+                    android:text="帮助"
+                    android:textColor="@color/dark_gray_22"
+                    android:textSize="13sp"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_user_photo"
+                android:layout_width="match_parent"
+                android:layout_height="77dp"
+                android:layout_marginTop="1dp"
+                android:background="@android:color/white">
+
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/img_camera_photo"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="26dp"
+                    fresco:placeholderImage="@mipmap/icon_camera_data"
+                    fresco:placeholderImageScaleType="centerInside"
+                    fresco:roundAsCircle="true"
+                    fresco:roundWithOverlayColor="@color/transparent"
+                    fresco:roundingBorderColor="@color/dark_gray_22"
+                    fresco:roundingBorderWidth="1dp"/>
+
+                <cn.cloudworkshop.miaoding.view.CircleImageView
+                    android:id="@+id/img_is_take"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="26dp"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/bg_checked"
+                    android:visibility="gone"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="24dp"
+                    android:layout_toRightOf="@id/img_camera_photo"
+                    android:text="沿顺时针方向旋转完成身体四个面的拍摄"
+                    android:textColor="@color/red_b1"
+                    android:textSize="10dp"/>
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:layout_marginTop="9dp"
+                android:background="@android:color/white">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="12dp"
+                    android:text="选择版型"
+                    android:textColor="@color/dark_gray_22"
+                    android:textSize="13sp"/>
+
+                <TextView
+                    android:id="@+id/tv_select_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="12dp"
+                    android:textColor="@color/light_gray_a6"
+                    android:textSize="13sp"/>
+            </RelativeLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_embroidery_type"
+                android:layout_width="match_parent"
+                android:layout_height="77dp"
+                android:layout_marginTop="1dp"
+                android:background="@android:color/white">
+            </android.support.v7.widget.RecyclerView>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:layout_marginTop="9dp"
+                android:background="@android:color/white">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="12dp"
+                    android:text="选择面料 (长按显示大图)"
+                    android:textColor="@color/dark_gray_22"
+                    android:textSize="13sp"/>
+
+                <TextView
+                    android:id="@+id/tv_select_fabric"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="12dp"
+                    android:textColor="@color/light_gray_a6"
+                    android:textSize="13sp"/>
+            </RelativeLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_embroidery_fabric"
+                android:layout_width="match_parent"
+                android:layout_height="107dp"
+                android:layout_marginTop="1dp"
+                android:background="@android:color/white">
+            </android.support.v7.widget.RecyclerView>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:layout_marginTop="9dp"
+                android:background="@android:color/white">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="12dp"
+                    android:text="选择刺绣"
+                    android:textColor="@color/dark_gray_22"
+                    android:textSize="13sp"/>
+
+                <CheckBox
+                    android:id="@+id/cb_select_embroidery"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:button="@null"
+                    android:drawableRight="@drawable/cb_select_embroidery"
+                    android:paddingRight="18dp"/>
+
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_select_embroidery"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="38dp"
+                    android:background="@android:color/white">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="12dp"
+                        android:text="选择刺绣位置"
+                        android:textColor="@color/dark_gray_22"
+                        android:textSize="13sp"/>
+
+                    <TextView
+                        android:id="@+id/tv_select_position"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="12dp"
+                        android:textColor="@color/light_gray_a6"
+                        android:textSize="13sp"/>
+                </RelativeLayout>
+
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_embroidery_position"
+                    android:layout_width="match_parent"
+                    android:layout_height="107dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@android:color/white"
+                    android:overScrollMode="never">
+                </android.support.v7.widget.RecyclerView>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="38dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@android:color/white">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="12dp"
+                        android:text="选择字体颜色"
+                        android:textColor="@color/dark_gray_22"
+                        android:textSize="13sp"/>
+
+                    <TextView
+                        android:id="@+id/tv_select_color"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="12dp"
+                        android:textColor="@color/light_gray_a6"
+                        android:textSize="13sp"/>
+                </RelativeLayout>
+
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_embroidery_color"
+                    android:layout_width="match_parent"
+                    android:layout_height="107dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@android:color/white"
+                    android:overScrollMode="never">
+                </android.support.v7.widget.RecyclerView>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="38dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@android:color/white">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="12dp"
+                        android:text="选择字体"
+                        android:textColor="@color/dark_gray_22"
+                        android:textSize="13sp"/>
+
+                    <TextView
+                        android:id="@+id/tv_select_font"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="12dp"
+                        android:textColor="@color/light_gray_a6"
+                        android:textSize="13sp"/>
+                </RelativeLayout>
+
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_embroidery_font"
+                    android:layout_width="match_parent"
+                    android:layout_height="107dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@android:color/white"
+                    android:overScrollMode="never">
+
+                </android.support.v7.widget.RecyclerView>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="38dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@android:color/white"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="12dp"
+                    android:text="绣花内容"
+                    android:textColor="@color/dark_gray_22"
+                    android:textSize="13sp"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/white">
+
+                    <EditText
+                        android:id="@+id/et_embroidery_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="72dp"
+                        android:layout_marginBottom="12dp"
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginRight="12dp"
+                        android:background="@drawable/bound_ed_ff"
+                        android:hint="请输入绣花内容(不超过12个字符)"
+                        android:maxLength="12"
+                        android:paddingLeft="10dp"
+                        android:singleLine="true"
+                        android:textColor="@color/dark_gray_22"
+                        android:textColorHint="@color/light_gray_a6"
+                        android:textSize="13sp"/>
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:background="@android:color/white"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="小计："
+                android:textColor="@color/dark_gray_22"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:id="@+id/tv_customize_price"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@android:color/white"
+                android:gravity="center"
+                android:textColor="@color/light_gray_3d"
+                android:textSize="14sp"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/tv_add_shop_cart"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:background="#4C4C4C"
+            android:gravity="center"
+            android:text="加入购物袋"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"/>
+
+        <TextView
+            android:id="@+id/tv_confirm_embroidery"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:background="@color/dark_gray_15"
+            android:gravity="center"
+            android:text="立即购买"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"/>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/img_large_fabric"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="315dp"
+        android:background="@color/gray_mask"
+        android:padding="50dp"
+        android:scaleType="fitCenter"
+        android:visibility="gone"/>
+
+    <include
+        layout="@layout/loading_view"/>
+
+    <include
+        layout="@layout/loading_error"/>
+
+</RelativeLayout>

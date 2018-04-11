@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/white">
+
+    <include layout="@layout/widget_header_layout"/>
+
+    <RelativeLayout
+        android:id="@+id/rl_select_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@mipmap/icon_gray_mask"
+        android:paddingTop="15dp">
+
+        <LinearLayout
+            android:id="@+id/ll_select_type"
+            android:layout_width="match_parent"
+            android:layout_height="62dp"
+            android:background="@android:color/white"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/tv_cloth_fabric"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/ring_gray"
+                    android:gravity="center"
+                    android:text="面料"
+                    android:textColor="@color/dark_gray_22"
+                    android:textSize="13sp"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/tv_cloth_type"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/ring_gray"
+                    android:gravity="center"
+                    android:text="版型"
+                    android:textColor="@color/dark_gray_22"
+                    android:textSize="13sp"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/tv_cloth_item"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/ring_gray"
+                    android:gravity="center"
+                    android:text="细节"
+                    android:textColor="@color/dark_gray_22"
+                    android:textSize="13sp"/>
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_select_type"
+            android:layout_width="match_parent"
+            android:layout_height="62dp"
+            android:overScrollMode="never">
+        </android.support.v7.widget.RecyclerView>
+
+        <View
+            android:id="@+id/view_tailor_mask"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/rv_select_type"
+            android:background="@color/line_gray_e5"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_select_item"
+            android:layout_width="match_parent"
+            android:layout_height="62dp"
+            android:layout_below="@id/view_tailor_mask"
+            android:background="@android:color/white"
+            android:overScrollMode="never">
+        </android.support.v7.widget.RecyclerView>
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_tailor_picture"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/rl_select_item"
+        android:layout_marginTop="44dp">
+
+        <RelativeLayout
+            android:id="@+id/rl_cloth_positive"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:paddingTop="30dp">
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_cloth_back"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:paddingTop="30dp"
+            android:visibility="gone">
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_cloth_inside"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:paddingTop="30dp"
+            android:visibility="gone">
+        </RelativeLayout>
+
+        <RadioGroup
+            android:id="@+id/rgs_select_cloth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginRight="20dp"
+                android:button="@null"
+                android:gravity="center"
+                android:text="正面"
+                android:textColor="@color/rgs_text_color"
+                android:textSize="15sp"/>
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:button="@null"
+                android:gravity="center"
+                android:text="背面"
+                android:textColor="@color/rgs_text_color"
+                android:textSize="16sp"/>
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginLeft="20dp"
+                android:button="@null"
+                android:gravity="center"
+                android:text="里子"
+                android:textColor="@color/rgs_text_color"
+                android:textSize="16sp"
+                android:visibility="gone"/>
+        </RadioGroup>
+
+
+        <ImageView
+            android:id="@+id/img_reset_tailor"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="14dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/icon_reset"
+            android:visibility="gone"/>
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/rl_cloth_detail"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="125dp"
+        android:background="@color/gray_mask"
+        android:visibility="gone">
+
+
+        <ImageView
+            android:id="@+id/img_item_bg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="82dp"
+            android:layout_marginBottom="82dp"
+            android:src="@mipmap/icon_item_introduce"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignBottom="@id/img_item_bg"
+            android:layout_marginTop="82dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="12"/>
+
+            <cn.cloudworkshop.miaoding.view.CircleImageView
+                android:id="@+id/img_cloth_large"
+                android:layout_width="100dp"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="193"
+                android:src="@mipmap/icon_appoint_success"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="195"
+                android:orientation="vertical"
+                android:gravity="center_horizontal">
+
+                <TextView
+                    android:id="@+id/tv_item_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/dark_gray_22"
+                    android:singleLine="true"
+                    android:layout_marginTop="16dp"/>
+
+                <TextView
+                    android:id="@+id/tv_item_introduce"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_gray_6a"
+                    android:textSize="12sp"
+                    android:gravity="center_horizontal"
+                    android:lineSpacingExtra="1.5dp"
+                    android:layout_marginTop="15dp"/>
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <include
+        layout="@layout/loading_error"/>
+
+</RelativeLayout>

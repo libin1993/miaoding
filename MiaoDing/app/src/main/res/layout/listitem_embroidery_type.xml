@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:orientation="vertical"
+                android:layout_width="70dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="22dp"
+                android:layout_marginRight="22dp">
+
+    <cn.cloudworkshop.miaoding.view.CircleImageView
+        android:id="@+id/img_embroidery_type"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:scaleType="centerCrop"
+        app:civ_border_color="@color/dark_gray_22"
+        app:civ_border_width="1dp"
+        android:layout_centerInParent="true"/>
+
+    <cn.cloudworkshop.miaoding.view.CircleImageView
+        android:id="@+id/img_current_type"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@mipmap/bg_checked"
+        android:scaleType="centerCrop"
+        android:visibility="gone"
+        android:layout_centerInParent="true"/>
+</RelativeLayout>

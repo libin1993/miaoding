@@ -1,0 +1,113 @@
+apply plugin: 'com.android.application'
+apply plugin: 'android-apt'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion '25.0.0'
+
+    defaultConfig {
+        applicationId "cn.cloudworkshop.miaoding"
+        minSdkVersion 14
+        targetSdkVersion 25
+        versionCode 53
+        versionName "2.0.2"
+        multiDexEnabled true
+
+        manifestPlaceholders = [
+                GETUI_APP_ID    : "giNqTlq7c4AAPv4gmSmKL8",
+                GETUI_APP_KEY   : "XbVdzpYsN771CK381mlfq4",
+                GETUI_APP_SECRET: "48KWdZqTYU61sbKimhCb02",
+        ]
+
+        ndk {
+            abiFilters "armeabi", "armeabi-v7a", "x86_64"
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
+    productFlavors {
+        m360 {}
+        yingyongbao {}
+        ali {}
+        huawei {}
+        xiaomi {}
+    }
+
+    productFlavors.all { flavor ->
+        flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
+    }
+
+
+    configurations.all {
+        resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+            def requested = details.requested
+            if (requested.group == 'com.android.support') {
+                if (!requested.name.startsWith("multidex")) {
+                    details.useVersion '25.1.1'
+                }
+            }
+        }
+    }
+
+    sourceSets { main { jni.srcDirs = ['src/main/jni', 'src/main/jniLibs/'] } }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:25.1.1'
+    compile 'com.bigkoo:convenientbanner:2.0.5'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'com.android.support:support-v4:25.1.1'
+    compile 'com.zhy:base-rvadapter:3.0.3'
+    compile 'com.jakewharton:butterknife:8.3.0'
+    apt 'com.jakewharton:butterknife-compiler:8.3.0'
+    compile 'com.zhy:okhttputils:2.6.2'
+    compile 'com.qiyukf.unicorn:unicorn:2.7.0'
+    compile 'com.android.support:design:25.1.1'
+    compile 'com.android.support:cardview-v7:25.1.1'
+    compile 'com.facebook.rebound:rebound:0.3.8'
+    compile 'com.nineoldandroids:library:2.4.0'
+    compile 'com.google.code.gson:gson:2.8.0'
+    compile files('libs/ShareSDK-Wechat-Moments-2.8.3.jar')
+    compile files('libs/ShareSDK-Wechat-Core-2.8.3.jar')
+    compile files('libs/ShareSDK-Wechat-2.8.3.jar')
+    compile files('libs/ShareSDK-QQ-2.8.3.jar')
+    compile files('libs/ShareSDK-Core-2.8.3.jar')
+    compile files('libs/ShareSDK-SinaWeibo-2.8.3.jar')
+    compile files('libs/MobTools-2017.0412.1554.jar')
+    compile files('libs/MobCommons-2017.0412.1554.jar')
+    compile files('libs/Amap_2DMap_V2.9.2_20161026.jar')
+    compile files('libs/AMapSearch_3.5.0_AMapLocation_3.1.0_20161027.jar')
+    compile files('libs/alipaySdk-20161009.jar')
+    compile files('libs/libammsdk.jar')
+    compile 'com.facebook.fresco:fresco:1.5.0'
+    compile 'com.soundcloud.android:android-crop:1.0.1@aar'
+    compile project(':slidingtablayout')
+    compile 'com.getui:sdk:2.10.2.0'
+    compile 'com.umeng.analytics:analytics:latest.integration'
+    compile 'com.github.chrisbanes:PhotoView:1.3.1'
+    compile 'com.wang.avi:library:2.1.3'
+    compile 'com.android.support:multidex:1.0.1'
+    compile 'com.yanzhenjie.zbar:zbar:1.0.0'
+    compile 'com.yanzhenjie.zbar:camera:1.0.0'
+    compile project(':wheelpicker')
+    compile 'pub.devrel:easypermissions:0.4.2'
+    compile project(':appbarbehavior')
+    compile project(':lrecyclerview')
+    compile project(':photopicker')
+    compile 'org.greenrobot:eventbus:3.1.1'
+}
+

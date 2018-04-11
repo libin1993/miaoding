@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@android:color/white"
+              android:orientation="vertical">
+
+    <include layout="@layout/widget_header_layout"/>
+
+    <cn.cloudworkshop.miaoding.view.ShadowLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="64dp"
+        app:sl_cornerRadius="3dp"
+        app:sl_shadowRadius="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="82dp"
+                android:layout_height="82dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="38dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@mipmap/icon_evaluate"/>
+
+                <cn.cloudworkshop.miaoding.view.CircleImageView
+                    android:id="@+id/img_goods_icon"
+                    android:layout_width="74dp"
+                    android:layout_height="74dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginTop="5dp"/>
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_name_goods"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="15dp"
+                android:textColor="@color/dark_gray_22"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/tv_type_product"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="15dp"
+                android:textColor="@color/text_gray_6a"
+                android:textSize="12sp"
+                android:textStyle="bold"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="23dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="15dp"
+                    android:layout_height="3dp"
+                    android:background="@color/dark_gray_22"/>
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:text="评价内容"
+                    android:textColor="@color/dark_gray_22"
+                    android:textSize="15sp"
+                    android:textStyle="bold"/>
+
+                <View
+                    android:layout_width="15dp"
+                    android:layout_height="3dp"
+                    android:background="@color/dark_gray_22"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/rectange_e1"
+                android:orientation="vertical"
+                android:padding="13dp">
+
+                <EditText
+                    android:id="@+id/et_evaluate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="80dp"
+                    android:background="@null"
+                    android:gravity="start"
+                    android:hint="填写高质量评价，可以获得优惠券哦~"
+                    android:textColor="@color/light_gray_3d"
+                    android:textColorHint="#BCBCBC"
+                    android:textSize="14sp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="13dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/img_select_picture"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_marginRight="13dp"
+                        android:scaleType="fitCenter"
+                        android:src="@mipmap/icon_add_picture"/>
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/rv_goods_picture"
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp">
+                    </android.support.v7.widget.RecyclerView>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_submit_evaluate"
+                android:layout_width="80dp"
+                android:layout_height="35dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/btn_black_6dp"
+                android:gravity="center"
+                android:text="提交评价"
+                android:textColor="@android:color/white"
+                android:textSize="15sp"/>
+
+        </LinearLayout>
+
+    </cn.cloudworkshop.miaoding.view.ShadowLayout>
+    <include layout="@layout/loading_view"/>
+</RelativeLayout>
