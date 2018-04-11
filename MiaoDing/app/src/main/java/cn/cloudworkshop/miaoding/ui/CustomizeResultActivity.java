@@ -116,7 +116,9 @@ public class CustomizeResultActivity extends BaseActivity {
 
     private void getData() {
         Bundle bundle = getIntent().getExtras();
-        customBean = (CustomItemBean) bundle.getSerializable("tailor");
+        if (bundle != null){
+            customBean = (CustomItemBean) bundle.getSerializable("tailor");
+        }
         initView();
     }
 

@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
+import org.greenrobot.eventbus.EventBus;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -97,7 +98,6 @@ public class AddAddressActivity extends BaseActivity {
      * 加载视图
      */
     private void initView() {
-
         switch (type) {
             case 1:
                 tvHeaderTitle.setText("新增地址");
@@ -231,6 +231,8 @@ public class AddAddressActivity extends BaseActivity {
                                     int code = jsonObject.getInt("code");
                                     String addressId = jsonObject.getString("address_id");
                                     if (code == 1) {
+                                        //地址编辑成功
+                                        EventBus.getDefault().post("edit_success");
                                         switch (type) {
                                             case 1:
                                                 ToastUtils.showToast(AddAddressActivity.this, "添加成功");

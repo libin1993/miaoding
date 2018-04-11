@@ -25,6 +25,9 @@ import com.zhy.adapter.recyclerview.base.ViewHolder;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -77,6 +80,7 @@ public class DeliveryAddressActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_delivery_address);
         ButterKnife.bind(this);
+        EventBus.getDefault().register(this);
         getData();
         initData();
     }
@@ -85,13 +89,6 @@ public class DeliveryAddressActivity extends BaseActivity {
         type = getIntent().getStringExtra("type");
     }
 
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        dataList.clear();
-        page = 1;
-        initData();
-    }
 
     /**
      * 加载数据
@@ -292,7 +289,7 @@ public class DeliveryAddressActivity extends BaseActivity {
 
                     @Override
                     public void onResponse(String response, int id) {
-                        dataList.clear();
+                        isRefresh = true;
                         page = 1;
                         initData();
                     }
@@ -326,7 +323,7 @@ public class DeliveryAddressActivity extends BaseActivity {
 
                             @Override
                             public void onResponse(String response, int id) {
-                                dataList.clear();
+                                isRefresh = true;
                                 page = 1;
                                 initData();
                             }
@@ -353,11 +350,11 @@ public class DeliveryAddressActivity extends BaseActivity {
                 isSelectAddress();
                 break;
             case R.id.tv_add_address:
-                Intent intent1 = new Intent(DeliveryAddressActivity.this, AddAddressActivity.class);
-                Bundle bundle1 = new Bundle();
-                bundle1.putInt("type", 1);
-                intent1.putExtras(bundle1);
-                startActivity(intent1);
+                Intent intent = new Intent(DeliveryAddressActivity.this, AddAddressActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putInt("type", 1);
+                intent.putExtras(bundle);
+                startActivity(intent);
                 break;
             case R.id.img_load_error:
                 initData();
@@ -400,7 +397,19 @@ public class DeliveryAddressActivity extends BaseActivity {
         finish();
     }
 
-    @OnClick(R.id.img_load_error)
-    public void onViewClicked() {
+
+    @Subscribe
+    public void editAddress(String msg){
+        if ("edit_success".equals(msg)){
+            isRefresh = true;
+            page = 1;
+            initData();
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
     }
 }

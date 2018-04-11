@@ -124,8 +124,9 @@ public class ShoppingCartActivity extends BaseActivity {
     @Override
     protected void onRestart() {
         super.onRestart();
-        dataList.clear();
+        isRefresh = true;
         page = 1;
+        checkboxAllSelect.setChecked(true);
         initData();
     }
 
