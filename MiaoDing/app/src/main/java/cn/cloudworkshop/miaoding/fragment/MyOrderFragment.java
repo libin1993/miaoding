@@ -165,7 +165,9 @@ public class MyOrderFragment extends BaseFragment {
                             RecyclerViewStateUtils.setFooterViewState(getActivity(), rvGoods, 0,
                                     LoadingFooter.State.NoMore, null);
                             if (page == 1) {
-                                rvGoods.setVisibility(View.GONE);
+                                if (rvGoods != null){
+                                    rvGoods.setVisibility(View.GONE);
+                                }
                                 imgNoOrder.setImageResource(R.mipmap.icon_null_order);
                                 llNullOrder.setVisibility(View.VISIBLE);
                             }

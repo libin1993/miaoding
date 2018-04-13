@@ -613,6 +613,15 @@ public class HomepageNewsBean {
         private int banner_type;
         private String img_new;
         private String img_info;
+        private int relation_id;
+
+        public int getRelation_id() {
+            return relation_id;
+        }
+
+        public void setRelation_id(int relation_id) {
+            this.relation_id = relation_id;
+        }
 
         public String getImg_new() {
             return img_new;

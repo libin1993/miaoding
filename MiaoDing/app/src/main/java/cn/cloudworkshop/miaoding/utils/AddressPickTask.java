@@ -1,6 +1,8 @@
 package cn.cloudworkshop.miaoding.utils;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
 import android.os.AsyncTask;
 
 import java.util.ArrayList;
@@ -15,15 +17,16 @@ import cn.qqtheme.framework.util.ConvertUtils;
  * Describe：地址选择
  */
 public class AddressPickTask extends AsyncTask<String, Void, ArrayList<Province>> {
-    private Activity activity;
+
+    private Context context;
     private Callback callback;
 
     private String selectedProvince = "", selectedCity = "", selectedCounty = "";
     private boolean hideProvince = false;
     private boolean hideCounty = false;
 
-    public AddressPickTask(Activity activity) {
-        this.activity = activity;
+    public AddressPickTask(Context context) {
+        this.context = context;
     }
 
     public void setHideProvince(boolean hideProvince) {
@@ -59,13 +62,11 @@ public class AddressPickTask extends AsyncTask<String, Void, ArrayList<Province>
                     selectedCity = params[1];
                     selectedCounty = params[2];
                     break;
-                default:
-                    break;
             }
         }
         ArrayList<Province> data = new ArrayList<>();
         try {
-            String json = ConvertUtils.toString(activity.getAssets().open("city.json"));
+            String json = ConvertUtils.toString(context.getAssets().open("city.json"));
             data.addAll(GsonUtils.jsonToArray(json, Province.class));
         } catch (Exception e) {
             e.printStackTrace();
@@ -76,7 +77,7 @@ public class AddressPickTask extends AsyncTask<String, Void, ArrayList<Province>
     @Override
     protected void onPostExecute(ArrayList<Province> result) {
         if (result.size() > 0) {
-            AddressPicker picker = new AddressPicker(activity, result);
+            AddressPicker picker = new AddressPicker((Activity) context, result);
             picker.setHideProvince(hideProvince);
             picker.setHideCounty(hideCounty);
             if (hideCounty) {

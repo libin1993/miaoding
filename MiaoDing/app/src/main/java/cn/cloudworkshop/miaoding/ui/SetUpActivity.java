@@ -178,8 +178,9 @@ public class SetUpActivity extends BaseActivity implements EasyPermissions.Permi
                             JSONObject jsonObject = new JSONObject(response);
                             JSONObject jsonObject1 = jsonObject.getJSONObject("data");
                             userIcon = jsonObject1.getString("avatar");
-                            SharedPreferencesUtils.saveStr(SetUpActivity.this, "avatar", userIcon);
                             userName = jsonObject1.getString("name");
+                            SharedPreferencesUtils.saveStr(SetUpActivity.this, "avatar", userIcon);
+                            SharedPreferencesUtils.saveStr(SetUpActivity.this, "username", userName);
                             userBirthday = jsonObject1.getString("birthday");
                             initView();
                         } catch (JSONException e) {
@@ -258,7 +259,7 @@ public class SetUpActivity extends BaseActivity implements EasyPermissions.Permi
                 break;
             case R.id.ll_deliver_address:
                 Intent intent = new Intent(SetUpActivity.this, DeliveryAddressActivity.class);
-                intent.putExtra("type", "edit");
+                intent.putExtra("type", 1);
                 startActivity(intent);
                 break;
             case R.id.tv_log_out:
@@ -372,11 +373,11 @@ public class SetUpActivity extends BaseActivity implements EasyPermissions.Permi
     /**
      * 提交修改
      */
-    private void changeInfo(final String key, final String name) {
+    private void changeInfo(final String key, final String value) {
         OkHttpUtils.post()
                 .url(Constant.CHANGE_INFO)
                 .addParams("token", SharedPreferencesUtils.getStr(this, "token"))
-                .addParams(key, name)
+                .addParams(key, value)
                 .build()
                 .execute(new StringCallback() {
                     @Override
@@ -386,15 +387,22 @@ public class SetUpActivity extends BaseActivity implements EasyPermissions.Permi
 
                     @Override
                     public void onResponse(String response, int id) {
-                        if (key.equals("birthday") && setBirthday) {
-                            Intent intent = new Intent();
-                            intent.putExtra("birthday", name);
-                            setResult(1, intent);
-                            finish();
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            int code = jsonObject.getInt("code");
+                            if (code == 1) {
+                                if (key.equals("birthday") && setBirthday) {
+                                    Intent intent = new Intent();
+                                    intent.putExtra("birthday", value);
+                                    setResult(1, intent);
+                                    finish();
+                                }
+                                ToastUtils.showToast(SetUpActivity.this, "修改成功");
+                                initData();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
                         }
-                        ToastUtils.showToast(SetUpActivity.this, "修改成功");
-                        initData();
-
                     }
                 });
     }

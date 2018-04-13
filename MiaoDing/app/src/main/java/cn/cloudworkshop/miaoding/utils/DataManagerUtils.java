@@ -29,22 +29,6 @@ public class DataManagerUtils {
     }
 
     /**
-     * * 清除本应用SharedPreference(/data/data/com.xxx.xxx/shared_prefs) * * @param
-     * context
-     */
-    public static void cleanSharedPreference(Context context) {
-        deleteFilesByDirectory(new File("/data/data/"
-                + context.getPackageName() + "/shared_prefs"));
-    }
-
-    /**
-     * 按名字清除本应用数据库 * * @param context * @param dbName
-     */
-    public static void cleanDatabaseByName(Context context, String dbName) {
-        context.deleteDatabase(dbName);
-    }
-
-    /**
      * 清除/data/data/com.xxx.xxx/files下的内容 * * @param context
      */
     private static void cleanFiles(Context context) {
@@ -89,8 +73,8 @@ public class DataManagerUtils {
                 return;
             }
 
-            for (int i = 0; i < childFiles.length; i++) {
-                deleteFilesByDirectory(childFiles[i]);
+            for (File childFile : childFiles) {
+                deleteFilesByDirectory(childFile);
             }
             file.delete();
         }

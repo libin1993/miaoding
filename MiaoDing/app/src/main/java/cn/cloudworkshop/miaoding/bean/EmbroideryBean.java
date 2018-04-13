@@ -12,22 +12,19 @@ public class EmbroideryBean {
 
     /**
      * code : 1
-     * data : {"position":[{"id":1,"name":"袖口","img":"/uploads/img/2017052717564297529857.png","a_name":"位置"}],"font":[{"name":"Brush Script Std","img":"/uploads/img/2017052716083753534955.png","id":1,"is_english":1,"a_name":"字体"},{"name":"宋体","img":"/uploads/img/2017052716072056101101.png","id":2,"is_english":0,"a_name":"字体"}],"color":[{"name":"蓝色","img":"/uploads/img/2017052716005555984910.png","id":1,"a_name":"颜色"},{"name":"黑色","img":"/uploads/img/2017052716012351555255.png","id":2,"a_name":"颜色"},{"name":"酒红色","img":"/uploads/img/2017052716021252100515.png","id":5,"a_name":"颜色"},{"name":"绿色","img":"/uploads/img/2017052716022549515753.png","id":6,"a_name":"颜色"},{"name":"灰色","img":"/uploads/img/2017052716023810157102.png","id":7,"a_name":"颜色"},{"name":"紫色","img":"/uploads/img/2017052716025299555148.png","id":8,"a_name":"颜色"},{"name":"白色","img":"/uploads/img/2017052716060710250999.png","id":9,"a_name":"颜色"},{"name":"粉色","img":"/uploads/img/2017052716015753491029.png","id":4,"a_name":"颜色"},{"name":"藏青色","img":"/uploads/img/2017052716013951499854.png","id":3,"a_name":"颜色"}],"classify_id":[{"id":1,"classify_id":1,"name":"修身","img_max":"/uploads/img/2017061910173648515410.png","img_min":"/uploads/img/2017061910174254551029.png","status":2,"c_time":1494844827,"sort":1},{"id":2,"classify_id":1,"name":"标准","img_max":"/uploads/img/2017061910175652100100.png","img_min":"/uploads/img/2017061910180297985149.png","status":2,"c_time":1494844862,"sort":2},{"id":3,"classify_id":1,"name":"宽松","img_max":"/uploads/img/2017061910181252975697.png","img_min":"/uploads/img/2017061910181656551025.png","status":2,"c_time":1494844894,"sort":3}],"mianliao":[{"id":1,"price_id":1,"classify_id":1,"name":"新疆优质长绒棉","sort":1,"type":1,"img_b":"/uploads/img/2017052711082254979897.png","img_a":"/uploads/img/2017052711082557511005.png","price":499,"introduce":"成分：100%棉\n纱织：40×40\n密度：130*80","goods_img":"/uploads/img/2017071316035710057529.jpg"},{"id":3,"price_id":4,"classify_id":1,"name":"ALUMO","sort":3,"type":1,"img_b":"/uploads/img/2017052711272710257100.png","img_a":"/uploads/img/2017052711472848525048.png","price":1888,"introduce":"瑞士顶级面料，使用精梳超细埃及棉GIZA45及和西印度海岛原棉（世界上最珍稀最昂贵的棉花品种）。\n纱织：120/2支\n密度：120/2支","goods_img":"/uploads/img/2017093018151248995510.jpg"},{"id":14,"price_id":1,"classify_id":1,"name":"新疆优质长绒棉","sort":0,"type":1,"img_b":"/uploads/img/2017052711274110057559.png","img_a":"/uploads/img/2017052711471652971011.png","price":499,"introduce":"成分：100%棉\n纱织：40×40\n密度：130*80","goods_img":"/uploads/img/2017071315423598995749.jpg"},{"id":15,"price_id":2,"classify_id":1,"name":"国产精选亚麻","sort":0,"type":1,"img_b":"/uploads/img/2017052711275497561009.png","img_a":"/uploads/img/2017052711473897100525.png","price":799,"introduce":"成分：100%亚麻\n纱织：21×21\n密度：60*50","goods_img":"/uploads/img/2017071315401198995799.jpg"},{"id":16,"price_id":3,"classify_id":1,"name":"新疆优质长绒棉","sort":0,"type":1,"img_b":"/uploads/img/2017052711271010156525.png","img_a":"/uploads/img/2017052711474751555756.png","price":999,"introduce":"100%全棉\n纱织：90×90\n密度：220*120","goods_img":"/uploads/img/2017071315413310055995.jpg"},{"id":17,"price_id":2,"classify_id":1,"name":"新疆优质长绒棉","sort":0,"type":1,"img_b":"/uploads/img/2017052711333510254565.png","img_a":"/uploads/img/2017052711475497991025.png","price":799,"introduce":"100%棉\n","goods_img":"/uploads/img/2017071315420710254100.jpg"},{"id":18,"price_id":3,"classify_id":1,"name":"新疆优质长绒棉","sort":1,"type":1,"img_b":"/uploads/img/2017061514465951549854.png","img_a":"/uploads/img/2017061514470254985350.png","price":999,"introduce":"100%棉","goods_img":null},{"id":38,"price_id":2,"classify_id":1,"name":"商务蓝格","sort":1,"type":1,"img_b":"/uploads/img/2017101010540710250564.png","img_a":"","price":799,"introduce":"商务蓝格","goods_img":""},{"id":39,"price_id":2,"classify_id":1,"name":"商务细格","sort":1,"type":1,"img_b":"/uploads/img/2017101010594953975251.png","img_a":"","price":799,"introduce":"商务细格","goods_img":"/uploads/img/2017101011003010199989.jpg"},{"id":40,"price_id":2,"classify_id":1,"name":"商务暗格","sort":1,"type":1,"img_b":"/uploads/img/2017101011022549501015.png","img_a":"","price":799,"introduce":"商务暗格","goods_img":"/uploads/img/2017101011021050515697.jpg"},{"id":41,"price_id":2,"classify_id":1,"name":"休闲牛仔","sort":1,"type":1,"img_b":"/uploads/img/2017101011052654541021.png","img_a":"","price":799,"introduce":"休闲牛仔","goods_img":"/uploads/img/2017101011053648515750.jpg"},{"id":42,"price_id":2,"classify_id":1,"name":"商务波点","sort":1,"type":1,"img_b":"/uploads/img/2017101011065410148549.png","img_a":"","price":799,"introduce":"商务波点","goods_img":"/uploads/img/2017101011061757991015.jpg"},{"id":43,"price_id":2,"classify_id":1,"name":"休闲暗格纹","sort":1,"type":1,"img_b":"/uploads/img/2017101011073252100519.png","img_a":"","price":799,"introduce":"休闲暗格纹","goods_img":"/uploads/img/2017101011083110254555.jpg"},{"id":44,"price_id":3,"classify_id":1,"name":"休闲分割","sort":1,"type":1,"img_b":"/uploads/img/2017101011091054525210.png","img_a":"","price":999,"introduce":"休闲分割","goods_img":"/uploads/img/2017101011085454505410.jpg"},{"id":45,"price_id":3,"classify_id":1,"name":"休闲迷彩","sort":1,"type":1,"img_b":"/uploads/img/2017101011115710054549.png","img_a":"","price":999,"introduce":"休闲迷彩","goods_img":"/uploads/img/2017101011122557495151.jpg"},{"id":46,"price_id":3,"classify_id":1,"name":"休闲豹纹","sort":1,"type":1,"img_b":"/uploads/img/2017101011130852100101.png","img_a":"","price":999,"introduce":"休闲豹纹","goods_img":"/uploads/img/2017101011125757575010.jpg"},{"id":47,"price_id":3,"classify_id":1,"name":"定制经典","sort":1,"type":1,"img_b":"/uploads/img/2017101011133510256994.png","img_a":"","price":999,"introduce":"定制经典","goods_img":"/uploads/img/2017101011135010110154.jpg"}],"spec_templets_recommend":[]}
+     * data : {"position":[{"id":1,"name":"左袖口","img":"/uploads/img/2018041217165555544999.png","a_name":"位置"},{"id":6,"name":"右袖口","img":"/uploads/img/2018041217164848489955.png","a_name":"位置"},{"id":7,"name":"三角布","img":"/uploads/img/2018041217162899100974.png","a_name":"位置"},{"id":8,"name":"口袋","img":"/uploads/img/2018041217164056505452.png","a_name":"位置"}],"font":[{"name":"Brush Script Std","img":"/uploads/img/2017052716083753534955.png","id":1,"is_english":1,"a_name":"字体"},{"name":"宋体","img":"/uploads/img/2017052716072056101101.png","id":2,"is_english":0,"a_name":"字体"}],"color":[{"name":"蔚蓝","img":"/uploads/img/2017052716005555984910.png","id":1,"a_name":"颜色"},{"name":"曜石黑","img":"/uploads/img/2017052716012351555255.png","id":2,"a_name":"颜色"},{"name":"酒红","img":"/uploads/img/2017052716021252100515.png","id":5,"a_name":"颜色"},{"name":"浅绿","img":"/uploads/img/2017052716022549515753.png","id":6,"a_name":"颜色"},{"name":"烟灰","img":"/uploads/img/2017052716023810157102.png","id":7,"a_name":"颜色"},{"name":"紫色","img":"/uploads/img/2017052716025299555148.png","id":8,"a_name":"颜色"},{"name":"白色","img":"/uploads/img/2017052716060710250999.png","id":9,"a_name":"颜色"},{"name":"粉色","img":"/uploads/img/2017052716015753491029.png","id":4,"a_name":"颜色"},{"name":"冰蓝","img":"/uploads/img/2017052716013951499854.png","id":3,"a_name":"颜色"}],"classify_id":[{"id":2,"classify_id":1,"name":"标准","img_max":"/uploads/img/2017061910175652100100.png","img_min":"/uploads/img/2017061910180297985149.png","status":2,"c_time":1494844862,"sort":1},{"id":1,"classify_id":1,"name":"修身","img_max":"/uploads/img/2017061910173648515410.png","img_min":"/uploads/img/2017061910174254551029.png","status":2,"c_time":1494844827,"sort":2},{"id":3,"classify_id":1,"name":"宽松","img_max":"/uploads/img/2017061910181252975697.png","img_min":"/uploads/img/2017061910181656551025.png","status":2,"c_time":1494844894,"sort":3}],"mianliao":[{"id":38,"price_id":1,"classify_id":1,"name":"天蓝细格   阿瓦提长绒棉","sort":1,"type":1,"img_b":"/uploads/img/2017101010540710250564.png","img_a":"","price":499,"introduce":"天蓝细格","goods_img":"/uploads/img/2018041309344048494850.jpg"},{"id":3,"price_id":4,"classify_id":1,"name":"ALUMO  瑞士进口面料","sort":3,"type":1,"img_b":"/uploads/img/2017052711272710257100.png","img_a":"/uploads/img/2017052711472848525048.png","price":1888,"introduce":"瑞士顶级面料，使用精梳超细埃及棉GIZA45及和西印度海岛原棉（世界上最珍稀最昂贵的棉花品种）。\n纱织：120/2支\n密度：120/2支","goods_img":"/uploads/img/2017093018151248995510.jpg"},{"id":39,"price_id":1,"classify_id":1,"name":"商务细格  阿瓦提长绒棉","sort":1,"type":1,"img_b":"/uploads/img/2017101010594953975251.png","img_a":"","price":499,"introduce":"商务细格","goods_img":"/uploads/img/2017101011003010199989.jpg"},{"id":40,"price_id":1,"classify_id":1,"name":"靛蓝暗纹   阿瓦提长绒棉","sort":1,"type":1,"img_b":"/uploads/img/2017101011022549501015.png","img_a":"","price":499,"introduce":"靛蓝暗纹","goods_img":"/uploads/img/2017101011021050515697.jpg"},{"id":41,"price_id":1,"classify_id":1,"name":"浅蓝牛仔   埃及长绒棉","sort":1,"type":1,"img_b":"/uploads/img/2017101011052654541021.png","img_a":"","price":499,"introduce":"浅蓝牛仔","goods_img":"/uploads/img/2017101011053648515750.jpg"},{"id":42,"price_id":1,"classify_id":1,"name":"蓝色波点    阿瓦提长绒棉","sort":1,"type":1,"img_b":"/uploads/img/2017101011065410148549.png","img_a":"","price":499,"introduce":"蓝色商务波点","goods_img":"/uploads/img/2017101011061757991015.jpg"},{"id":43,"price_id":1,"classify_id":1,"name":"休闲暗格纹    阿瓦提长绒棉","sort":1,"type":1,"img_b":"/uploads/img/2017101011073252100519.png","img_a":"","price":499,"introduce":"休闲暗格纹","goods_img":"/uploads/img/2017101011083110254555.jpg"},{"id":44,"price_id":1,"classify_id":1,"name":"时尚分割线    阿瓦提长绒棉","sort":1,"type":1,"img_b":"/uploads/img/2017101011091054525210.png","img_a":"","price":499,"introduce":"","goods_img":"/uploads/img/2017101011085454505410.jpg"},{"id":45,"price_id":1,"classify_id":1,"name":"牛仔迷彩    埃及长绒棉","sort":1,"type":1,"img_b":"/uploads/img/2017101011115710054549.png","img_a":"","price":499,"introduce":"休闲迷彩","goods_img":"/uploads/img/2017101011122557495151.jpg"},{"id":46,"price_id":1,"classify_id":1,"name":"牛仔豹纹   埃及长绒棉","sort":1,"type":1,"img_b":"/uploads/img/2017101011130852100101.png","img_a":"","price":499,"introduce":"休闲豹纹","goods_img":"/uploads/img/2017101011125757575010.jpg"},{"id":47,"price_id":11,"classify_id":1,"name":"白色经典   易打理系列   阿瓦提长绒棉","sort":1,"type":1,"img_b":"/uploads/img/2018041314002153999910.png","img_a":"","price":399,"introduce":"白色经典易打理系列","goods_img":"/uploads/img/2017101011135010110154.jpg"}],"spec_templets_recommend":[]}
+     * is_opencv : 2
+     * phone : 15167168495
+     * cv : {"id":1835,"height":"170","weight":"70"}
      * msg : 成功
      */
 
     private int code;
     private DataBean data;
-    private String msg;
     private int is_opencv;
-
-    public int getIs_opencv() {
-        return is_opencv;
-    }
-
-    public void setIs_opencv(int is_opencv) {
-        this.is_opencv = is_opencv;
-    }
+    private String phone;
+    private CvBean cv;
+    private String msg;
 
     public int getCode() {
         return code;
@@ -43,6 +40,30 @@ public class EmbroideryBean {
 
     public void setData(DataBean data) {
         this.data = data;
+    }
+
+    public int getIs_opencv() {
+        return is_opencv;
+    }
+
+    public void setIs_opencv(int is_opencv) {
+        this.is_opencv = is_opencv;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public CvBean getCv() {
+        return cv;
+    }
+
+    public void setCv(CvBean cv) {
+        this.cv = cv;
     }
 
     public String getMsg() {
@@ -112,8 +133,8 @@ public class EmbroideryBean {
         public static class PositionBean {
             /**
              * id : 1
-             * name : 袖口
-             * img : /uploads/img/2017052717564297529857.png
+             * name : 左袖口
+             * img : /uploads/img/2018041217165555544999.png
              * a_name : 位置
              */
 
@@ -213,7 +234,7 @@ public class EmbroideryBean {
 
         public static class ColorBean {
             /**
-             * name : 蓝色
+             * name : 蔚蓝
              * img : /uploads/img/2017052716005555984910.png
              * id : 1
              * a_name : 颜色
@@ -259,13 +280,13 @@ public class EmbroideryBean {
 
         public static class ClassifyIdBean {
             /**
-             * id : 1
+             * id : 2
              * classify_id : 1
-             * name : 修身
-             * img_max : /uploads/img/2017061910173648515410.png
-             * img_min : /uploads/img/2017061910174254551029.png
+             * name : 标准
+             * img_max : /uploads/img/2017061910175652100100.png
+             * img_min : /uploads/img/2017061910180297985149.png
              * status : 2
-             * c_time : 1494844827
+             * c_time : 1494844862
              * sort : 1
              */
 
@@ -345,19 +366,17 @@ public class EmbroideryBean {
 
         public static class MianliaoBean {
             /**
-             * id : 1
+             * id : 38
              * price_id : 1
              * classify_id : 1
-             * name : 新疆优质长绒棉
+             * name : 天蓝细格   阿瓦提长绒棉
              * sort : 1
              * type : 1
-             * img_b : /uploads/img/2017052711082254979897.png
-             * img_a : /uploads/img/2017052711082557511005.png
+             * img_b : /uploads/img/2017101010540710250564.png
+             * img_a :
              * price : 499
-             * introduce : 成分：100%棉
-             纱织：40×40
-             密度：130*80
-             * goods_img : /uploads/img/2017071316035710057529.jpg
+             * introduce : 天蓝细格
+             * goods_img : /uploads/img/2018041309344048494850.jpg
              */
 
             private int id;
@@ -459,6 +478,42 @@ public class EmbroideryBean {
             public void setGoods_img(String goods_img) {
                 this.goods_img = goods_img;
             }
+        }
+    }
+
+    public static class CvBean {
+        /**
+         * id : 1835
+         * height : 170
+         * weight : 70
+         */
+
+        private int id;
+        private String height;
+        private String weight;
+
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
+        }
+
+        public String getHeight() {
+            return height;
+        }
+
+        public void setHeight(String height) {
+            this.height = height;
+        }
+
+        public String getWeight() {
+            return weight;
+        }
+
+        public void setWeight(String weight) {
+            this.weight = weight;
         }
     }
 }

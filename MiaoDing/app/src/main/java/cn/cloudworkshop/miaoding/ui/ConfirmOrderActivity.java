@@ -40,6 +40,7 @@ import cn.cloudworkshop.miaoding.utils.AppManagerUtils;
 import cn.cloudworkshop.miaoding.utils.DateUtils;
 import cn.cloudworkshop.miaoding.utils.DisplayUtils;
 import cn.cloudworkshop.miaoding.utils.GsonUtils;
+import cn.cloudworkshop.miaoding.utils.LogUtils;
 import cn.cloudworkshop.miaoding.utils.MyLinearLayoutManager;
 import cn.cloudworkshop.miaoding.utils.PayOrderUtils;
 import cn.cloudworkshop.miaoding.utils.SharedPreferencesUtils;
@@ -529,13 +530,13 @@ public class ConfirmOrderActivity extends BaseActivity {
                     } else {
                         //用户已选择地址被删除，点击重新选择地址
                         Intent intent1 = new Intent(ConfirmOrderActivity.this, DeliveryAddressActivity.class);
-                        intent1.putExtra("type", "select");
+                        intent1.putExtra("type", 2);
                         startActivityForResult(intent1, 3);
                     }
                 } else {
                     //已选择收货地址，点击跳转选择地址页面
                     Intent intent = new Intent(ConfirmOrderActivity.this, DeliveryAddressActivity.class);
-                    intent.putExtra("type", "select");
+                    intent.putExtra("type", 2);
                     intent.putExtra("address_id", addressListBean.getId());
                     startActivityForResult(intent, 3);
                 }
@@ -605,7 +606,6 @@ public class ConfirmOrderActivity extends BaseActivity {
                 .execute(new StringCallback() {
                     @Override
                     public void onError(Call call, Exception e, int id) {
-
                     }
 
                     @Override

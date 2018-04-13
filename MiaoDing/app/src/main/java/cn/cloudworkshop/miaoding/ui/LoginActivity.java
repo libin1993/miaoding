@@ -266,6 +266,8 @@ public class LoginActivity extends BaseActivity {
                                 JSONObject jsonObject = new JSONObject(response);
                                 int code = jsonObject.getInt("code");
                                 if (code == 1) {
+
+
                                     JSONObject data = jsonObject.getJSONObject("data");
                                     String loginToken = data.getString("token");
                                     int uid = data.getInt("uid");

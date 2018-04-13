@@ -61,8 +61,8 @@ public class DeliveryAddressActivity extends BaseActivity {
     TextView tvAddAddress;
     @BindView(R.id.img_load_error)
     ImageView imgLoadError;
-    //edit：编辑地址 select:选择地址
-    private String type;
+    //1：编辑地址 2:选择地址
+    private int type;
     //地址id
     private int addressId = -1;
     //页面
@@ -86,7 +86,7 @@ public class DeliveryAddressActivity extends BaseActivity {
     }
 
     private void getData() {
-        type = getIntent().getStringExtra("type");
+        type = getIntent().getIntExtra("type", 0);
     }
 
 
@@ -95,10 +95,10 @@ public class DeliveryAddressActivity extends BaseActivity {
      */
     private void initData() {
         switch (type) {
-            case "edit":
+            case 1:
                 tvHeaderTitle.setText("收货地址");
                 break;
-            case "select":
+            case 2:
                 tvHeaderTitle.setText("选择地址");
                 addressId = getIntent().getIntExtra("address_id", -1);
                 break;
@@ -244,7 +244,7 @@ public class DeliveryAddressActivity extends BaseActivity {
         mLRecyclerViewAdapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                if (type.equals("select")) {
+                if (type == 2) {
                     selectedAddress(position, 1);
                     finish();
                 }
@@ -373,7 +373,7 @@ public class DeliveryAddressActivity extends BaseActivity {
 
     private void isSelectAddress() {
         //地址被清空返回2;已选地址被删除返回3
-        if (type.equals("select")) {
+        if (type == 2) {
             if (dataList.size() > 0) {
                 if (addressId == -1) {
                     setResult(3);
@@ -399,8 +399,8 @@ public class DeliveryAddressActivity extends BaseActivity {
 
 
     @Subscribe
-    public void editAddress(String msg){
-        if ("edit_success".equals(msg)){
+    public void editAddress(String msg) {
+        if ("edit_success".equals(msg)) {
             isRefresh = true;
             page = 1;
             initData();

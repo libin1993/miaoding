@@ -188,7 +188,7 @@ public class EmbroideryActivity extends BaseActivity implements EasyPermissions.
      * 获取网络数据
      */
     private void initData() {
-        if (customItemBean != null){
+        if (customItemBean != null) {
             OkHttpUtils.get()
                     .url(Constant.EMBROIDERY_CUSTOMIZE)
                     .addParams("token", SharedPreferencesUtils.getStr(this, "token"))
@@ -226,6 +226,14 @@ public class EmbroideryActivity extends BaseActivity implements EasyPermissions.
         llEmbroidery.setVisibility(View.GONE);
         if (measureStatus == 2) {
             imgIsTake.setVisibility(View.VISIBLE);
+            String height = embroideryBean.getCv().getHeight();
+            String weight = embroideryBean.getCv().getWeight();
+            if (!TextUtils.isEmpty(height)) {
+                etUserHeight.setText(height);
+            }
+            if (!TextUtils.isEmpty(weight)) {
+                etUserWeight.setText(weight);
+            }
         } else {
             imgIsTake.setVisibility(View.GONE);
         }

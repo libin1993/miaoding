@@ -49,6 +49,7 @@ import cn.cloudworkshop.miaoding.base.BaseFragment;
 import cn.cloudworkshop.miaoding.bean.HomepageNewsBean;
 import cn.cloudworkshop.miaoding.constant.Constant;
 import cn.cloudworkshop.miaoding.ui.CustomizedGoodsActivity;
+import cn.cloudworkshop.miaoding.ui.DesignerDetailActivity;
 import cn.cloudworkshop.miaoding.ui.DressingResultActivity;
 import cn.cloudworkshop.miaoding.ui.HomepageInfoActivity;
 import cn.cloudworkshop.miaoding.ui.JoinUsActivity;
@@ -460,6 +461,27 @@ public class HomepageFragment extends BaseFragment {
                         //设计师申请入驻
                         case 2:
                             startActivity(new Intent(getActivity(), JoinUsActivity.class));
+                            break;
+                        //定制商品
+                        case 3:
+                            Intent intent1 = new Intent(getActivity(), CustomizedGoodsActivity.class);
+                            intent1.putExtra("id", String.valueOf(homepageBean.getLunbo()
+                                    .get(position).getRelation_id()));
+                            startActivity(intent1);
+                            break;
+                        //成品
+                        case 4:
+                            Intent intent2 = new Intent(getActivity(), WorksDetailActivity.class);
+                            intent2.putExtra("id", String.valueOf(homepageBean.getLunbo()
+                                    .get(position).getRelation_id()));
+                            startActivity(intent2);
+                            break;
+                        //设计师详情
+                        case 5:
+                            Intent intent3 = new Intent(getActivity(), DesignerDetailActivity.class);
+                            intent3.putExtra("id", String.valueOf(homepageBean.getLunbo()
+                                    .get(position).getRelation_id()));
+                            startActivity(intent3);
                             break;
                         //邀请好友
                         case 6:

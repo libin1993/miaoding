@@ -24,7 +24,7 @@ public class ImageDisposeUtils {
     public static void rotatingImageView(String path) {
         int degree = readPictureDegree(path);
         if (degree != 0) {
-            //旋转图片 动作
+            //旋转图片
             Matrix matrix = new Matrix();
             matrix.postRotate(degree);
             Bitmap bitmap = BitmapFactory.decodeFile(path);
@@ -48,7 +48,10 @@ public class ImageDisposeUtils {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        int orientation = exifInterface.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL);
+        int orientation = 0;
+        if (exifInterface != null) {
+            orientation = exifInterface.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL);
+        }
         switch (orientation) {
             case ExifInterface.ORIENTATION_ROTATE_90:
                 degree = 90;

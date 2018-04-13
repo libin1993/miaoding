@@ -25,8 +25,7 @@ public class AppManagerUtils {
 
 
     /**
-     * 新建了一个activity
-     *
+     * 新建一个activity
      * @param activity
      */
 
@@ -68,7 +67,6 @@ public class AppManagerUtils {
     /**
      * 应用退出，结束所有的activity
      */
-
     public void exitApp() {
         for (Activity activity : activityStack) {
             if (activity != null) {
