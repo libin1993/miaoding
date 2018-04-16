@@ -581,29 +581,35 @@ public class EmbroideryActivity extends BaseActivity implements EasyPermissions.
                 finish();
                 break;
             case R.id.tv_header_next:
-                customizeData(false);
-                if (measureStatus == 2) {
-                    toCustomize();
-                } else {
-                    ToastUtils.showToast(this, "请完善基本信息和照片");
+                if (embroideryBean != null){
+                    customizeData(false);
+                    if (measureStatus == 2) {
+                        toCustomize();
+                    } else {
+                        ToastUtils.showToast(this, "请完善基本信息和照片");
+                    }
                 }
                 break;
             case R.id.tv_confirm_embroidery:
-                customizeData(true);
-                type = 1;
-                if (measureStatus == 2) {
-                    addToCart();
-                } else {
-                    ToastUtils.showToast(this, "请完善基本信息和照片");
+                if (embroideryBean != null){
+                    customizeData(true);
+                    type = 1;
+                    if (measureStatus == 2) {
+                        addToCart();
+                    } else {
+                        ToastUtils.showToast(this, "请完善基本信息和照片");
+                    }
                 }
                 break;
             case R.id.tv_add_shop_cart:
-                customizeData(true);
-                type = 2;
-                if (measureStatus == 2) {
-                    addToCart();
-                } else {
-                    ToastUtils.showToast(this, "请完善基本信息和照片");
+                if (embroideryBean != null){
+                    customizeData(true);
+                    type = 2;
+                    if (measureStatus == 2) {
+                        addToCart();
+                    } else {
+                        ToastUtils.showToast(this, "请完善基本信息和照片");
+                    }
                 }
                 break;
             case R.id.img_load_error:

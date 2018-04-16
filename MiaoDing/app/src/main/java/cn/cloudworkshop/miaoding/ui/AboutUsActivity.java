@@ -17,7 +17,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
 import java.io.File;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -26,7 +28,6 @@ import cn.cloudworkshop.miaoding.application.MyApplication;
 import cn.cloudworkshop.miaoding.base.BaseActivity;
 import cn.cloudworkshop.miaoding.service.DownloadService;
 import cn.cloudworkshop.miaoding.utils.ToastUtils;
-
 
 
 /**
@@ -132,7 +133,7 @@ public class AboutUsActivity extends BaseActivity {
             networkInfo = mConnectivityManager.getActiveNetworkInfo();
         }
         if (networkInfo != null && networkInfo.isConnected()) {
-            //手机流量下载
+            //允许手机流量下载
             String type = networkInfo.getTypeName();
             if (type.equalsIgnoreCase("MOBILE")) {
                 request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_MOBILE);
@@ -141,7 +142,7 @@ public class AboutUsActivity extends BaseActivity {
         // 设置下载位置
         File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath()
                 + File.separator + "CloudWorkshop", "miaoding.apk");
-        if (file.exists()){
+        if (file.exists()) {
             file.delete();
         }
         request.setDestinationUri(Uri.fromFile(file));
@@ -174,7 +175,7 @@ public class AboutUsActivity extends BaseActivity {
         }
         super.onDestroy();
     }
-    
+
 }
 
 

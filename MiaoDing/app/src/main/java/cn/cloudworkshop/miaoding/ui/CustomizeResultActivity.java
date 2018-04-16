@@ -108,6 +108,7 @@ public class CustomizeResultActivity extends BaseActivity {
         imgShoppingBag.setVisibility(View.VISIBLE);
         imgShoppingBag.setImageResource(R.mipmap.icon_shopping_bag);
         getData();
+
     }
 
     /**
@@ -118,8 +119,11 @@ public class CustomizeResultActivity extends BaseActivity {
         Bundle bundle = getIntent().getExtras();
         if (bundle != null){
             customBean = (CustomItemBean) bundle.getSerializable("tailor");
+            if (customBean != null){
+                initView();
+            }
         }
-        initView();
+
     }
 
 

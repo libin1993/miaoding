@@ -115,7 +115,9 @@ public class HomepageFragment extends BaseFragment {
 
                     @Override
                     public void onResponse(String response, int id) {
-                        imgLoadError.setVisibility(View.GONE);
+                        if (imgLoadError != null){
+                            imgLoadError.setVisibility(View.GONE);
+                        }
                         homepageBean = GsonUtils.jsonToBean(response, HomepageNewsBean.class);
                         if (homepageBean.getData() != null && homepageBean.getData().size() > 0) {
                             //刷新，初始化数据

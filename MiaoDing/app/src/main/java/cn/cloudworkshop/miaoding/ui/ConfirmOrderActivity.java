@@ -606,10 +606,12 @@ public class ConfirmOrderActivity extends BaseActivity {
                 .execute(new StringCallback() {
                     @Override
                     public void onError(Call call, Exception e, int id) {
+                        LogUtils.log(e.toString());
                     }
 
                     @Override
                     public void onResponse(String response, int id) {
+                        LogUtils.log(response);
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             int code = jsonObject.getInt("code");

@@ -313,9 +313,6 @@ public class LoginActivity extends BaseActivity {
                 @Override
                 public void run() {
                     for (int i = 30; i > 0; i--) {
-                        if (i <= 0) {
-                            break;
-                        }
                         Message msg = new Message();
                         msg.what = 1;
                         msg.arg1 = i;

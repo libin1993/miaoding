@@ -52,6 +52,7 @@ import cn.cloudworkshop.miaoding.ui.MainActivity;
 import cn.cloudworkshop.miaoding.ui.OrderDetailActivity;
 import cn.cloudworkshop.miaoding.utils.DisplayUtils;
 import cn.cloudworkshop.miaoding.utils.GsonUtils;
+import cn.cloudworkshop.miaoding.utils.LogUtils;
 import cn.cloudworkshop.miaoding.utils.PayOrderUtils;
 import cn.cloudworkshop.miaoding.utils.SharedPreferencesUtils;
 import cn.cloudworkshop.miaoding.utils.ToastUtils;
@@ -140,6 +141,7 @@ public class MyOrderFragment extends BaseFragment {
                         imgLoadError.setVisibility(View.VISIBLE);
                     }
 
+
                     @Override
                     public void onResponse(String response, int id) {
                         if (imgLoadError != null) {
@@ -165,10 +167,13 @@ public class MyOrderFragment extends BaseFragment {
                             RecyclerViewStateUtils.setFooterViewState(getActivity(), rvGoods, 0,
                                     LoadingFooter.State.NoMore, null);
                             if (page == 1) {
-                                if (rvGoods != null){
+                                if (rvGoods != null) {
                                     rvGoods.setVisibility(View.GONE);
                                 }
-                                imgNoOrder.setImageResource(R.mipmap.icon_null_order);
+                                if (imgNoOrder != null) {
+                                    imgNoOrder.setImageResource(R.mipmap.icon_null_order);
+                                }
+
                                 llNullOrder.setVisibility(View.VISIBLE);
                             }
                         }
