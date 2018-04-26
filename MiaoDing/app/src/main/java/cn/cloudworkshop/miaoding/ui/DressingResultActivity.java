@@ -68,11 +68,9 @@ public class DressingResultActivity extends BaseActivity {
                 return true;
             }
 
-
              // WebView http拦截
 //            @Override
 //            public WebResourceResponse shouldInterceptRequest(WebView view, String url) {
-//                LogUtils.log(url);
 //                if (!url.contains("cloudworkshop.cn")) {
 //                    return new WebResourceResponse(null, null, null);
 //                } else {
@@ -106,7 +104,8 @@ public class DressingResultActivity extends BaseActivity {
                 }
                 break;
             case R.id.img_header_share:
-                ShareUtils.showShare(this, SharedPreferencesUtils.getStr(this, "avatar"), shareTitle, shareContent, shareUrl);
+                ShareUtils.showShare(this, SharedPreferencesUtils.getStr(this,
+                        "avatar"), shareTitle, shareContent, shareUrl);
                 break;
         }
     }

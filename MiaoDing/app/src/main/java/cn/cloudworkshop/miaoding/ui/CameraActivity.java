@@ -85,7 +85,8 @@ public class CameraActivity extends BaseActivity implements SensorEventListener 
     //照片保存路径
     private String[] photoArray = new String[4];
     //背景图片
-    private int[] positionArray = {R.mipmap.camera_positive, R.mipmap.camera_left, R.mipmap.camera_back, R.mipmap.camera_right};
+    private int[] positionArray = {R.mipmap.camera_positive, R.mipmap.camera_left,
+            R.mipmap.camera_back, R.mipmap.camera_right};
     //拍照次数
     private int count = 0;
     //传感器

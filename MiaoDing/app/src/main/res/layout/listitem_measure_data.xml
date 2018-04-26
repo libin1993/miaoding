@@ -1,33 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="42dp"
-                android:background="@android:color/white"
-                android:orientation="vertical">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="112dp"
+              android:layout_marginBottom="9dp"
+              android:background="@android:color/white"
+              android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tv_measure_name"
-        android:layout_width="150dp"
-        android:layout_height="match_parent"
-        android:gravity="center_vertical"
-        android:layout_marginLeft="20dp"
-        android:textSize="14sp"
-        android:textColor="@color/dark_gray_22"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="12dp"
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/tv_measure_value"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:gravity="center_vertical"
-        android:layout_toRightOf="@id/tv_measure_name"
-        android:textSize="14sp"
-        android:textColor="@color/dark_gray_22"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="姓名："
+            android:textColor="@color/dark_gray_22"
+            android:textSize="14sp"/>
+
+        <TextView
+            android:id="@+id/tv_name_measure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/light_gray_6f"
+            android:textSize="14sp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="身高："
+            android:textColor="@color/dark_gray_22"
+            android:textSize="14sp"/>
+
+        <TextView
+            android:id="@+id/tv_height_measure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/light_gray_6f"
+            android:textSize="14sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="22dp"
+            android:text="体重："
+            android:textColor="@color/dark_gray_22"
+            android:textSize="14sp"/>
+
+        <TextView
+            android:id="@+id/tv_weight_measure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/light_gray_6f"
+            android:textSize="14sp"/>
+    </LinearLayout>
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:layout_alignParentBottom="true"
-        android:background="@color/app_bg"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"/>
-</RelativeLayout>
+        android:layout_height="1dp"
+        android:background="@color/light_gray_ed"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_default_measure"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="12dp"
+            android:drawableLeft="@mipmap/icon_default_address"
+            android:drawablePadding="4dp"
+            android:gravity="center_vertical"
+            android:text="默认"
+            android:textColor="@color/light_gray_85"
+            android:textSize="10sp"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:id="@+id/tv_delete_measure"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="17dp"
+            android:drawableLeft="@mipmap/icon_delete_address"
+            android:drawablePadding="6dp"
+            android:gravity="center_vertical"
+            android:text="删除"
+            android:textColor="@color/light_gray_85"
+            android:textSize="10sp"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/tv_edit_measure"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:drawableLeft="@mipmap/icon_edit_address"
+            android:drawablePadding="6dp"
+            android:gravity="center_vertical"
+            android:text="编辑"
+            android:textColor="@color/light_gray_85"
+            android:textSize="10sp"
+            android:visibility="gone"/>
+
+    </LinearLayout>
+</LinearLayout>

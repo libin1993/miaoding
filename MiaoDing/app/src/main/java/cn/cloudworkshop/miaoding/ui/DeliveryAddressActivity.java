@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.KeyEvent;
@@ -65,7 +66,7 @@ public class DeliveryAddressActivity extends BaseActivity {
     private int type;
     //地址id
     private int addressId = -1;
-    //页面
+    //页数
     private int page = 1;
     //刷新
     private boolean isRefresh;
@@ -73,6 +74,7 @@ public class DeliveryAddressActivity extends BaseActivity {
     private boolean isLoadMore;
     private List<DeliveryAddressBean.DataBean> dataList = new ArrayList<>();
     private LRecyclerViewAdapter mLRecyclerViewAdapter;
+    private CommonAdapter<DeliveryAddressBean.DataBean> adapter;
 
 
     @Override
@@ -151,7 +153,7 @@ public class DeliveryAddressActivity extends BaseActivity {
      */
     private void initView() {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        CommonAdapter<DeliveryAddressBean.DataBean> adapter = new CommonAdapter<DeliveryAddressBean
+        adapter = new CommonAdapter<DeliveryAddressBean
                 .DataBean>(this, R.layout.listitem_address, dataList) {
             @Override
             protected void convert(ViewHolder holder, final DeliveryAddressBean.DataBean dataBean,
@@ -184,9 +186,8 @@ public class DeliveryAddressActivity extends BaseActivity {
                     @Override
                     public void onClick(View v) {
                         if (dataList.get(position - 1).getIs_default() == 0) {
-                            setDefaultAddress(dataList.get(position - 1).getId());
+                            setDefaultAddress(dataList.get(position - 1).getId(),position -1);
                         }
-
                     }
                 });
 
@@ -275,7 +276,7 @@ public class DeliveryAddressActivity extends BaseActivity {
     /**
      * 设置默认地址
      */
-    private void setDefaultAddress(int id) {
+    private void setDefaultAddress(int id, final int position) {
         OkHttpUtils.post()
                 .url(Constant.DEFAULT_ADDRESS)
                 .addParams("token", SharedPreferencesUtils.getStr(DeliveryAddressActivity.this, "token"))
@@ -289,9 +290,14 @@ public class DeliveryAddressActivity extends BaseActivity {
 
                     @Override
                     public void onResponse(String response, int id) {
-                        isRefresh = true;
-                        page = 1;
-                        initData();
+                        for (int i = 0; i < dataList.size(); i++) {
+                            if (i == position) {
+                                dataList.get(i).setIs_default(1);
+                            } else {
+                                dataList.get(i).setIs_default(0);
+                            }
+                        }
+                        adapter.notifyDataSetChanged();
                     }
                 });
 
@@ -401,7 +407,7 @@ public class DeliveryAddressActivity extends BaseActivity {
     @Subscribe
     public void editAddress(String msg) {
         if ("edit_success".equals(msg)) {
-            isRefresh = true;
+            dataList.clear();
             page = 1;
             initData();
         }

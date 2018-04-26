@@ -52,16 +52,17 @@ import cn.cloudworkshop.miaoding.R;
 import cn.cloudworkshop.miaoding.base.BaseActivity;
 import cn.cloudworkshop.miaoding.bean.CustomItemBean;
 import cn.cloudworkshop.miaoding.bean.EmbroideryBean;
+import cn.cloudworkshop.miaoding.bean.GuideBean;
 import cn.cloudworkshop.miaoding.constant.Constant;
 import cn.cloudworkshop.miaoding.utils.CharacterUtils;
 import cn.cloudworkshop.miaoding.utils.DisplayUtils;
 import cn.cloudworkshop.miaoding.utils.GsonUtils;
+import cn.cloudworkshop.miaoding.utils.LogUtils;
 import cn.cloudworkshop.miaoding.utils.PermissionUtils;
 import cn.cloudworkshop.miaoding.utils.SharedPreferencesUtils;
 import cn.cloudworkshop.miaoding.utils.ToastUtils;
 import cn.cloudworkshop.miaoding.view.CircleImageView;
 import okhttp3.Call;
-import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.EasyPermissions;
 
 /**
@@ -119,7 +120,6 @@ public class EmbroideryActivity extends BaseActivity implements EasyPermissions.
     EditText etUserHeight;
     @BindView(R.id.et_user_weight)
     EditText etUserWeight;
-
     @BindView(R.id.view_loading)
     AVLoadingIndicatorView loadingView;
     @BindView(R.id.tv_photo_help)
@@ -128,7 +128,10 @@ public class EmbroideryActivity extends BaseActivity implements EasyPermissions.
     CircleImageView imgIsTake;
     @BindView(R.id.rl_user_photo)
     RelativeLayout rlUserPhoto;
-
+    @BindView(R.id.img_custom_guide)
+    ImageView imgCustomGuide;
+    @BindView(R.id.et_username_measure)
+    EditText etUsername;
 
     private EmbroideryBean embroideryBean;
     //当前绣花位置
@@ -153,6 +156,12 @@ public class EmbroideryActivity extends BaseActivity implements EasyPermissions.
     private int measureStatus;
     //相机权限
     static final String[] permissionStr = {Manifest.permission.CAMERA};
+    //姓名
+    private String name;
+    //身高
+    private String height;
+    //体重
+    private String weight;
 
 
     @Override
@@ -166,6 +175,7 @@ public class EmbroideryActivity extends BaseActivity implements EasyPermissions.
         tvHeaderNext.setText("更多");
         getData();
         initData();
+        selectMore();
 
         loadingView.setIndicator(new BallSpinFadeLoaderIndicator());
         loadingView.setIndicatorColor(Color.GRAY);
@@ -217,6 +227,41 @@ public class EmbroideryActivity extends BaseActivity implements EasyPermissions.
 
     }
 
+    /**
+     * 首次进入，提示更多
+     */
+    private void selectMore() {
+        //默认首次
+        boolean isFirst = SharedPreferencesUtils.getBoolean(this, "select_more", true);
+        if (isFirst) {
+            OkHttpUtils.get()
+                    .url(Constant.GUIDE_IMG)
+                    .addParams("id", "8")
+                    .build()
+                    .execute(new StringCallback() {
+                        @Override
+                        public void onError(Call call, Exception e, int id) {
+
+                        }
+
+                        @Override
+                        public void onResponse(String response, int id) {
+                            GuideBean guideBean = GsonUtils.jsonToBean(response, GuideBean.class);
+                            if (guideBean.getData().getImg_urls() != null && guideBean.getData()
+                                    .getImg_urls().size() > 0) {
+                                SharedPreferencesUtils.saveBoolean(EmbroideryActivity.this,
+                                        "select_more", false);
+                                imgCustomGuide.setVisibility(View.VISIBLE);
+                                Glide.with(EmbroideryActivity.this)
+                                        .load(Constant.IMG_HOST + guideBean.getData().getImg_urls().get(0))
+                                        .diskCacheStrategy(DiskCacheStrategy.SOURCE)
+                                        .into(imgCustomGuide);
+                            }
+                        }
+                    });
+        }
+    }
+
 
     /**
      * 加载视图
@@ -225,15 +270,25 @@ public class EmbroideryActivity extends BaseActivity implements EasyPermissions.
         cbSelectEmbroidery.setChecked(false);
         llEmbroidery.setVisibility(View.GONE);
         if (measureStatus == 2) {
-            imgIsTake.setVisibility(View.VISIBLE);
-            String height = embroideryBean.getCv().getHeight();
-            String weight = embroideryBean.getCv().getWeight();
+            name = embroideryBean.getCv().getName();
+            height = embroideryBean.getCv().getHeight();
+            weight = embroideryBean.getCv().getWeight();
+            if (!TextUtils.isEmpty(name)) {
+                etUsername.setText(name);
+            }
             if (!TextUtils.isEmpty(height)) {
                 etUserHeight.setText(height);
             }
             if (!TextUtils.isEmpty(weight)) {
                 etUserWeight.setText(weight);
             }
+
+            if (!TextUtils.isEmpty(embroideryBean.getCv().getImg_list())) {
+                imgIsTake.setVisibility(View.VISIBLE);
+            } else {
+                imgIsTake.setVisibility(View.GONE);
+            }
+
         } else {
             imgIsTake.setVisibility(View.GONE);
         }
@@ -574,41 +629,57 @@ public class EmbroideryActivity extends BaseActivity implements EasyPermissions.
     }
 
     @OnClick({R.id.img_header_back, R.id.tv_header_next, R.id.tv_confirm_embroidery,
-            R.id.tv_add_shop_cart, R.id.img_load_error, R.id.tv_photo_help, R.id.rl_user_photo})
+            R.id.tv_add_shop_cart, R.id.img_load_error, R.id.tv_photo_help, R.id.rl_user_photo,
+            R.id.img_custom_guide})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.img_header_back:
                 finish();
                 break;
             case R.id.tv_header_next:
-                if (embroideryBean != null){
-                    customizeData(false);
-                    if (measureStatus == 2) {
+                if (embroideryBean != null) {
+                    if (isMeasureData()) {
+                        if (!etUsername.getText().toString().trim().equals(name)
+                                || !etUserHeight.getText().toString().trim().equals(height)
+                                || !etUserWeight.getText().toString().trim().equals(weight)) {
+                            submitData();
+                        }
+                        customizeData(false);
                         toCustomize();
                     } else {
-                        ToastUtils.showToast(this, "请完善基本信息和照片");
+                        ToastUtils.showToast(this, "请完善基本信息");
                     }
                 }
                 break;
             case R.id.tv_confirm_embroidery:
-                if (embroideryBean != null){
-                    customizeData(true);
-                    type = 1;
-                    if (measureStatus == 2) {
+                if (embroideryBean != null) {
+                    if (isMeasureData()) {
+                        if (!etUsername.getText().toString().trim().equals(name)
+                                || !etUserHeight.getText().toString().trim().equals(height)
+                                || !etUserWeight.getText().toString().trim().equals(weight)) {
+                            submitData();
+                        }
+                        type = 1;
+                        customizeData(false);
                         addToCart();
                     } else {
-                        ToastUtils.showToast(this, "请完善基本信息和照片");
+                        ToastUtils.showToast(this, "请完善基本信息");
                     }
                 }
                 break;
             case R.id.tv_add_shop_cart:
-                if (embroideryBean != null){
-                    customizeData(true);
-                    type = 2;
-                    if (measureStatus == 2) {
+                if (embroideryBean != null) {
+                    if (isMeasureData()) {
+                        if (!etUsername.getText().toString().trim().equals(name)
+                                || !etUserHeight.getText().toString().trim().equals(height)
+                                || !etUserWeight.getText().toString().trim().equals(weight)) {
+                            submitData();
+                        }
+                        type = 2;
+                        customizeData(false);
                         addToCart();
                     } else {
-                        ToastUtils.showToast(this, "请完善基本信息和照片");
+                        ToastUtils.showToast(this, "请完善基本信息");
                     }
                 }
                 break;
@@ -616,50 +687,56 @@ public class EmbroideryActivity extends BaseActivity implements EasyPermissions.
                 initData();
                 break;
             case R.id.tv_photo_help:
-                if (isMeasureData()) {
-                    if (!EasyPermissions.hasPermissions(this, permissionStr)) {
-                        EasyPermissions.requestPermissions(this, "", 123, permissionStr);
-                    } else {
-                        Intent intent = new Intent(this, CameraGuideActivity.class);
-                        Bundle bundle = new Bundle();
-                        bundle.putString("height", etUserHeight.getText().toString().trim());
-                        bundle.putString("weight", etUserWeight.getText().toString().trim());
-                        intent.putExtras(bundle);
-                        startActivity(intent);
-                    }
-                } else {
-                    ToastUtils.showToast(this, "请输入身高体重");
-                }
-
+                takePhoto(true);
                 break;
             case R.id.rl_user_photo:
-                if (isMeasureData()) {
-                    if (!EasyPermissions.hasPermissions(this, permissionStr)) {
-                        EasyPermissions.requestPermissions(this, "", 123, permissionStr);
-                    } else {
-                        Intent intent;
-                        if (measureStatus == 2) {
-                            intent = new Intent(this, NewCameraActivity.class);
-                        } else {
-                            intent = new Intent(this, CameraGuideActivity.class);
-                        }
-                        Bundle bundle = new Bundle();
-                        bundle.putString("name", SharedPreferencesUtils.getStr(this, "username"));
-                        bundle.putString("phone", SharedPreferencesUtils.getStr(this, "phone"));
-                        bundle.putString("height", etUserHeight.getText().toString().trim());
-                        bundle.putString("weight", etUserWeight.getText().toString().trim());
-                        intent.putExtras(bundle);
-                        startActivity(intent);
-                    }
-
-                } else {
-                    ToastUtils.showToast(this, "请输入身高体重");
-                }
-
-
+                takePhoto(false);
+                break;
+            case R.id.img_custom_guide:
+                imgCustomGuide.setVisibility(View.GONE);
                 break;
         }
     }
+
+
+    /**
+     * 上传量体数据
+     */
+    private void submitData() {
+        OkHttpUtils.post()
+                .url(Constant.TAKE_PHOTO)
+                .addParams("token", SharedPreferencesUtils.getStr(this, "token"))
+                .addParams("phone", SharedPreferencesUtils.getStr(this, "phone"))
+                .addParams("name", etUsername.getText().toString().trim())
+                .addParams("height", etUserHeight.getText().toString().trim())
+                .addParams("weight", etUserWeight.getText().toString().trim())
+                .addParams("is_index", "1")
+                .addParams("scale","1,1,1,1")
+                .build()
+                .execute(new StringCallback() {
+                    @Override
+                    public void onError(Call call, Exception e, int id) {
+
+                    }
+
+                    @Override
+                    public void onResponse(String response, int id) {
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            int code = jsonObject.getInt("code");
+                            if (code == 1) {
+                                measureStatus = 2;
+                                name = etUsername.getText().toString().trim();
+                                height = etUserHeight.getText().toString().trim();
+                                weight = etUserWeight.getText().toString().trim();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+    }
+
 
     /**
      * 手动选择配件，跳转定制页面
@@ -812,13 +889,47 @@ public class EmbroideryActivity extends BaseActivity implements EasyPermissions.
 
     }
 
+    /**
+     * @param toCameraGuide 是否点击帮助
+     *                      拍照
+     */
+    private void takePhoto(boolean toCameraGuide) {
+        if (isMeasureData()) {
+            if (!EasyPermissions.hasPermissions(this, permissionStr)) {
+                EasyPermissions.requestPermissions(this, "", 123, permissionStr);
+            } else {
+                Intent intent;
+                if (toCameraGuide) {
+                    intent = new Intent(this, CameraGuideActivity.class);
+                } else {
+                    if (measureStatus == 2) {
+                        intent = new Intent(this, NewCameraActivity.class);
+                    } else {
+                        intent = new Intent(this, CameraGuideActivity.class);
+                    }
+                }
+
+                Bundle bundle = new Bundle();
+                bundle.putString("name", etUsername.getText().toString().trim());
+                bundle.putString("height", etUserHeight.getText().toString().trim());
+                bundle.putString("weight", etUserWeight.getText().toString().trim());
+                bundle.putInt("is_default", 1);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+
+        } else {
+            ToastUtils.showToast(this, "请完善基本信息");
+        }
+    }
+
 
     /**
      * @return 量体数据是否完善
      */
     private boolean isMeasureData() {
-
-        return !TextUtils.isEmpty(etUserHeight.getText().toString().trim())
+        return !TextUtils.isEmpty(etUsername.getText().toString().trim())
+                && !TextUtils.isEmpty(etUserHeight.getText().toString().trim())
                 && !TextUtils.isEmpty(etUserWeight.getText().toString().trim());
     }
 
@@ -834,8 +945,10 @@ public class EmbroideryActivity extends BaseActivity implements EasyPermissions.
         if ("take_success".equals(msg)) {
             measureStatus = 2;
             imgIsTake.setVisibility(View.VISIBLE);
+            name = etUsername.getText().toString().trim();
+            height = etUserHeight.getText().toString().trim();
+            weight = etUserWeight.getText().toString().trim();
         }
-
     }
 
     @Override
@@ -862,7 +975,9 @@ public class EmbroideryActivity extends BaseActivity implements EasyPermissions.
 
     @Override
     public void onPermissionsGranted(int requestCode, List<String> perms) {
+
     }
+
 
     @Override
     public boolean shouldShowRequestPermissionRationale(@NonNull String permission) {
@@ -875,12 +990,3 @@ public class EmbroideryActivity extends BaseActivity implements EasyPermissions.
     }
 
 }
-
-
-
-
-
-
-
-
-

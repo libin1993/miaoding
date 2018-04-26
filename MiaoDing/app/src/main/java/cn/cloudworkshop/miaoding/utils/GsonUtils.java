@@ -30,6 +30,7 @@ public class GsonUtils {
     }
 
     private GsonUtils() {
+
     }
 
     /**
@@ -70,7 +71,6 @@ public class GsonUtils {
      * @param <T>
      * @return
      */
-
 
     public static <T> List<T> jsonToArray(String json, Class<T> cls) {
         List<T> list = new ArrayList<T>();

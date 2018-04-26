@@ -191,8 +191,7 @@
         <activity
             android:name=".ui.ChangeOrderActivity"
             android:windowSoftInputMode="stateHidden"/>
-        <activity android:name=".ui.MeasureDataActivity"/>
-        <activity android:name=".ui.MeasureUserActivity"/>
+        <activity android:name=".ui.MeasureDetailActivity"/>
         <activity android:name=".ui.ImagePreviewActivity"/>
         <activity android:name=".ui.UserRuleActivity"/>
         <activity android:name=".ui.MemberCenterActivity"/>
@@ -231,6 +230,8 @@
         <activity android:name=".ui.NewCameraActivity"/>
         <activity android:name=".ui.CameraGuideActivity"/>
         <activity android:name=".ui.CameraFormActivity"/>
+        <activity android:name=".ui.AddMeasureActivity"/>
+        <activity android:name=".ui.MeasureDataActivity"/>
 
         <service android:name="com.amap.api.location.APSService"/>
         <service

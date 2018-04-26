@@ -69,16 +69,17 @@ public class NewCameraActivity extends BaseActivity implements SensorEventListen
     AVLoadingIndicatorView loadingView;
     @BindView(R.id.view_user_stroke)
     View viewStroke;
-    private final String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/CloudWorkshop/";
     @BindView(R.id.img_take_again)
     ImageView imgTakeAgain;
     @BindView(R.id.img_take_success)
     ImageView imgTakeSuccess;
+    private final String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/CloudWorkshop/";
     //照片保存路径
     private String[] photoArray = {path + "camera0.jpg", path + "camera1.jpg", path + "camera2.jpg",
-            path + "camera3.jpg",};
+            path + "camera3.jpg"};
     //背景图片
-    private int[] positionArray = {R.mipmap.camera_positive, R.mipmap.camera_left, R.mipmap.camera_back, R.mipmap.camera_right};
+    private int[] positionArray = {R.mipmap.camera_positive, R.mipmap.camera_left,
+            R.mipmap.camera_back, R.mipmap.camera_right};
     //拍照次数
     private int count = 0;
     //传感器
@@ -89,8 +90,8 @@ public class NewCameraActivity extends BaseActivity implements SensorEventListen
     private String weight;
     //姓名
     private String name;
-    //手机
-    private String phone;
+    //是否默认量体数据
+    private int isDefault;
     //店铺
     private String store;
     //胸围
@@ -111,6 +112,8 @@ public class NewCameraActivity extends BaseActivity implements SensorEventListen
     int screenHeight;
     //背景图高度
     int imgHeight;
+    //防止连续点击
+    private boolean isClickable = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -138,11 +141,11 @@ public class NewCameraActivity extends BaseActivity implements SensorEventListen
 
     private void getData() {
         Bundle bundle = getIntent().getExtras();
-        if (bundle != null){
+        if (bundle != null) {
             name = bundle.getString("name");
-            phone = bundle.getString("phone");
             height = bundle.getString("height");
             weight = bundle.getString("weight");
+            isDefault = bundle.getInt("is_default");
             store = bundle.getString("store");
             bust = bundle.getString("bust");
             waist = bundle.getString("waist");
@@ -226,11 +229,13 @@ public class NewCameraActivity extends BaseActivity implements SensorEventListen
                     imgTakePhoto.setVisibility(View.VISIBLE);
                 } else {
                     imgTakePhoto.setVisibility(View.GONE);
-                    submitData();
+                    if (isClickable) {
+                        isClickable = false;
+                        submitData();
+                    }
                 }
                 break;
             case R.id.img_take_picture:
-
                 photoArray[count] = Environment.getExternalStorageDirectory().getAbsolutePath() +
                         "/CloudWorkshop/camera" + count + ".jpg";
                 cameraView.takePicture(photoArray[count]);
@@ -247,6 +252,9 @@ public class NewCameraActivity extends BaseActivity implements SensorEventListen
         }
     }
 
+    /**
+     * 上传照片
+     */
     private void submitData() {
         loadingView.smoothToShow();
         MultipartBody.Builder builder = new MultipartBody.Builder().setType(MultipartBody.FORM);
@@ -255,63 +263,64 @@ public class NewCameraActivity extends BaseActivity implements SensorEventListen
             File file = new File(photoArray[i]);
             builder.addFormDataPart("img" + i, file.getName(),
                     RequestBody.create(MediaType.parse("image/png"), file));
-
         }
 
         builder.addFormDataPart("token", SharedPreferencesUtils.getStr(this, "token"));
+        builder.addFormDataPart("phone", SharedPreferencesUtils.getStr(this, "phone"));
         builder.addFormDataPart("name", name);
-        builder.addFormDataPart("phone", phone);
         builder.addFormDataPart("height", height);
         builder.addFormDataPart("weight", weight);
+        builder.addFormDataPart("is_index", String.valueOf(isDefault));
         builder.addFormDataPart("scale", "1,1,1,1");
-        if (!TextUtils.isEmpty(store)){
+        if (!TextUtils.isEmpty(store)) {
             builder.addFormDataPart("factory_id", store);
         }
-        if (!TextUtils.isEmpty(bust)){
+        if (!TextUtils.isEmpty(bust)) {
             builder.addFormDataPart("xw", bust);
         }
-        if (!TextUtils.isEmpty(waist)){
+        if (!TextUtils.isEmpty(waist)) {
             builder.addFormDataPart("yw", waist);
         }
-        if (!TextUtils.isEmpty(hip)){
+        if (!TextUtils.isEmpty(hip)) {
             builder.addFormDataPart("tw", hip);
         }
 
         MultipartBody requestBody = builder.build();
         //构建请求
         Request request = new Request.Builder()
-                .url(Constant.TAKE_PHOTO)//地址
-                .post(requestBody)//添加请求体
+                .url(Constant.TAKE_PHOTO)
+                .post(requestBody)
                 .build();
         OkHttpClient client = new OkHttpClient();
         client.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-
-
+                isClickable = true;
             }
 
             @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                try {
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            loadingView.smoothToHide();
+            public void onResponse(Call call, final Response response) {
+                isClickable = true;
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        loadingView.smoothToHide();
+                        try {
+                            JSONObject jsonObject = new JSONObject(response.body().string());
+                            int code = jsonObject.getInt("code");
+                            String msg = jsonObject.getString("msg");
+                            ToastUtils.showToast(NewCameraActivity.this, msg);
+                            if (code == 1) {
+                                EventBus.getDefault().post("take_success");
+                                finish();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        } catch (IOException e) {
+                            e.printStackTrace();
                         }
-                    });
-                    JSONObject jsonObject = new JSONObject(response.body().string());
-                    int code = jsonObject.getInt("code");
-                    String msg = jsonObject.getString("msg");
-                    if (code == 1) {
-                        EventBus.getDefault().post("take_success");
-                        finish();
                     }
-                    ToastUtils.showToast(NewCameraActivity.this, msg);
-
-                } catch (JSONException e) {
-
-                }
+                });
             }
         });
 

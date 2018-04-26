@@ -118,7 +118,7 @@ public class Constant {
     //售后
     public static final String AFTER_SALE = HOST_INDEX + "add_sh_order";
     //量体数据
-    public static final String MEASURE_DATA = HOST_INDEX + "lt_data";
+    public static final String MEASURE_DATA1 = HOST_INDEX + "lt_data";
     //设备Id
     public static final String CLIENT_ID = HOST_INDEX + "add_device";
     //预约状态
@@ -138,7 +138,7 @@ public class Constant {
     //生日礼包
     public static final String BIRTHDAY_GIFT = HOST + "/index.php/index/user/get_birthday_gift";
     //拍照上传
-    public static final String TAKE_PHOTO = HOST + "/index.php/web/cc/cameraAndroidUpload";
+    public static final String TAKE_PHOTO = HOST + "/index.php/web/cc/cameraAndroidUpload_new";
     //设计师列表
     public static final String DESIGNER_LIST = HOST_INDEX + "get_designer_list";
     //设计师详情
@@ -177,6 +177,12 @@ public class Constant {
     public static final String QUICK_LOGIN = HOST + "/index.php/index/login/partLogin";
     //再次购买
     public static final String BUY_AGAIN = HOST_INDEX + "cloumorder";
+    //量体数据
+    public static final String MEASURE_DATA = HOST_INDEX + "findlt";
+    //设置默认量体数据
+    public static final String DEFAULT_MEASURE_DATA = HOST_INDEX + "is_lt";
+    //量体数据详情
+    public static final String MEASURE_DETAIL = HOST_INDEX + "lt_data_info";
 
     //WebView
     //咨讯详情

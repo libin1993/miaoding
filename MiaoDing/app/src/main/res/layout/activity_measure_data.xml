@@ -1,30 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:background="@color/app_bg"
-              android:orientation="vertical">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/light_gray_ed"
+                android:fitsSystemWindows="true">
+
     <include
         layout="@layout/widget_header_layout"/>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_measure_data"
+    <com.github.jdsjlzx.recyclerview.LRecyclerView
+        android:id="@+id/rv_measure_user"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="44dp"
-        android:overScrollMode="never">
-    </android.support.v7.widget.RecyclerView>
+        android:layout_marginBottom="49dp"
+        android:layout_marginTop="56dp">
+    </com.github.jdsjlzx.recyclerview.LRecyclerView>
+
+
+    <RelativeLayout
+        android:id="@+id/rl_add_measure"
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/dark_gray_15">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="49dp"
+            android:layout_centerInParent="true"
+            android:drawableLeft="@mipmap/icon_add_measure"
+            android:drawablePadding="13dp"
+            android:gravity="center"
+            android:text="新增量体数据"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"/>
+    </RelativeLayout>
 
     <ImageView
-        android:id="@+id/img_null_data"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/icon_null_measure"
-        android:scaleType="center"
+        android:id="@+id/img_null_measure"
+        android:layout_width="155dp"
+        android:layout_height="155dp"
         android:layout_centerInParent="true"
+        android:scaleType="fitCenter"
+        android:src="@mipmap/icon_measure_null"
         android:visibility="gone"/>
 
     <include
         layout="@layout/loading_error"/>
-
 </RelativeLayout>

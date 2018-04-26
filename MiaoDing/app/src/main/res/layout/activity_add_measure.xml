@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:fresco="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/light_gray_ed">
+
+    <include
+        layout="@layout/widget_header_layout"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:layout_marginTop="53dp"
+        android:background="@android:color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:text="输入基本信息"
+            android:textColor="@color/dark_gray_22"
+            android:textSize="13sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:singleLine="true"
+            android:text="为了确保衣服合身，请准确输入您的净身高、净体重"
+            android:textColor="@color/red_b1"
+            android:textSize="10sp"/>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="62dp"
+        android:layout_marginTop="92dp"
+        android:background="@android:color/white"
+        android:padding="12dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <EditText
+            android:id="@+id/et_measure_name"
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/bound_97_3dp"
+            android:hint="姓名"
+            android:maxLength="12"
+            android:paddingLeft="26dp"
+            android:singleLine="true"
+            android:textColor="@color/dark_gray_22"
+            android:textColorHint="@color/light_gray_97"
+            android:textSize="13sp"/>
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="154dp"
+        android:background="@android:color/white"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="38dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="7dp"
+            android:layout_weight="1"
+            android:background="@drawable/bound_97_3dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/et_measure_user_height"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:digits="0123456789."
+                android:gravity="center_vertical"
+                android:hint="净身高"
+                android:maxLength="6"
+                android:paddingLeft="26dp"
+                android:singleLine="true"
+                android:textColor="@color/dark_gray_22"
+                android:textColorHint="@color/light_gray_97"
+                android:textSize="13sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="38dp"
+                android:text="CM"
+                android:textColor="@color/dark_gray_22"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="38dp"
+            android:layout_marginRight="12dp"
+            android:layout_weight="1"
+            android:background="@drawable/bound_97_3dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/et_measure_user_weight"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:digits="0123456789."
+                android:hint="净体重"
+                android:maxLength="6"
+                android:paddingLeft="26dp"
+                android:singleLine="true"
+                android:textColor="@color/dark_gray_22"
+                android:textColorHint="@color/light_gray_97"
+                android:textSize="13sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="38dp"
+                android:text="KG"
+                android:textColor="@color/dark_gray_22"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:layout_marginTop="213dp"
+        android:background="@android:color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:text="拍照量体"
+            android:textColor="@color/dark_gray_22"
+            android:textSize="13sp"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_weight="1"
+            android:singleLine="true"
+            android:text="若不方便拍照量体可稍后与客服确认体型数据"
+            android:textColor="@color/red_b1"
+            android:textSize="10sp"/>
+
+        <TextView
+            android:id="@+id/tv_measure_help"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:drawableLeft="@drawable/ring_black"
+            android:drawablePadding="6dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:text="帮助"
+            android:textColor="@color/dark_gray_22"
+            android:textSize="13sp"/>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_measure_photo"
+        android:layout_width="match_parent"
+        android:layout_height="77dp"
+        android:layout_marginTop="252dp"
+        android:background="@android:color/white">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/img_measure_camera"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="26dp"
+            fresco:placeholderImage="@mipmap/icon_camera_data"
+            fresco:placeholderImageScaleType="centerInside"
+            fresco:roundAsCircle="true"
+            fresco:roundWithOverlayColor="@color/transparent"
+            fresco:roundingBorderColor="@color/dark_gray_22"
+            fresco:roundingBorderWidth="1dp"/>
+
+        <cn.cloudworkshop.miaoding.view.CircleImageView
+            android:id="@+id/img_is_measure"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="26dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/bg_checked"
+            android:visibility="gone"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="12dp"
+            android:text="图像拍摄后会自动对脸部进行模糊处理，请放心拍摄"
+            android:layout_toRightOf="@id/img_measure_camera"
+            android:textColor="@color/red_b1"
+            android:textSize="10dp"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginTop="338dp"
+        android:background="@android:color/white"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="12dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="设为默认"
+            android:textColor="@color/dark_gray_22"
+            android:textSize="14sp"/>
+
+        <Switch
+            android:id="@+id/switch_default_measure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="12dp"
+            android:thumb="@drawable/switch_thumb"
+            android:track="@drawable/switch_track"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_save_measure"
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/dark_gray_15"
+        android:gravity="center"
+        android:text="保存"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"/>
+</RelativeLayout>

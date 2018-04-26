@@ -15,7 +15,9 @@ import android.hardware.Camera;
 import android.hardware.Camera.AutoFocusCallback;
 import android.hardware.Camera.PictureCallback;
 import android.hardware.Camera.Size;
+import android.os.Build;
 import android.os.Handler;
+import android.os.Message;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
@@ -45,12 +47,14 @@ import cn.cloudworkshop.miaoding.utils.LogUtils;
 
 public class CustomCameraView extends FrameLayout implements SurfaceHolder.Callback, AutoFocusCallback {
 
+
     private View viewFocus;
     private PreviewFrameLayout frameLayout;
 
     private Context context = null;
     public static Camera camera = null;
     private SurfaceHolder surfaceHolder;
+
     //屏幕宽
     private int screenWidth = 0;
     //屏幕高
@@ -77,10 +81,6 @@ public class CustomCameraView extends FrameLayout implements SurfaceHolder.Callb
         surfaceHolder = surfaceCamera.getHolder();
         surfaceHolder.addCallback(this);
         frameLayout.setOnTouchListener(onTouchListener);
-
-        if (checkCameraHardware()) {
-            camera = getCameraInstance();
-        }
     }
 
     /**
@@ -132,17 +132,33 @@ public class CustomCameraView extends FrameLayout implements SurfaceHolder.Callb
 
     }
 
+    Handler handler = new Handler(new Handler.Callback() {
+        @Override
+        public boolean handleMessage(Message msg) {
+            try {
+                camera.setPreviewDisplay(surfaceHolder);
+                updateCameraParameters();
+                camera.startPreview();
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+            }
+            return false;
+        }
+    });
+
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
-        try {
-            camera = getCameraInstance();
-            camera.setPreviewDisplay(surfaceHolder);
-            updateCameraParameters();
-            camera.startPreview();
-        } catch (IOException e) {
-            System.out.println(e);
-        }
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                if (checkCameraHardware()) {
+                    camera = getCameraInstance();
+                }
+                handler.sendEmptyMessage(0);
+            }
+        }).start();
     }
+
 
     @Override
     public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
@@ -197,7 +213,6 @@ public class CustomCameraView extends FrameLayout implements SurfaceHolder.Callb
                 c = Camera.open(0); // attempt to get a Camera instance
             }
         } catch (Exception e) {
-            // Toast.makeText(context, "摄像头打开失败！", Toast.LENGTH_SHORT);
         }
         return c;
     }
@@ -231,12 +246,13 @@ public class CustomCameraView extends FrameLayout implements SurfaceHolder.Callb
                 if (context.getResources().getConfiguration().orientation != Configuration.ORIENTATION_LANDSCAPE) {
                     camera.setDisplayOrientation(90);
                 }
-                if (p.isZoomSupported()) {
+                if (p.isZoomSupported() && p.isSmoothZoomSupported() && p.getMaxZoom() >= 11) {
                     p.setZoom(10);
                 }
-
                 camera.setParameters(p);
-                camera.startSmoothZoom(10);
+                if (p.isZoomSupported() && p.isSmoothZoomSupported() && p.getMaxZoom() >= 11) {
+                    camera.startSmoothZoom(10);
+                }
                 camera.cancelAutoFocus();// 如果要实现连续的自动对焦，这一句必须加上
 
             }
@@ -251,7 +267,7 @@ public class CustomCameraView extends FrameLayout implements SurfaceHolder.Callb
     private Size findBestPictureSize(List<Size> pictureSizes) {
         Size size = pictureSizes.get(0);
         for (int i = pictureSizes.size() - 1; i > 0; i--) {
-            if (pictureSizes.get(i).width > screenHeight && pictureSizes.get(i).height > screenWidth) {
+            if (pictureSizes.get(i).width >= screenHeight && pictureSizes.get(i).height >= screenWidth) {
                 size.width = pictureSizes.get(i).width;
                 size.height = pictureSizes.get(i).height;
                 break;

@@ -45,8 +45,6 @@ public class CameraFormActivity extends BaseActivity implements EasyPermissions.
     View viewHeaderLine;
     @BindView(R.id.et_measure_username)
     EditText etUsername;
-    @BindView(R.id.et_measure_phone)
-    EditText etPhone;
     @BindView(R.id.et_measure_height)
     EditText etHeight;
     @BindView(R.id.et_measure_weight)
@@ -118,7 +116,6 @@ public class CameraFormActivity extends BaseActivity implements EasyPermissions.
                         }
                         Bundle bundle = new Bundle();
                         bundle.putString("name", etUsername.getText().toString().trim());
-                        bundle.putString("phone", etPhone.getText().toString().trim());
                         bundle.putString("height", etHeight.getText().toString().trim());
                         bundle.putString("weight", etWeight.getText().toString().trim());
 
@@ -152,7 +149,6 @@ public class CameraFormActivity extends BaseActivity implements EasyPermissions.
     private boolean isMeasureData() {
 
         return !TextUtils.isEmpty(etUsername.getText().toString().trim())
-                && !TextUtils.isEmpty(etPhone.getText().toString().trim())
                 && !TextUtils.isEmpty(etHeight.getText().toString().trim())
                 && !TextUtils.isEmpty(etWeight.getText().toString().trim());
     }

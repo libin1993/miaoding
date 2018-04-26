@@ -491,6 +491,24 @@ public class EmbroideryBean {
         private int id;
         private String height;
         private String weight;
+        private String name;
+        private String img_list;
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getImg_list() {
+            return img_list;
+        }
+
+        public void setImg_list(String img_list) {
+            this.img_list = img_list;
+        }
 
         public int getId() {
             return id;
