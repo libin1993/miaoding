@@ -136,6 +136,9 @@ public class MeasureDataActivity extends BaseActivity {
                 });
     }
 
+    /**
+     * 加载视图
+     */
     private void initView() {
         rvMeasure.setLayoutManager(new LinearLayoutManager(this));
         adapter = new CommonAdapter<MeasureDataBean
@@ -248,7 +251,7 @@ public class MeasureDataActivity extends BaseActivity {
 
 
     /**
-     * @param position 选择量体数据
+     * @param position 选择量体数据，回调到确认订单
      */
     private void selectMeasureData(int position) {
         ConfirmOrderBean.LtArrBean measureBean = new ConfirmOrderBean.LtArrBean();
@@ -284,6 +287,9 @@ public class MeasureDataActivity extends BaseActivity {
         }
     }
 
+    /**
+     * @param msg  添加量体数据成功，刷新页面
+     */
     @Subscribe
     public void addSuccess(String msg) {
         if ("add_success".equals(msg)) {

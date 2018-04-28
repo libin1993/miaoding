@@ -98,6 +98,9 @@ public class AddMeasureActivity extends BaseActivity implements EasyPermissions.
         measureStatus = getIntent().getIntExtra("measure_status", 0);
     }
 
+    /**
+     * 加载视图
+     */
     private void initView() {
         tvHeaderTitle.setText("添加量体数据");
         switchDefault.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -167,7 +170,7 @@ public class AddMeasureActivity extends BaseActivity implements EasyPermissions.
                 .addParams("height", etMeasureHeight.getText().toString().trim())
                 .addParams("weight", etMeasureWeight.getText().toString().trim())
                 .addParams("is_index", String.valueOf(defaultMeasure))
-                .addParams("scale","1,1,1,1")
+                .addParams("scale", "1,1,1,1")
                 .build()
                 .execute(new StringCallback() {
                     @Override
@@ -177,7 +180,6 @@ public class AddMeasureActivity extends BaseActivity implements EasyPermissions.
 
                     @Override
                     public void onResponse(String response, int id) {
-                        LogUtils.log(response);
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             int code = jsonObject.getInt("code");
@@ -241,7 +243,7 @@ public class AddMeasureActivity extends BaseActivity implements EasyPermissions.
     }
 
     /**
-     * @param msg 拍照，结束当前页面
+     * @param msg 拍照上传成功，结束当前页面
      */
     @Subscribe
     public void takeSuccess(String msg) {

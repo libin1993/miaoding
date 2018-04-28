@@ -328,7 +328,6 @@ public class MyCenterFragment extends BaseFragment {
                             e.printStackTrace();
                         }
 
-
                     }
                 });
 
@@ -347,7 +346,4 @@ public class MyCenterFragment extends BaseFragment {
         super.onDestroyView();
         unbinder.unbind();
     }
-
-
 }
-

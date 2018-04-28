@@ -203,8 +203,5 @@ public class HomepageInfoActivity extends BaseActivity {
                     public void onResponse(String response, int id) {
                     }
                 });
-
     }
-
-
 }

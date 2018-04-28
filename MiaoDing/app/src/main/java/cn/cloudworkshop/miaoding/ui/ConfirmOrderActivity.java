@@ -190,7 +190,6 @@ public class ConfirmOrderActivity extends BaseActivity {
 
                     @Override
                     public void onResponse(String response, int id) {
-                        LogUtils.log(response);
                         imgLoadingError.setVisibility(View.GONE);
                         //修改购物车商品数量，可用优惠券数量改变
                         if (canCouponSelect) {
@@ -639,7 +638,7 @@ public class ConfirmOrderActivity extends BaseActivity {
         map.put("area", addressListBean.getArea());
         map.put("address", addressListBean.getAddress());
         map.put("address_id", String.valueOf(addressListBean.getId()));
-        if (measureBean != null){
+        if (measureBean != null) {
             map.put("lt_id", String.valueOf(measureBean.getId()));
         }
         if (logId != null) {
@@ -655,12 +654,12 @@ public class ConfirmOrderActivity extends BaseActivity {
                 .execute(new StringCallback() {
                     @Override
                     public void onError(Call call, Exception e, int id) {
-                        LogUtils.log(e.toString());
+
                     }
 
                     @Override
                     public void onResponse(String response, int id) {
-                        LogUtils.log(response);
+
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             int code = jsonObject.getInt("code");
@@ -809,6 +808,9 @@ public class ConfirmOrderActivity extends BaseActivity {
 
     }
 
+    /**
+     * @param ltArrBean 选择量体数据回调
+     */
     @Subscribe
     public void selectMeasureData(ConfirmOrderBean.LtArrBean ltArrBean) {
         measureBean = ltArrBean;

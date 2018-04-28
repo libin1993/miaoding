@@ -213,10 +213,10 @@ public class ShoppingCartActivity extends BaseActivity {
     private void recommendGoods(final List<RecommendGoodsBean.DataBeanX.DataBean> recommendBean) {
         rvRecommend.setLayoutManager(new GridLayoutManager(ShoppingCartActivity.this, 2));
         rvRecommend.addItemDecoration(new SpaceItemDecoration((int) DisplayUtils.dp2px(this,
-                4.5f),false));
+                4.5f), false));
         CommonAdapter<RecommendGoodsBean.DataBeanX.DataBean> adapter = new CommonAdapter<RecommendGoodsBean
                 .DataBeanX.DataBean>(
-                        this, R.layout.listitem_sub_goods, recommendBean) {
+                this, R.layout.listitem_sub_goods, recommendBean) {
             @Override
             protected void convert(ViewHolder holder, RecommendGoodsBean.DataBeanX.DataBean dataBean,
                                    int position) {
@@ -575,24 +575,33 @@ public class ShoppingCartActivity extends BaseActivity {
 
                             @Override
                             public void onResponse(String response, int id) {
-                                for (int i = 0; i < dataList.size(); i++) {
-                                    for (int j = 0; j < itemList.size(); j++) {
-                                        if (dataList.get(i).getId() == (itemList.get(j))) {
-                                            dataList.remove(i);
-                                            adapter.notifyItemRemoved(i);
-                                            if (i != dataList.size()) {
-                                                adapter.notifyItemRangeChanged(i, dataList.size() - i);
+                                try {
+                                    JSONObject jsonObject = new JSONObject(response);
+                                    int code = jsonObject.getInt("code");
+                                    if (code == 1) {
+                                        for (int i = 0; i < dataList.size(); i++) {
+                                            for (int j = 0; j < itemList.size(); j++) {
+                                                if (dataList.get(i).getId() == (itemList.get(j))) {
+                                                    dataList.remove(i);
+                                                    adapter.notifyItemRemoved(i);
+                                                    if (i != dataList.size()) {
+                                                        adapter.notifyItemRangeChanged(i, dataList.size() - i);
+                                                    }
+                                                }
                                             }
                                         }
+                                        if (dataList.size() == 0) {
+                                            nullCart();
+                                        } else {
+                                            getTotalCount();
+                                            getTotalPrice();
+                                        }
+                                        ToastUtils.showToast(ShoppingCartActivity.this, "删除成功");
                                     }
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
                                 }
-                                if (dataList.size() == 0) {
-                                    nullCart();
-                                } else {
-                                    getTotalCount();
-                                    getTotalPrice();
-                                }
-                                ToastUtils.showToast(ShoppingCartActivity.this, "删除成功");
+
                             }
                         });
             }
@@ -610,7 +619,7 @@ public class ShoppingCartActivity extends BaseActivity {
     }
 
 
-    @OnClick({R.id.img_header_back, R.id.tv_my_bag, R.id.tv_header_next, R.id.tv_goods_buy,R.id.img_load_error})
+    @OnClick({R.id.img_header_back, R.id.tv_my_bag, R.id.tv_header_next, R.id.tv_goods_buy, R.id.img_load_error})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.img_header_back:

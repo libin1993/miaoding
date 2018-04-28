@@ -41,7 +41,6 @@ public class DesignerWorksFragment extends BaseFragment {
         unbinder = ButterKnife.bind(this, view);
         initView();
         return view;
-
     }
 
 
@@ -50,7 +49,6 @@ public class DesignerWorksFragment extends BaseFragment {
         fragmentList.add(DesignerFragment.newInstance());
 
         ArrayList<CustomTabEntity> tabList = new ArrayList<>();
-
         tabList.add(new MemberTabBean("腔调"));
         tabList.add(new MemberTabBean("设计师"));
 

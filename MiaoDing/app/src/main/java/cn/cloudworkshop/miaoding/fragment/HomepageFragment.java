@@ -115,7 +115,7 @@ public class HomepageFragment extends BaseFragment {
 
                     @Override
                     public void onResponse(String response, int id) {
-                        if (imgLoadError != null){
+                        if (imgLoadError != null) {
                             imgLoadError.setVisibility(View.GONE);
                         }
                         homepageBean = GsonUtils.jsonToBean(response, HomepageNewsBean.class);
@@ -193,7 +193,7 @@ public class HomepageFragment extends BaseFragment {
                     public void onClick(View view) {
                         switch (dataBean.getIs_type()) {
                             case 1:
-                                gotoHomepageInfo(dataBean);
+                                toHomepageInfo(dataBean);
                                 break;
                             case 3:
                                 Intent intent = new Intent(getActivity(), StoreInfoActivity.class);
@@ -257,7 +257,7 @@ public class HomepageFragment extends BaseFragment {
                     llComment.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            gotoHomepageInfo(dataBean);
+                            toHomepageInfo(dataBean);
                         }
                     });
                 } else {
@@ -300,7 +300,7 @@ public class HomepageFragment extends BaseFragment {
     /**
      * @param dataBean 跳转资讯详情
      */
-    private void gotoHomepageInfo(HomepageNewsBean.DataBean dataBean) {
+    private void toHomepageInfo(HomepageNewsBean.DataBean dataBean) {
         homepageLog(dataBean.getTag_name());
 
         Intent intent = new Intent(getActivity(), HomepageInfoActivity.class);
@@ -542,9 +542,11 @@ public class HomepageFragment extends BaseFragment {
                 Intent intent = null;
                 HomepageNewsBean.Indextype indextype = homepageBean.getIndextype().get(position);
                 switch (indextype.getIs_type()) {
+                    //资讯
                     case 1:
                         intent = new Intent(getActivity(), NewsListActivity.class);
                         break;
+                    //商品
                     case 2:
                         if (indextype.getGoods_type() == 1) {
                             intent = new Intent(getActivity(), CustomizedGoodsActivity.class);
@@ -554,6 +556,7 @@ public class HomepageFragment extends BaseFragment {
                             intent.putExtra("id", String.valueOf(indextype.getGoods_id()));
                         }
                         break;
+                    //店铺
                     case 3:
                         intent = new Intent(getActivity(), StoreListActivity.class);
                         break;
@@ -580,7 +583,7 @@ public class HomepageFragment extends BaseFragment {
         OkHttpUtils.post()
                 .url(Constant.HOMEPAGE_LOG)
                 .addParams("token", SharedPreferencesUtils.getStr(getActivity(), "token"))
-                .addParams("time", time + "")
+                .addParams("time", String.valueOf(time))
                 .addParams("p_module_name", "首页")
                 .addParams("module_name", module_name)
                 .build()
