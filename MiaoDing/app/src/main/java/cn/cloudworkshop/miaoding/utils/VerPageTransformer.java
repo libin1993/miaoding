@@ -8,7 +8,7 @@ import android.view.View;
  * Email：1993911441@qq.com
  * Describe：VerticalViewPager滑动动画
  */
-public class VerPageTransformer implements ViewPager.PageTransformer{
+public class VerPageTransformer implements ViewPager.PageTransformer {
     @Override
     public void transformPage(View page, float position) {
         page.setTranslationX(page.getWidth() * -position);

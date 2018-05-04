@@ -117,10 +117,8 @@ public class NewLoginActivity extends BaseActivity {
                     activity.tvGetCode.setTextColor(Color.WHITE);
                 }
             }
-
         }
     }
-
 
     /**
      * 加载视图

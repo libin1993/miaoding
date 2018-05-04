@@ -19,7 +19,7 @@ import butterknife.OnClick;
 import cn.cloudworkshop.miaoding.R;
 import cn.cloudworkshop.miaoding.constant.Constant;
 import cn.cloudworkshop.miaoding.utils.ImageEncodeUtils;
-import cn.cloudworkshop.miaoding.utils.MemoryCleanUtils;
+import cn.cloudworkshop.miaoding.utils.BmpRecycleUtils;
 import cn.cloudworkshop.miaoding.view.SwipeBackActivity;
 import okhttp3.Call;
 
@@ -109,9 +109,9 @@ public class GoodsDetailActivity extends SwipeBackActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        MemoryCleanUtils.bmpRecycle(bm1);
-        MemoryCleanUtils.bmpRecycle(bm2);
-        MemoryCleanUtils.bmpRecycle(bm3);
+        BmpRecycleUtils.bmpRecycle(bm1);
+        BmpRecycleUtils.bmpRecycle(bm2);
+        BmpRecycleUtils.bmpRecycle(bm3);
     }
 
 

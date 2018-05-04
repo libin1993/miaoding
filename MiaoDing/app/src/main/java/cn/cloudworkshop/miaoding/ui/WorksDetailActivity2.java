@@ -49,7 +49,7 @@ import cn.cloudworkshop.miaoding.utils.ContactService;
 import cn.cloudworkshop.miaoding.utils.DisplayUtils;
 import cn.cloudworkshop.miaoding.utils.GsonUtils;
 import cn.cloudworkshop.miaoding.utils.ImageEncodeUtils;
-import cn.cloudworkshop.miaoding.utils.MemoryCleanUtils;
+import cn.cloudworkshop.miaoding.utils.BmpRecycleUtils;
 import cn.cloudworkshop.miaoding.utils.ShareUtils;
 import cn.cloudworkshop.miaoding.utils.SharedPreferencesUtils;
 import cn.cloudworkshop.miaoding.utils.ToastUtils;
@@ -574,8 +574,8 @@ public class WorksDetailActivity2 extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        MemoryCleanUtils.bmpRecycle(bm0);
-        MemoryCleanUtils.bmpRecycle(bm1);
-        MemoryCleanUtils.bmpRecycle(bm2);
+        BmpRecycleUtils.bmpRecycle(bm0);
+        BmpRecycleUtils.bmpRecycle(bm1);
+        BmpRecycleUtils.bmpRecycle(bm2);
     }
 }

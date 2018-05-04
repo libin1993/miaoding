@@ -1,5 +1,6 @@
 package cn.cloudworkshop.miaoding.ui;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.hardware.Sensor;
@@ -9,6 +10,8 @@ import android.hardware.SensorManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
+import android.os.Message;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
@@ -23,10 +26,23 @@ import com.wang.avi.indicators.BallSpinFadeLoaderIndicator;
 import org.greenrobot.eventbus.EventBus;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.opencv.android.BaseLoaderCallback;
+import org.opencv.android.LoaderCallbackInterface;
+import org.opencv.android.OpenCVLoader;
+import org.opencv.android.Utils;
+import org.opencv.core.CvType;
+import org.opencv.core.Mat;
+import org.opencv.core.MatOfDouble;
+import org.opencv.core.MatOfRect;
+import org.opencv.core.Rect;
+import org.opencv.core.Scalar;
+import org.opencv.core.Size;
+import org.opencv.imgcodecs.Imgcodecs;
+import org.opencv.imgproc.Imgproc;
+import org.opencv.objdetect.HOGDescriptor;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Calendar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -35,6 +51,7 @@ import cn.cloudworkshop.miaoding.R;
 import cn.cloudworkshop.miaoding.base.BaseActivity;
 import cn.cloudworkshop.miaoding.camera.CustomCameraView;
 import cn.cloudworkshop.miaoding.constant.Constant;
+import cn.cloudworkshop.miaoding.utils.CameraDistance;
 import cn.cloudworkshop.miaoding.utils.DisplayUtils;
 import cn.cloudworkshop.miaoding.utils.LogUtils;
 import cn.cloudworkshop.miaoding.utils.SharedPreferencesUtils;
@@ -114,6 +131,7 @@ public class NewCameraActivity extends BaseActivity implements SensorEventListen
     int imgHeight;
     //防止连续点击
     private boolean isClickable = true;
+    private double distance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -135,7 +153,6 @@ public class NewCameraActivity extends BaseActivity implements SensorEventListen
         loadingView.setIndicatorColor(Color.GRAY);
         getData();
         initStroke();
-
     }
 
 
@@ -175,11 +192,24 @@ public class NewCameraActivity extends BaseActivity implements SensorEventListen
             marginBottom = (screenHeight - imgHeight) / 2 + imgHeight * 19 / 67;
         }
         layoutParams.width = (int) DisplayUtils.dp2px(this, 200);
-        layoutParams.height = (int) DisplayUtils.dp2px(this, (float) (Float.parseFloat(this.height) * 2.2));
+        layoutParams.height = (int) DisplayUtils.dp2px(this, (float) (Float.parseFloat(height) * 2.2));
         layoutParams.bottomMargin = marginBottom;
         layoutParams.gravity = Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM;
         viewStroke.setLayoutParams(layoutParams);
     }
+
+    private BaseLoaderCallback mLoaderCallback = new BaseLoaderCallback(this) {
+        @Override
+        public void onManagerConnected(int status) {
+            switch (status) {
+                case LoaderCallbackInterface.SUCCESS:
+                    break;
+                default:
+                    super.onManagerConnected(status);
+                    break;
+            }
+        }
+    };
 
     @Override
     protected void onResume() {
@@ -189,18 +219,108 @@ public class NewCameraActivity extends BaseActivity implements SensorEventListen
                 Sensor.TYPE_ORIENTATION), SensorManager.SENSOR_DELAY_GAME);
 
         //初始化OpenCV
+        if (!OpenCVLoader.initDebug()) {
+            OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION_3_2_0, this, mLoaderCallback);
+        } else {
+            mLoaderCallback.onManagerConnected(LoaderCallbackInterface.SUCCESS);
+        }
+        //初始化OpenCV
         cameraView.setOnTakeFinish(new CustomCameraView.OnTakeFinish() {
             @Override
             public void takeFinish(Bitmap bitmap) {
-                ToastUtils.showToast(NewCameraActivity.this, "拍摄成功");
-                imgTakeAgain.setVisibility(View.VISIBLE);
-                imgTakeSuccess.setVisibility(View.VISIBLE);
-                imgTakePhoto.setVisibility(View.GONE);
-                if (count == 3) {
-                    imgTakeSuccess.setImageResource(R.mipmap.camera_take_finish);
+                loadingView.smoothToShow();
+                if (count == 0) {
+                    distance();
+                } else {
+                    takeSuccess();
                 }
             }
         });
+
+    }
+
+    Handler handler = new Handler(new Handler.Callback() {
+        @Override
+        public boolean handleMessage(Message msg) {
+//            ToastUtils.showToast(NewCameraActivity.this, String.valueOf(msg.what));
+            switch (msg.what) {
+                case 0:
+                    takeFail();
+                    break;
+                case 1:
+                    takeSuccess();
+                    break;
+            }
+            return false;
+        }
+    });
+
+    /**
+     * 拍摄失败
+     */
+    private void takeFail() {
+        loadingView.smoothToHide();
+        ToastUtils.showToast(NewCameraActivity.this, "拍摄失败，请保持三米左右距离拍摄全身照片");
+        imgTakePhoto.setVisibility(View.VISIBLE);
+    }
+
+    /**
+     * 拍摄成功
+     */
+    private void takeSuccess() {
+        loadingView.smoothToHide();
+
+        ToastUtils.showToast(NewCameraActivity.this, "拍摄成功");
+        imgTakeAgain.setVisibility(View.VISIBLE);
+        imgTakeSuccess.setVisibility(View.VISIBLE);
+        imgTakePhoto.setVisibility(View.GONE);
+        if (count == 3) {
+            imgTakeSuccess.setImageResource(R.mipmap.camera_take_finish);
+        }
+    }
+
+    /**
+     * 测距
+     */
+    private void distance() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Mat mat = Imgcodecs.imread(photoArray[count]);
+                HOGDescriptor hogDescriptor = new HOGDescriptor();
+                hogDescriptor.setSVMDetector(HOGDescriptor.getDefaultPeopleDetector());
+                MatOfRect matOfRect = new MatOfRect();
+                MatOfDouble matOfDouble = new MatOfDouble();
+                int maxHeight = 0;
+                hogDescriptor.detectMultiScale(mat, matOfRect, matOfDouble, 0, new Size(
+                                4, 4), new Size(8, 8), 1.05,
+                        2, false);
+                if (matOfRect.toArray().length > 0) { // 判断是否检测到目标对象，如果有就画矩形，没有就执行下一步
+                    for (Rect r : matOfRect.toArray()) { // 检测到的目标转成数组形式，方便遍历
+                        r.x += Math.round(r.width * 0.1);
+                        r.width = (int) Math.round(r.width * 0.8);
+                        r.y += Math.round(r.height * 0.045);
+                        r.height = (int) Math.round(r.height * 0.85);
+                        Imgproc.rectangle(mat, r.tl(), r.br(), new Scalar(0, 0, 255), 2); // 画出矩形
+                        if (maxHeight <= r.height) {
+                            maxHeight = r.height;
+                        }
+                    }
+                }
+//                LogUtils.log(String.valueOf(maxHeight));
+                Imgcodecs.imwrite(Environment.getExternalStorageDirectory().getAbsolutePath() +
+                        "/CloudWorkshop/people1.jpg", mat); // 将已经完成检测的Mat对象写出，参数：输出路径，检测完毕的Mat对象。
+                distance = Float.parseFloat(height) * 0.9612 * mat.height() / maxHeight;
+//                Message message = new Message();
+//                message.what = (int) distance;
+//                handler.sendMessage(message);
+                if (distance >= 250 && distance <= 400) {
+                    handler.sendEmptyMessage(1);
+                } else {
+                    handler.sendEmptyMessage(0);
+                }
+            }
+        }).start();
 
     }
 
@@ -208,6 +328,7 @@ public class NewCameraActivity extends BaseActivity implements SensorEventListen
     @Override
     protected void onPause() {
         mSensorManager.unregisterListener(this);
+        finish();
         super.onPause();
     }
 
@@ -236,8 +357,7 @@ public class NewCameraActivity extends BaseActivity implements SensorEventListen
                 }
                 break;
             case R.id.img_take_picture:
-                photoArray[count] = Environment.getExternalStorageDirectory().getAbsolutePath() +
-                        "/CloudWorkshop/camera" + count + ".jpg";
+                imgTakePhoto.setVisibility(View.GONE);
                 cameraView.takePicture(photoArray[count]);
                 break;
             case R.id.img_take_again:

@@ -66,9 +66,8 @@ import pub.devrel.easypermissions.EasyPermissions;
  * Email：1993911441@qq.com
  * Describe：预约量体地图界面
  */
-public class ApplyMeasureActivity extends BaseActivity implements LocationSource,
-        AMapLocationListener, PoiSearch.OnPoiSearchListener, AMap.OnCameraChangeListener,
-        EasyPermissions.PermissionCallbacks {
+public class ApplyMeasureActivity extends BaseActivity implements LocationSource, AMapLocationListener,
+        PoiSearch.OnPoiSearchListener, AMap.OnCameraChangeListener, EasyPermissions.PermissionCallbacks {
     @BindView(R.id.map_view)
     MapView mMapView;
     @BindView(R.id.img_header_back)

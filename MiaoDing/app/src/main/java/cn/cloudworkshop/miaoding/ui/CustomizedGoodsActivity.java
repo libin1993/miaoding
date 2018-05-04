@@ -54,7 +54,7 @@ import cn.cloudworkshop.miaoding.utils.DateUtils;
 import cn.cloudworkshop.miaoding.utils.DisplayUtils;
 import cn.cloudworkshop.miaoding.utils.GsonUtils;
 import cn.cloudworkshop.miaoding.utils.ImageEncodeUtils;
-import cn.cloudworkshop.miaoding.utils.MemoryCleanUtils;
+import cn.cloudworkshop.miaoding.utils.BmpRecycleUtils;
 import cn.cloudworkshop.miaoding.utils.NetworkImageHolderView;
 import cn.cloudworkshop.miaoding.utils.ShareUtils;
 import cn.cloudworkshop.miaoding.utils.SharedPreferencesUtils;
@@ -796,9 +796,9 @@ public class CustomizedGoodsActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        MemoryCleanUtils.bmpRecycle(bm0);
-        MemoryCleanUtils.bmpRecycle(bm1);
-        MemoryCleanUtils.bmpRecycle(bm2);
+        BmpRecycleUtils.bmpRecycle(bm0);
+        BmpRecycleUtils.bmpRecycle(bm1);
+        BmpRecycleUtils.bmpRecycle(bm2);
     }
 
 }

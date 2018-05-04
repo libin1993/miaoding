@@ -59,6 +59,8 @@ public class DetectRectangles {
         //彩色图像灰度化
         Imgproc.cvtColor(roiMat, gray, Imgproc.COLOR_BGR2GRAY);
         //滤波
+
+
         Imgproc.blur(gray, gray, new Size(3, 3));
         //图像二值化
 //        Imgproc.threshold(gray, gray, 140, 255, Imgproc.THRESH_BINARY);

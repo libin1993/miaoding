@@ -117,6 +117,9 @@ public class MainActivity extends BaseActivity implements EasyPermissions.Permis
 
     }
 
+    /**
+     * 读写权限
+     */
     private void storagePermission() {
         if (!EasyPermissions.hasPermissions(this, permissionStr)) {
             EasyPermissions.requestPermissions(this, "", 123, permissionStr);

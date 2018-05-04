@@ -88,7 +88,6 @@ public class MeasureDetailActivity extends BaseActivity {
      * 加载视图
      */
     private void initView() {
-
         rvMeasureData.setLayoutManager(new LinearLayoutManager(this));
         CommonAdapter<MeasureDetailBean.DataBean> adapter = new CommonAdapter<MeasureDetailBean.DataBean>
                 (this, R.layout.listitem_measure_detail, measureBean.getData()) {

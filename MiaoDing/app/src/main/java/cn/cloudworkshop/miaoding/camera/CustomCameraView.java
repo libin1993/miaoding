@@ -47,7 +47,7 @@ import cn.cloudworkshop.miaoding.utils.LogUtils;
 
 public class CustomCameraView extends FrameLayout implements SurfaceHolder.Callback, AutoFocusCallback {
 
-
+    private SurfaceView surfaceCamera;
     private View viewFocus;
     private PreviewFrameLayout frameLayout;
 
@@ -74,7 +74,7 @@ public class CustomCameraView extends FrameLayout implements SurfaceHolder.Callb
         this.context = context;
         LayoutInflater.from(context).inflate(R.layout.preview_frame, this);
         frameLayout = (PreviewFrameLayout) findViewById(R.id.frame_layout);
-        SurfaceView surfaceCamera = (SurfaceView) findViewById(R.id.camera_preview);
+        surfaceCamera = (SurfaceView) findViewById(R.id.camera_preview);
         viewFocus = findViewById(R.id.view_focus);
         screenWidth = DisplayUtils.getMetrics((Activity) context).widthPixels;
         screenHeight = DisplayUtils.getMetrics((Activity) context).heightPixels;
@@ -112,6 +112,7 @@ public class CustomCameraView extends FrameLayout implements SurfaceHolder.Callb
             camera.setParameters(p);
         }
     }
+
 
     /**
      * 设置分辨率

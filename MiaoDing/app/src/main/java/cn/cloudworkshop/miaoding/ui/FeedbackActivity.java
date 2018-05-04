@@ -160,27 +160,22 @@ public class FeedbackActivity extends BaseActivity implements EasyPermissions.Pe
             loadingView.smoothToShow();
             tvSubmit.setEnabled(false);
 
-            new Thread(myRunnable).start();
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    if (photoList.size() != 0) {
+                        imgEncode = ImageEncodeUtils.encodeFile(photoList);
+                        handler.sendEmptyMessage(1);
+                    } else {
+                        handler.sendEmptyMessage(2);
+                    }
+                }
+            }).start();
         } else {
             ToastUtils.showToast(this, "请写下您的宝贵意见");
         }
 
     }
-
-    /**
-     * 开启线程处理图片
-     */
-    Runnable myRunnable = new Runnable() {
-        @Override
-        public void run() {
-            if (photoList.size() != 0) {
-                imgEncode = ImageEncodeUtils.encodeFile(photoList);
-                handler.sendEmptyMessage(1);
-            } else {
-                handler.sendEmptyMessage(2);
-            }
-        }
-    };
 
 
     /**

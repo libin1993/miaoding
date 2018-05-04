@@ -109,5 +109,6 @@ dependencies {
     compile project(':lrecyclerview')
     compile project(':photopicker')
     compile 'org.greenrobot:eventbus:3.1.1'
+    compile project(':opencv')
 }
 
