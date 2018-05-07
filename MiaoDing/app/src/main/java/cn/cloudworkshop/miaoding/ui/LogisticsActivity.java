@@ -76,7 +76,6 @@ public class LogisticsActivity extends BaseActivity {
         company = intent.getStringExtra("company");
         companyName = intent.getStringExtra("company_name");
         imgUrl = intent.getStringExtra("img_url");
-
     }
 
 

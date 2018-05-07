@@ -230,7 +230,7 @@ public class NewCameraActivity extends BaseActivity implements SensorEventListen
             public void takeFinish(Bitmap bitmap) {
                 loadingView.smoothToShow();
                 if (count == 0) {
-                    distance();
+                    distance(bitmap);
                 } else {
                     takeSuccess();
                 }
@@ -282,18 +282,26 @@ public class NewCameraActivity extends BaseActivity implements SensorEventListen
     /**
      * 测距
      */
-    private void distance() {
+    private void distance(final Bitmap bitmap) {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                Mat mat = Imgcodecs.imread(photoArray[count]);
+//                Mat mat = Imgcodecs.imread(photoArray[1]);
+                Mat mat = new Mat();
+                Utils.bitmapToMat(bitmap,mat);
+                bitmap.recycle();
+                //建立灰度图像存储空间
+                Mat gray = new Mat(mat.size(), CvType.CV_8U);
+                //彩色图像灰度化
+                Imgproc.cvtColor(mat, gray, Imgproc.COLOR_BGR2GRAY);
+                //滤波
                 HOGDescriptor hogDescriptor = new HOGDescriptor();
                 hogDescriptor.setSVMDetector(HOGDescriptor.getDefaultPeopleDetector());
                 MatOfRect matOfRect = new MatOfRect();
                 MatOfDouble matOfDouble = new MatOfDouble();
                 int maxHeight = 0;
-                hogDescriptor.detectMultiScale(mat, matOfRect, matOfDouble, 0, new Size(
-                                4, 4), new Size(8, 8), 1.05,
+                hogDescriptor.detectMultiScale(gray, matOfRect, matOfDouble, 0, new Size(
+                                4, 4), new Size(8, 8), 1.2,
                         2, false);
                 if (matOfRect.toArray().length > 0) { // 判断是否检测到目标对象，如果有就画矩形，没有就执行下一步
                     for (Rect r : matOfRect.toArray()) { // 检测到的目标转成数组形式，方便遍历
@@ -301,21 +309,19 @@ public class NewCameraActivity extends BaseActivity implements SensorEventListen
                         r.width = (int) Math.round(r.width * 0.8);
                         r.y += Math.round(r.height * 0.045);
                         r.height = (int) Math.round(r.height * 0.85);
-                        Imgproc.rectangle(mat, r.tl(), r.br(), new Scalar(0, 0, 255), 2); // 画出矩形
+                        Imgproc.rectangle(gray, r.tl(), r.br(), new Scalar(0, 0, 255), 2); // 画出矩形
                         if (maxHeight <= r.height) {
                             maxHeight = r.height;
                         }
                     }
                 }
-//                LogUtils.log(String.valueOf(maxHeight));
-                Imgcodecs.imwrite(Environment.getExternalStorageDirectory().getAbsolutePath() +
-                        "/CloudWorkshop/people1.jpg", mat); // 将已经完成检测的Mat对象写出，参数：输出路径，检测完毕的Mat对象。
-                distance = Float.parseFloat(height) * 0.9612 * mat.height() / maxHeight;
-//                Message message = new Message();
-//                message.what = (int) distance;
-//                handler.sendMessage(message);
+
+//                Imgcodecs.imwrite(Environment.getExternalStorageDirectory().getAbsolutePath() +
+//                        "/CloudWorkshop/people" + System.currentTimeMillis() + ".jpg", gray); // 将已经完成检测的Mat对象写出，参数：输出路径，检测完毕的Mat对象。
+                distance = Float.parseFloat(height) * 0.9297 * gray.height() / maxHeight;
                 if (distance >= 250 && distance <= 400) {
-                    handler.sendEmptyMessage(1);
+                    handler.sendEmptyMessage(1
+                    );
                 } else {
                     handler.sendEmptyMessage(0);
                 }
@@ -521,6 +527,7 @@ public class NewCameraActivity extends BaseActivity implements SensorEventListen
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
 
     }
 
