@@ -51,7 +51,7 @@ import okhttp3.Call;
 /**
  * Author：Libin on 2017-04-25 10:52
  * Email：1993911441@qq.com
- * Describe：定制界面（新版）
+ * Describe：定制界面
  */
 public class NewCustomizeActivity extends BaseActivity {
     @BindView(R.id.img_header_back)

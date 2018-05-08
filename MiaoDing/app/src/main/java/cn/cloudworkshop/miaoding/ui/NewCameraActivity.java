@@ -131,7 +131,6 @@ public class NewCameraActivity extends BaseActivity implements SensorEventListen
     int imgHeight;
     //防止连续点击
     private boolean isClickable = true;
-    private double distance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -280,7 +279,9 @@ public class NewCameraActivity extends BaseActivity implements SensorEventListen
     }
 
     /**
-     * 测距
+     * 测距，  检测人物轮廓像素高度与输入身高成正比，与图片高度成正比，与拍摄距离成反比
+     * 通过固定身高，固定图片高度，3米拍摄距离，求出比例系数
+     * distance = K * person_height * img_height / H
      */
     private void distance(final Bitmap bitmap) {
         new Thread(new Runnable() {
@@ -288,28 +289,32 @@ public class NewCameraActivity extends BaseActivity implements SensorEventListen
             public void run() {
 //                Mat mat = Imgcodecs.imread(photoArray[1]);
                 Mat mat = new Mat();
-                Utils.bitmapToMat(bitmap,mat);
+                Utils.bitmapToMat(bitmap, mat);
                 bitmap.recycle();
+                //压缩图片
+                Mat detMat = new Mat();
+                Imgproc.resize(mat, detMat, new Size(mat.width() / 2, mat.height() / 2));
                 //建立灰度图像存储空间
-                Mat gray = new Mat(mat.size(), CvType.CV_8U);
+                Mat gray = new Mat(detMat.size(), CvType.CV_8U);
                 //彩色图像灰度化
-                Imgproc.cvtColor(mat, gray, Imgproc.COLOR_BGR2GRAY);
-                //滤波
+                Imgproc.cvtColor(detMat, gray, Imgproc.COLOR_BGR2GRAY);
+                //人体轮廓检测
                 HOGDescriptor hogDescriptor = new HOGDescriptor();
                 hogDescriptor.setSVMDetector(HOGDescriptor.getDefaultPeopleDetector());
                 MatOfRect matOfRect = new MatOfRect();
                 MatOfDouble matOfDouble = new MatOfDouble();
-                int maxHeight = 0;
+
                 hogDescriptor.detectMultiScale(gray, matOfRect, matOfDouble, 0, new Size(
                                 4, 4), new Size(8, 8), 1.2,
                         2, false);
+                int maxHeight = 0;
                 if (matOfRect.toArray().length > 0) { // 判断是否检测到目标对象，如果有就画矩形，没有就执行下一步
                     for (Rect r : matOfRect.toArray()) { // 检测到的目标转成数组形式，方便遍历
                         r.x += Math.round(r.width * 0.1);
                         r.width = (int) Math.round(r.width * 0.8);
                         r.y += Math.round(r.height * 0.045);
                         r.height = (int) Math.round(r.height * 0.85);
-                        Imgproc.rectangle(gray, r.tl(), r.br(), new Scalar(0, 0, 255), 2); // 画出矩形
+//                        Imgproc.rectangle(gray, r.tl(), r.br(), new Scalar(0, 0, 255), 2); // 画出矩形
                         if (maxHeight <= r.height) {
                             maxHeight = r.height;
                         }
@@ -318,10 +323,11 @@ public class NewCameraActivity extends BaseActivity implements SensorEventListen
 
 //                Imgcodecs.imwrite(Environment.getExternalStorageDirectory().getAbsolutePath() +
 //                        "/CloudWorkshop/people" + System.currentTimeMillis() + ".jpg", gray); // 将已经完成检测的Mat对象写出，参数：输出路径，检测完毕的Mat对象。
-                distance = Float.parseFloat(height) * 0.9297 * gray.height() / maxHeight;
-                if (distance >= 250 && distance <= 400) {
-                    handler.sendEmptyMessage(1
-                    );
+                double distance = Float.parseFloat(height) * 0.8973 * gray.height() / maxHeight;
+                //拍摄距离在2.85米和3.65米之间
+                if (distance >= 285 && distance <= 365) {
+                    handler.sendEmptyMessage(1);
+                    
                 } else {
                     handler.sendEmptyMessage(0);
                 }

@@ -12,9 +12,11 @@
         android:layout_width="wrap_content"
         android:layout_height="38dp"
         android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
         android:gravity="center_vertical"
         android:textColor="@color/dark_gray_22"
-        android:textSize="13sp"/>
+        android:textSize="13sp"
+        android:textStyle="bold"/>
 
     <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/img_homepage_news"
@@ -30,13 +32,13 @@
     <TextView
         android:id="@+id/tv_news_content"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="38dp"
         android:layout_gravity="center_vertical"
-        android:layout_marginBottom="10.3dp"
         android:layout_marginLeft="12dp"
-        android:layout_marginTop="11dp"
+        android:layout_marginRight="12dp"
+        android:singleLine="true"
         android:textColor="@color/dark_gray_22"
-        android:textSize="14sp"/>
+        android:textSize="13sp"/>
 
     <View
         android:id="@+id/view_news_line"
@@ -103,10 +105,10 @@
             android:id="@+id/ll_news_comment"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:gravity="center_vertical"
             android:orientation="horizontal"
             android:paddingLeft="12dp"
-            android:paddingRight="12dp"
-            android:gravity="center_vertical">
+            android:paddingRight="12dp">
 
             <ImageView
                 android:layout_width="20dp"
