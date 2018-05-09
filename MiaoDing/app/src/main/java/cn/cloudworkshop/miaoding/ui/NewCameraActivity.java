@@ -324,10 +324,10 @@ public class NewCameraActivity extends BaseActivity implements SensorEventListen
 //                Imgcodecs.imwrite(Environment.getExternalStorageDirectory().getAbsolutePath() +
 //                        "/CloudWorkshop/people" + System.currentTimeMillis() + ".jpg", gray); // 将已经完成检测的Mat对象写出，参数：输出路径，检测完毕的Mat对象。
                 double distance = Float.parseFloat(height) * 0.8973 * gray.height() / maxHeight;
-                //拍摄距离在2.85米和3.65米之间
-                if (distance >= 285 && distance <= 365) {
+                //拍摄距离在2.5米和4米之间
+                if (distance >= 250 && distance <= 400) {
                     handler.sendEmptyMessage(1);
-                    
+
                 } else {
                     handler.sendEmptyMessage(0);
                 }
@@ -510,9 +510,10 @@ public class NewCameraActivity extends BaseActivity implements SensorEventListen
             float deltaY = Math.abs(mLastY - verAngle);
             float deltaZ = Math.abs(mLastZ - horAngle);
 
+            //手机偏移2°，重新聚焦
             if (deltaX > 2 || deltaY > 2 || deltaZ > 2) {
                 if (CustomCameraView.camera != null) {
-                    if (null != myThread) {
+                    if (myThread != null) {
                         myThread.interrupt();
                     }
                     myThread = new Thread(new Runnable() {

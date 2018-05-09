@@ -228,7 +228,7 @@ public class AddMeasureActivity extends BaseActivity implements EasyPermissions.
             }
 
         } else {
-            ToastUtils.showToast(this, "请输入身高体重");
+            ToastUtils.showToast(this, "请完善基本信息");
         }
     }
 
