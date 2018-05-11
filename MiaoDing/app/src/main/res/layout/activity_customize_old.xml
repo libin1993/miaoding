@@ -19,18 +19,18 @@
             android:id="@+id/rl_positive_tailor"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingTop="30dp"
             android:paddingLeft="30dp"
-            android:paddingRight="30dp">
+            android:paddingRight="30dp"
+            android:paddingTop="30dp">
         </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/rl_back_tailor"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingTop="30dp"
             android:paddingLeft="30dp"
             android:paddingRight="30dp"
+            android:paddingTop="30dp"
             android:visibility="gone">
 
         </RelativeLayout>
@@ -39,9 +39,9 @@
             android:id="@+id/rl_inside_tailor"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingTop="30dp"
             android:paddingLeft="30dp"
             android:paddingRight="30dp"
+            android:paddingTop="30dp"
             android:visibility="gone">
         </RelativeLayout>
 
@@ -75,12 +75,12 @@
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
+                android:layout_marginLeft="20dp"
                 android:button="@null"
                 android:gravity="center"
                 android:text="里子"
                 android:textColor="@color/rgs_text_color"
                 android:textSize="16sp"
-                android:layout_marginLeft="20dp"
                 android:visibility="gone"/>
         </RadioGroup>
 
@@ -91,29 +91,38 @@
             android:layout_height="match_parent"
             android:layout_centerHorizontal="true"
             android:background="@color/gray_mask"
-            android:scaleType="fitCenter"
             android:padding="50dp"
+            android:scaleType="fitCenter"
             android:visibility="gone"/>
 
         <ImageView
             android:id="@+id/img_tailor_icon"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingTop="30dp"
             android:paddingLeft="30dp"
             android:paddingRight="30dp"
+            android:paddingTop="30dp"
             android:scaleType="fitCenter"
             android:src="@drawable/tailor_list"
             android:visibility="gone"/>
+
         <ImageView
             android:id="@+id/img_tailor_reset"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentBottom="true"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/icon_reset"
+            android:visibility="gone"/>
+
+        <ImageView
+            android:id="@+id/img_tailor_success"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="14dp"
-            android:src="@mipmap/icon_reset"
             android:scaleType="fitCenter"
+            android:src="@mipmap/customize_next"
             android:visibility="gone"/>
     </RelativeLayout>
 
@@ -123,8 +132,8 @@
         android:layout_height="62dp"
         android:layout_above="@+id/rv_tailor_item"
         android:layout_centerHorizontal="true"
-        android:visibility="visible"
-        android:overScrollMode="never">
+        android:overScrollMode="never"
+        android:visibility="visible">
     </android.support.v7.widget.RecyclerView>
 
 
@@ -132,11 +141,11 @@
         android:id="@+id/rv_tailor_item"
         android:layout_width="wrap_content"
         android:layout_height="62dp"
-        android:layout_marginTop="10dp"
         android:layout_above="@+id/rv_tailor_cloth"
         android:layout_centerHorizontal="true"
-        android:visibility="visible"
-        android:overScrollMode="never">
+        android:layout_marginTop="10dp"
+        android:overScrollMode="never"
+        android:visibility="visible">
     </android.support.v7.widget.RecyclerView>
 
     <android.support.v7.widget.RecyclerView
@@ -146,10 +155,20 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="10dp"
-        android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
         android:overScrollMode="never">
     </android.support.v7.widget.RecyclerView>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="34dp"
+        android:layout_marginRight="3dp"
+        android:src="@mipmap/icon_more"
+        android:textColor="@color/light_gray_97"/>
 
     <ImageView
         android:id="@+id/img_tailor_guide"

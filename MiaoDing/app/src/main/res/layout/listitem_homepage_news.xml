@@ -33,7 +33,7 @@
         android:id="@+id/tv_news_content"
         android:layout_width="wrap_content"
         android:layout_height="38dp"
-        android:layout_gravity="center_vertical"
+        android:gravity="center_vertical"
         android:layout_marginLeft="12dp"
         android:layout_marginRight="12dp"
         android:singleLine="true"

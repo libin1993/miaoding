@@ -660,7 +660,7 @@ public class EmbroideryActivity extends BaseActivity implements EasyPermissions.
                             submitData();
                         }
                         type = 1;
-                        customizeData(false);
+                        customizeData(true);
                         addToCart();
                     } else {
                         ToastUtils.showToast(this, "请完善基本信息");
@@ -676,7 +676,7 @@ public class EmbroideryActivity extends BaseActivity implements EasyPermissions.
                             submitData();
                         }
                         type = 2;
-                        customizeData(false);
+                        customizeData(true);
                         addToCart();
                     } else {
                         ToastUtils.showToast(this, "请完善基本信息");

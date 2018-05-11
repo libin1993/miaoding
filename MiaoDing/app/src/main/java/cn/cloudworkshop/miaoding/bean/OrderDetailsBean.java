@@ -404,6 +404,24 @@ public class OrderDetailsBean {
             private int num;
             private int goods_type;
             private String size_content;
+            private String spec_content;
+            private String diy_content;
+
+            public String getSpec_content() {
+                return spec_content;
+            }
+
+            public void setSpec_content(String spec_content) {
+                this.spec_content = spec_content;
+            }
+
+            public String getDiy_content() {
+                return diy_content;
+            }
+
+            public void setDiy_content(String diy_content) {
+                this.diy_content = diy_content;
+            }
 
             public int getId() {
                 return id;

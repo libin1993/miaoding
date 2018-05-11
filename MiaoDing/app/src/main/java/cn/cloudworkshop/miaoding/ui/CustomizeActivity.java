@@ -62,8 +62,6 @@ public class CustomizeActivity extends BaseActivity {
     ImageView imgHeaderShare;
     @BindView(R.id.rv_tailor_item)
     RecyclerView rvTailorItem;
-    @BindView(R.id.tv_header_next)
-    TextView tvHeaderNext;
     @BindView(R.id.img_large_material)
     ImageView imgLargeMaterial;
     @BindView(R.id.rl_positive_tailor)
@@ -84,6 +82,8 @@ public class CustomizeActivity extends BaseActivity {
     ImageView imgGuide;
     @BindView(R.id.img_load_error)
     ImageView imgLoadError;
+    @BindView(R.id.img_tailor_success)
+    ImageView imgTailorSuccess;
 
     private TailorBean.DataBean dataBean;
     //配件
@@ -138,7 +138,7 @@ public class CustomizeActivity extends BaseActivity {
      */
     private void getData() {
         Bundle bundle = getIntent().getExtras();
-        if (bundle != null){
+        if (bundle != null) {
             customItemBean = (CustomItemBean) bundle.getSerializable("tailor");
             if (customItemBean != null) {
                 specContent = customItemBean.getSpec_content();
@@ -603,20 +603,19 @@ public class CustomizeActivity extends BaseActivity {
      */
     private void isAllSelect() {
         if (itemArray.size() == dataBean.getSpec_list().size()) {
-            tvHeaderNext.setVisibility(View.VISIBLE);
-            tvHeaderNext.setText("下一步");
+            imgTailorSuccess.setVisibility(View.VISIBLE);
         }
     }
 
 
-    @OnClick({R.id.img_header_back, R.id.tv_header_next, R.id.rl_positive_tailor, R.id.img_load_error,
+    @OnClick({R.id.img_header_back, R.id.img_tailor_success, R.id.rl_positive_tailor, R.id.img_load_error,
             R.id.img_tailor_icon, R.id.img_tailor_reset, R.id.img_tailor_guide})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.img_header_back:
                 finish();
                 break;
-            case R.id.tv_header_next:
+            case R.id.img_tailor_success:
                 nextStep();
                 break;
             case R.id.rl_positive_tailor:
@@ -649,7 +648,7 @@ public class CustomizeActivity extends BaseActivity {
 
         buttonName = null;
         firstSelect = true;
-        tvHeaderNext.setVisibility(View.GONE);
+        imgTailorSuccess.setVisibility(View.GONE);
         rvTailorItem.setVisibility(View.GONE);
         rvTailorButton.setVisibility(View.GONE);
         imgReset.setVisibility(View.GONE);
@@ -796,4 +795,5 @@ public class CustomizeActivity extends BaseActivity {
         super.onDestroy();
         EventBus.getDefault().unregister(this);
     }
+
 }

@@ -251,7 +251,8 @@ public class OrderDetailActivity extends BaseActivity {
                         holder.setText(R.id.tv_goods_content, carListBean.getSize_content());
                         break;
                     default:
-                        holder.setText(R.id.tv_goods_content, "定制款");
+                        holder.setText(R.id.tv_goods_content, carListBean.getSpec_content()
+                                + ";" + carListBean.getDiy_content());
                         break;
                 }
                 holder.setText(R.id.tv_goods_price, "¥" + carListBean.getPrice());
