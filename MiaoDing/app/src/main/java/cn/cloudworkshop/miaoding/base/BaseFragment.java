@@ -24,11 +24,10 @@ public abstract class BaseFragment extends Fragment {
         this.activity = (BaseActivity) context;
     }
 
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public void onResume() {
+        super.onResume();
         MobclickAgent.onPageStart("fragment");
-        return super.onCreateView(inflater, container, savedInstanceState);
     }
 
     @Override

@@ -148,8 +148,6 @@ public class NewCameraActivity extends BaseActivity implements SensorEventListen
         setContentView(R.layout.activity_camera_new);
         ButterKnife.bind(this);
         mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
-        loadingView.setIndicator(new BallSpinFadeLoaderIndicator());
-        loadingView.setIndicatorColor(Color.GRAY);
         getData();
         initStroke();
     }
@@ -327,7 +325,6 @@ public class NewCameraActivity extends BaseActivity implements SensorEventListen
                 //拍摄距离在2.5米和4米之间
                 if (distance >= 250 && distance <= 400) {
                     handler.sendEmptyMessage(1);
-
                 } else {
                     handler.sendEmptyMessage(0);
                 }

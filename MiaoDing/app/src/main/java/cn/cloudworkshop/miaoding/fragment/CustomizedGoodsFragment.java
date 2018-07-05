@@ -44,8 +44,7 @@ import okhttp3.Call;
  * Email：1993911441@qq.com
  * Describe：定制商品（当前版本）
  */
-public class
-CustomizedGoodsFragment extends BaseFragment {
+public class CustomizedGoodsFragment extends BaseFragment {
     @BindView(R.id.tab_goods)
     SlidingTabLayout tabGoods;
     @BindView(R.id.img_goods_code)

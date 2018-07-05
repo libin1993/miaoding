@@ -119,7 +119,6 @@ public class HomepageInfoActivity extends BaseActivity {
      */
     @JavascriptInterface
     public void toActivity(String str) {
-
         if (!TextUtils.isEmpty(str)) {
             Intent intent = new Intent(this, LoginActivity.class);
             intent.putExtra("page_name", str);

@@ -30,6 +30,11 @@ public abstract class BaseActivity extends AppCompatActivity {
         PushManager.getInstance().registerPushIntentService(this.getApplicationContext(), GeTuiIntentService.class);
         //友盟统计
         MobclickAgent.setScenarioType(this, MobclickAgent.EScenarioType.E_UM_NORMAL);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         MobclickAgent.onResume(this);
     }
 

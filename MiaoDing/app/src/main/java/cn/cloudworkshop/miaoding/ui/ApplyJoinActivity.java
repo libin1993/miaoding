@@ -103,8 +103,6 @@ public class ApplyJoinActivity extends BaseActivity implements EasyPermissions.P
         ButterKnife.bind(this);
 
         tvHeaderTitle.setText("申请入驻");
-        loadingView.setIndicator(new BallSpinFadeLoaderIndicator());
-        loadingView.setIndicatorColor(Color.GRAY);
     }
 
 

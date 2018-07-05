@@ -96,7 +96,20 @@ public class MyCenterFragment extends BaseFragment {
         View view = inflater.inflate(R.layout.fragment_mycenter, container, false);
         unbinder = ButterKnife.bind(this, view);
         badgeView = new BadgeView(getActivity());
+        toLogin();
         return view;
+    }
+
+    /**
+     * 去登录
+     */
+    private void toLogin() {
+        if (TextUtils.isEmpty(SharedPreferencesUtils.getStr(getActivity(), "token"))) {
+            Intent intent = new Intent(getActivity(), LoginActivity.class);
+            intent.putExtra("log_in", "center");
+            intent.putExtra("page_name", "我的");
+            startActivity(intent);
+        }
     }
 
     /**
@@ -120,15 +133,9 @@ public class MyCenterFragment extends BaseFragment {
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
         if (!hidden) {
-            if (TextUtils.isEmpty(SharedPreferencesUtils.getStr(getActivity(), "token"))) {
-                Intent intent = new Intent(getActivity(), LoginActivity.class);
-                intent.putExtra("log_in", "center");
-                intent.putExtra("page_name", "我的");
-                startActivity(intent);
-            }
+            toLogin();
         }
     }
-
 
     /**
      * 加载数据
@@ -189,7 +196,7 @@ public class MyCenterFragment extends BaseFragment {
             badgeView.setVisibility(View.GONE);
         }
 
-        MyGridLayoutManager gridManager = new MyGridLayoutManager(getActivity(),3);
+        MyGridLayoutManager gridManager = new MyGridLayoutManager(getActivity(), 3);
         gridManager.setScrollEnabled(false);
         rvCenter.setLayoutManager(gridManager);
         int widthPixels = DisplayUtils.getMetrics(getActivity()).widthPixels;
@@ -247,7 +254,7 @@ public class MyCenterFragment extends BaseFragment {
                         break;
                     case 6:
                         Intent intent = new Intent(getActivity(), CameraFormActivity.class);
-                        intent.putExtra("measure_status",userInfoBean.getIs_opencv());
+                        intent.putExtra("measure_status", userInfoBean.getIs_opencv());
                         startActivity(intent);
                         break;
                     case 7:

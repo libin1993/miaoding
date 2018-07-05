@@ -183,8 +183,6 @@ public class FeedbackActivity extends BaseActivity implements EasyPermissions.Pe
      */
     private void initView() {
         tvHeaderTitle.setText("意见反馈");
-        loadingView.setIndicator(new BallSpinFadeLoaderIndicator());
-        loadingView.setIndicatorColor(Color.GRAY);
         etFeedBack.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {

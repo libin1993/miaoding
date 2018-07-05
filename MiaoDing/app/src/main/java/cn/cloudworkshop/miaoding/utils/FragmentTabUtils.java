@@ -87,7 +87,7 @@ public class FragmentTabUtils implements TabLayout.OnTabSelectedListener {
             tabLayout.addTab(tab);
         }
 
-        initFragment(0);
+        switchFragment(0);
     }
 
 
@@ -98,7 +98,7 @@ public class FragmentTabUtils implements TabLayout.OnTabSelectedListener {
         if (tab.getPosition() == 0) {
             MyApplication.homeEnterTime = DateUtils.getCurrentTime();
         }
-        initFragment(tab.getPosition());
+        switchFragment(tab.getPosition());
 
     }
 
@@ -131,19 +131,33 @@ public class FragmentTabUtils implements TabLayout.OnTabSelectedListener {
 
 
     /**
-     * @param i 加载fragment
+     * @param position 切换fragment
      */
-    private void initFragment(int i) {
-        Fragment fragment = fragmentList.get(i);
+    private void switchFragment(int position) {
+        //开启事务
         FragmentTransaction ft = fragmentManager.beginTransaction();
-        fragmentList.get(currentTab).onStop(); // 暂停当前tab
-        if (fragment.isAdded()) {
-            fragment.onStart(); // 启动目标tab的fragment onStart()
-        } else {
-            ft.add(fragmentContentId, fragment, fragment.getClass().getName());
-            ft.commitAllowingStateLoss();
+        //遍历集合
+        for (int i = 0; i < fragmentList.size(); i++) {
+            Fragment fragment = fragmentList.get(i);
+            if (i == position) {
+                //显示fragment
+                if (fragment.isAdded()) {
+                    //如果这个fragment已经被事务添加,显示
+                    ft.show(fragment);
+                } else {
+                    //如果这个fragment没有被事务添加过,添加
+                    ft.add(fragmentContentId, fragment);
+                }
+            } else {
+                //隐藏fragment
+                if (fragment.isAdded()) {
+                    ft.hide(fragment);
+                }
+            }
         }
-        showTab(i); // 显示目标tab
+        //提交事务
+        ft.commit();
+
     }
 
     /**
@@ -154,22 +168,4 @@ public class FragmentTabUtils implements TabLayout.OnTabSelectedListener {
     }
 
 
-    /**
-     * 切换fragment
-     *
-     * @param index
-     */
-    private void showTab(int index) {
-        for (int i = 0; i < fragmentList.size(); i++) {
-            Fragment fragment = fragmentList.get(i);
-            FragmentTransaction ft = fragmentManager.beginTransaction();
-            if (index == i) {
-                ft.show(fragment);
-            } else {
-                ft.hide(fragment);
-            }
-            ft.commitAllowingStateLoss();
-        }
-        currentTab = index; // 更新目标tab为当前tab
-    }
 }

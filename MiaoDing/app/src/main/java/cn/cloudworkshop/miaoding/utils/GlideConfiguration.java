@@ -20,7 +20,7 @@ import pub.devrel.easypermissions.EasyPermissions;
 /**
  * Author：Libin on 2016/11/9 15:08
  * Email：1993911441@qq.com
- * Describe：Glide图片清晰度
+ * Describe：Glide图片清晰度,缓存
  */
 
 public class GlideConfiguration implements GlideModule {

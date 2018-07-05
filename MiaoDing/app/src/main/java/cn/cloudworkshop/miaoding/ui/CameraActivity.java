@@ -128,8 +128,6 @@ public class CameraActivity extends BaseActivity implements SensorEventListener 
         layoutParams.height = (int) DisplayUtils.dp2px(this, (float) (userHeight * 2.05));
         viewStroke.setLayoutParams(layoutParams);
 
-        loadingView.setIndicator(new BallSpinFadeLoaderIndicator());
-        loadingView.setIndicatorColor(Color.GRAY);
 
     }
 

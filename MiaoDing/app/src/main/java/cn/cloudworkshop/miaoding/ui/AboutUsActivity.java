@@ -85,6 +85,7 @@ public class AboutUsActivity extends BaseActivity {
      * 检查更新
      */
     private void checkUpdate() {
+
         if (!TextUtils.isEmpty(MyApplication.updateUrl)) {
             AlertDialog.Builder dialog = new AlertDialog.Builder(AboutUsActivity.this,
                     R.style.Theme_AppCompat_DayNight_Dialog_Alert);

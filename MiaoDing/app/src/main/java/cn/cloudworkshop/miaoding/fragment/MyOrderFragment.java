@@ -144,39 +144,40 @@ public class MyOrderFragment extends BaseFragment {
 
                     @Override
                     public void onResponse(String response, int id) {
-                        if (imgLoadError != null) {
+                        if (getActivity() != null) {
                             imgLoadError.setVisibility(View.GONE);
-                        }
-                        OrderInfoBean orderInfoBean = GsonUtils.jsonToBean(response, OrderInfoBean.class);
-                        if (orderInfoBean.getData().getData() != null && orderInfoBean.getData().getData().size() > 0) {
-                            if (isRefresh) {
-                                dataList.clear();
-                            }
-                            dataList.addAll(orderInfoBean.getData().getData());
-                            if (isRefresh || isLoadMore) {
-                                rvGoods.refreshComplete(0);
-                                mLRecyclerViewAdapter.notifyDataSetChanged();
+                            OrderInfoBean orderInfoBean = GsonUtils.jsonToBean(response, OrderInfoBean.class);
+                            if (orderInfoBean.getData().getData() != null && orderInfoBean.getData().getData().size() > 0) {
+                                if (isRefresh) {
+                                    dataList.clear();
+                                }
+                                dataList.addAll(orderInfoBean.getData().getData());
+                                if (isRefresh || isLoadMore) {
+                                    rvGoods.refreshComplete(0);
+                                    mLRecyclerViewAdapter.notifyDataSetChanged();
+                                } else {
+                                    initView();
+                                }
+                                isRefresh = false;
+                                isLoadMore = false;
+                                llNullOrder.setVisibility(View.GONE);
+                                rvGoods.setVisibility(View.VISIBLE);
                             } else {
-                                initView();
-                            }
-                            isRefresh = false;
-                            isLoadMore = false;
-                            llNullOrder.setVisibility(View.GONE);
-                            rvGoods.setVisibility(View.VISIBLE);
-                        } else {
-                            RecyclerViewStateUtils.setFooterViewState(getActivity(), rvGoods, 0,
-                                    LoadingFooter.State.NoMore, null);
-                            if (page == 1) {
-                                if (rvGoods != null) {
-                                    rvGoods.setVisibility(View.GONE);
-                                }
-                                if (imgNoOrder != null) {
-                                    imgNoOrder.setImageResource(R.mipmap.icon_null_order);
-                                }
+                                RecyclerViewStateUtils.setFooterViewState(getActivity(), rvGoods, 0,
+                                        LoadingFooter.State.NoMore, null);
+                                if (page == 1) {
+                                    if (rvGoods != null) {
+                                        rvGoods.setVisibility(View.GONE);
+                                    }
+                                    if (imgNoOrder != null) {
+                                        imgNoOrder.setImageResource(R.mipmap.icon_null_order);
+                                    }
 
-                                llNullOrder.setVisibility(View.VISIBLE);
+                                    llNullOrder.setVisibility(View.VISIBLE);
+                                }
                             }
                         }
+
                     }
                 });
     }
@@ -185,201 +186,200 @@ public class MyOrderFragment extends BaseFragment {
      * 加载视图
      */
     protected void initView() {
-        if (getActivity() != null) {
-            rvGoods.setLayoutManager(new LinearLayoutManager(getActivity()));
-            adapter = new CommonAdapter<OrderInfoBean.DataBeanX.DataBean>(getActivity(),
-                    R.layout.listitem_order, dataList) {
-                @Override
-                protected void convert(ViewHolder holder, final OrderInfoBean.DataBeanX.DataBean dataBean,
-                                       final int position) {
-                    holder.setText(R.id.tv_order_number, dataBean.getOrder_no());
 
-                    if (dataBean.getList() != null && dataBean.getList().size() > 0) {
-                        Glide.with(getActivity())
-                                .load(Constant.IMG_HOST + dataBean.getList().get(0).getGoods_thumb())
-                                .placeholder(R.mipmap.place_holder_news)
-                                .dontAnimate()
-                                .diskCacheStrategy(DiskCacheStrategy.SOURCE)
-                                .into((ImageView) holder.getView(R.id.img_order_info));
-                        TextView tvGoodsName = holder.getView(R.id.tv_order_name);
-                        tvGoodsName.setText(dataBean.getList().get(0).getGoods_name());
-                        tvGoodsName.setTypeface(DisplayUtils.setTextType(mContext));
-                        switch (dataBean.getList().get(0).getGoods_type()) {
-                            case 2:
-                                holder.setText(R.id.tv_order_content, dataBean.getList().get(0).getSize_content());
-                                break;
-                            default:
-                                holder.setText(R.id.tv_order_content, "定制款");
-                                break;
-                        }
-                        holder.setText(R.id.tv_order_count, "共" + dataBean.getList().get(0).getNum() + "件商品");
-                    }
+        rvGoods.setLayoutManager(new LinearLayoutManager(getActivity()));
+        adapter = new CommonAdapter<OrderInfoBean.DataBeanX.DataBean>(getActivity(),
+                R.layout.listitem_order, dataList) {
+            @Override
+            protected void convert(ViewHolder holder, final OrderInfoBean.DataBeanX.DataBean dataBean,
+                                   final int position) {
+                holder.setText(R.id.tv_order_number, dataBean.getOrder_no());
 
-                    holder.setText(R.id.tv_order_price, "¥" + dataBean.getMoney());
-
-                    switch (dataBean.getStatus()) {
-                        case 1:
-                            holder.setVisible(R.id.tv_after_sale, false);
-                            holder.setVisible(R.id.tv_order_control, true);
-                            holder.setVisible(R.id.tv_order_pay, true);
-                            holder.setText(R.id.tv_order_status, "待付款");
-                            holder.setText(R.id.tv_order_control, "取消订单");
-                            holder.setText(R.id.tv_order_pay, "付款");
-                            break;
+                if (dataBean.getList() != null && dataBean.getList().size() > 0) {
+                    Glide.with(getActivity())
+                            .load(Constant.IMG_HOST + dataBean.getList().get(0).getGoods_thumb())
+                            .placeholder(R.mipmap.place_holder_news)
+                            .dontAnimate()
+                            .diskCacheStrategy(DiskCacheStrategy.SOURCE)
+                            .into((ImageView) holder.getView(R.id.img_order_info));
+                    TextView tvGoodsName = holder.getView(R.id.tv_order_name);
+                    tvGoodsName.setText(dataBean.getList().get(0).getGoods_name());
+                    tvGoodsName.setTypeface(DisplayUtils.setTextType(mContext));
+                    switch (dataBean.getList().get(0).getGoods_type()) {
                         case 2:
-                            holder.setVisible(R.id.tv_after_sale, false);
-                            holder.setVisible(R.id.tv_order_control, true);
-                            holder.setVisible(R.id.tv_order_pay, false);
-                            holder.setText(R.id.tv_order_status, "待发货");
-                            holder.setText(R.id.tv_order_control, "提醒发货");
+                            holder.setText(R.id.tv_order_content, dataBean.getList().get(0).getSize_content());
                             break;
-                        case 3:
-                            holder.setVisible(R.id.tv_after_sale, false);
-                            holder.setVisible(R.id.tv_order_control, true);
-                            holder.setVisible(R.id.tv_order_pay, true);
-                            holder.setText(R.id.tv_order_status, "已发货");
-                            holder.setText(R.id.tv_after_sale, "售后服务");
-                            holder.setText(R.id.tv_order_control, "查看物流");
-                            holder.setText(R.id.tv_order_pay, "确认收货");
-                            break;
-                        case 4:
-                            holder.setVisible(R.id.tv_after_sale, false);
-                            holder.setVisible(R.id.tv_order_control, true);
-
-                            holder.setText(R.id.tv_order_status, "已完成");
-                            holder.setText(R.id.tv_after_sale, "售后服务");
-                            holder.setText(R.id.tv_order_control, "再次购买");
-                            //订单未评价
-                            if (dataBean.getComment_id() == 0) {
-                                holder.setVisible(R.id.tv_order_pay, true);
-                                holder.setText(R.id.tv_order_pay, "评价");
-                            } else {
-                                holder.setVisible(R.id.tv_order_pay, false);
-                            }
-                            break;
-                        case -2:
-                            holder.setVisible(R.id.tv_after_sale, false);
-                            holder.setVisible(R.id.tv_order_control, true);
-                            holder.setVisible(R.id.tv_order_pay, false);
-                            holder.setText(R.id.tv_order_status, "已取消");
-                            holder.setText(R.id.tv_order_control, "删除订单");
+                        default:
+                            holder.setText(R.id.tv_order_content, "定制款");
                             break;
                     }
-
-                    holder.getView(R.id.tv_order_control).setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            switch (dataBean.getStatus()) {
-                                case 1:
-                                    cancelOrder(dataBean.getId());
-                                    break;
-                                case 2:
-                                    ToastUtils.showToast(getActivity(), "已提醒商家发货，请耐心等待");
-                                    break;
-                                case 3:
-                                    Intent intent = new Intent(getActivity(), LogisticsActivity.class);
-                                    intent.putExtra("number", dataBean.getEms_no());
-                                    intent.putExtra("company", dataBean.getEms_com());
-                                    intent.putExtra("company_name", dataBean.getEms_com_name());
-                                    intent.putExtra("img_url", dataBean.getList().get(0).getGoods_thumb());
-                                    startActivity(intent);
-                                    break;
-                                case 4:
-                                    buyAgain(dataBean.getId());
-                                    break;
-                                case -2:
-                                    deleteOrder(dataBean.getId(), position - 1);
-                                    break;
-                            }
-                        }
-                    });
-                    holder.getView(R.id.tv_order_pay).setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            switch (dataBean.getStatus()) {
-                                case 1:
-                                    PayOrderUtils payOrderUtil = new PayOrderUtils(getActivity(),
-                                            dataBean.getMoney(), dataBean.getId() + "");
-                                    payOrderUtil.payMoney();
-                                    break;
-                                case 3:
-                                    confirmReceive(dataBean.getId());
-                                    break;
-                                case 4:
-                                    //订单评价
-                                    Intent intent = new Intent(getActivity(), EvaluateActivity.class);
-                                    intent.putExtra("order_id", String.valueOf(dataBean.getId()));
-                                    intent.putExtra("goods_id", String.valueOf(dataBean.getList().get(0).getGoods_id()));
-                                    intent.putExtra("cart_id", String.valueOf(dataBean.getList().get(0).getId()));
-                                    intent.putExtra("goods_img", dataBean.getList().get(0).getGoods_thumb());
-                                    intent.putExtra("goods_name", dataBean.getList().get(0).getGoods_name());
-
-                                    switch (dataBean.getList().get(0).getGoods_type()) {
-                                        case 2:
-                                            intent.putExtra("goods_type", dataBean.getList().get(0).getSize_content());
-                                            break;
-                                        default:
-                                            intent.putExtra("goods_type", "定制款");
-                                            break;
-                                    }
-
-                                    startActivity(intent);
-                                    break;
-                            }
-                        }
-                    });
-                    holder.getView(R.id.tv_after_sale).setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Intent intent = new Intent(getActivity(), AfterSalesActivity.class);
-                            intent.putExtra("order_id", dataBean.getId());
-                            startActivity(intent);
-                        }
-                    });
-
-                }
-            };
-
-            mLRecyclerViewAdapter = new LRecyclerViewAdapter(adapter);
-            rvGoods.setAdapter(mLRecyclerViewAdapter);
-
-            //刷新
-            rvGoods.setOnRefreshListener(new OnRefreshListener() {
-                @Override
-                public void onRefresh() {
-                    new Handler().postDelayed(new Runnable() {
-                        public void run() {
-                            isRefresh = true;
-                            page = 1;
-                            initData();
-                        }
-                    }, 1000);
-                }
-            });
-
-            //加载更多
-            rvGoods.setOnLoadMoreListener(new OnLoadMoreListener() {
-                @Override
-                public void onLoadMore() {
-                    RecyclerViewStateUtils.setFooterViewState(getActivity(), rvGoods,
-                            0, LoadingFooter.State.Loading, null);
-                    isLoadMore = true;
-                    page++;
-                    initData();
-                }
-            });
-
-
-            mLRecyclerViewAdapter.setOnItemClickListener(new OnItemClickListener() {
-                @Override
-                public void onItemClick(View view, int position) {
-                    Intent intent = new Intent(getActivity(), OrderDetailActivity.class);
-                    intent.putExtra("id", dataList.get(position).getId() + "");
-                    startActivity(intent);
+                    holder.setText(R.id.tv_order_count, "共" + dataBean.getList().get(0).getNum() + "件商品");
                 }
 
-            });
-        }
+                holder.setText(R.id.tv_order_price, "¥" + dataBean.getMoney());
+
+                switch (dataBean.getStatus()) {
+                    case 1:
+                        holder.setVisible(R.id.tv_after_sale, false);
+                        holder.setVisible(R.id.tv_order_control, true);
+                        holder.setVisible(R.id.tv_order_pay, true);
+                        holder.setText(R.id.tv_order_status, "待付款");
+                        holder.setText(R.id.tv_order_control, "取消订单");
+                        holder.setText(R.id.tv_order_pay, "付款");
+                        break;
+                    case 2:
+                        holder.setVisible(R.id.tv_after_sale, false);
+                        holder.setVisible(R.id.tv_order_control, true);
+                        holder.setVisible(R.id.tv_order_pay, false);
+                        holder.setText(R.id.tv_order_status, "待发货");
+                        holder.setText(R.id.tv_order_control, "提醒发货");
+                        break;
+                    case 3:
+                        holder.setVisible(R.id.tv_after_sale, false);
+                        holder.setVisible(R.id.tv_order_control, true);
+                        holder.setVisible(R.id.tv_order_pay, true);
+                        holder.setText(R.id.tv_order_status, "已发货");
+                        holder.setText(R.id.tv_after_sale, "售后服务");
+                        holder.setText(R.id.tv_order_control, "查看物流");
+                        holder.setText(R.id.tv_order_pay, "确认收货");
+                        break;
+                    case 4:
+                        holder.setVisible(R.id.tv_after_sale, false);
+                        holder.setVisible(R.id.tv_order_control, true);
+
+                        holder.setText(R.id.tv_order_status, "已完成");
+                        holder.setText(R.id.tv_after_sale, "售后服务");
+                        holder.setText(R.id.tv_order_control, "再次购买");
+                        //订单未评价
+                        if (dataBean.getComment_id() == 0) {
+                            holder.setVisible(R.id.tv_order_pay, true);
+                            holder.setText(R.id.tv_order_pay, "评价");
+                        } else {
+                            holder.setVisible(R.id.tv_order_pay, false);
+                        }
+                        break;
+                    case -2:
+                        holder.setVisible(R.id.tv_after_sale, false);
+                        holder.setVisible(R.id.tv_order_control, true);
+                        holder.setVisible(R.id.tv_order_pay, false);
+                        holder.setText(R.id.tv_order_status, "已取消");
+                        holder.setText(R.id.tv_order_control, "删除订单");
+                        break;
+                }
+
+                holder.getView(R.id.tv_order_control).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        switch (dataBean.getStatus()) {
+                            case 1:
+                                cancelOrder(dataBean.getId());
+                                break;
+                            case 2:
+                                ToastUtils.showToast(getActivity(), "已提醒商家发货，请耐心等待");
+                                break;
+                            case 3:
+                                Intent intent = new Intent(getActivity(), LogisticsActivity.class);
+                                intent.putExtra("number", dataBean.getEms_no());
+                                intent.putExtra("company", dataBean.getEms_com());
+                                intent.putExtra("company_name", dataBean.getEms_com_name());
+                                intent.putExtra("img_url", dataBean.getList().get(0).getGoods_thumb());
+                                startActivity(intent);
+                                break;
+                            case 4:
+                                buyAgain(dataBean.getId());
+                                break;
+                            case -2:
+                                deleteOrder(dataBean.getId(), position - 1);
+                                break;
+                        }
+                    }
+                });
+                holder.getView(R.id.tv_order_pay).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        switch (dataBean.getStatus()) {
+                            case 1:
+                                PayOrderUtils payOrderUtil = new PayOrderUtils(getActivity(),
+                                        dataBean.getMoney(), dataBean.getId() + "");
+                                payOrderUtil.payMoney();
+                                break;
+                            case 3:
+                                confirmReceive(dataBean.getId());
+                                break;
+                            case 4:
+                                //订单评价
+                                Intent intent = new Intent(getActivity(), EvaluateActivity.class);
+                                intent.putExtra("order_id", String.valueOf(dataBean.getId()));
+                                intent.putExtra("goods_id", String.valueOf(dataBean.getList().get(0).getGoods_id()));
+                                intent.putExtra("cart_id", String.valueOf(dataBean.getList().get(0).getId()));
+                                intent.putExtra("goods_img", dataBean.getList().get(0).getGoods_thumb());
+                                intent.putExtra("goods_name", dataBean.getList().get(0).getGoods_name());
+
+                                switch (dataBean.getList().get(0).getGoods_type()) {
+                                    case 2:
+                                        intent.putExtra("goods_type", dataBean.getList().get(0).getSize_content());
+                                        break;
+                                    default:
+                                        intent.putExtra("goods_type", "定制款");
+                                        break;
+                                }
+
+                                startActivity(intent);
+                                break;
+                        }
+                    }
+                });
+                holder.getView(R.id.tv_after_sale).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(getActivity(), AfterSalesActivity.class);
+                        intent.putExtra("order_id", dataBean.getId());
+                        startActivity(intent);
+                    }
+                });
+
+            }
+        };
+
+        mLRecyclerViewAdapter = new LRecyclerViewAdapter(adapter);
+        rvGoods.setAdapter(mLRecyclerViewAdapter);
+
+        //刷新
+        rvGoods.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                new Handler().postDelayed(new Runnable() {
+                    public void run() {
+                        isRefresh = true;
+                        page = 1;
+                        initData();
+                    }
+                }, 1000);
+            }
+        });
+
+        //加载更多
+        rvGoods.setOnLoadMoreListener(new OnLoadMoreListener() {
+            @Override
+            public void onLoadMore() {
+                RecyclerViewStateUtils.setFooterViewState(getActivity(), rvGoods,
+                        0, LoadingFooter.State.Loading, null);
+                isLoadMore = true;
+                page++;
+                initData();
+            }
+        });
+
+
+        mLRecyclerViewAdapter.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Intent intent = new Intent(getActivity(), OrderDetailActivity.class);
+                intent.putExtra("id", dataList.get(position).getId() + "");
+                startActivity(intent);
+            }
+
+        });
 
     }
 

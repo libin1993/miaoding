@@ -70,11 +70,6 @@ public class MyApplication extends Application {
 
         Unicorn.init(this, "e98a79aca99f25ebf9bacbc8c334b76b", options(), new FrescoImageLoader(this));
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            StrictMode.VmPolicy.Builder builder1 = new StrictMode.VmPolicy.Builder();
-            StrictMode.setVmPolicy(builder1.build());
-        }
-
     }
 
 

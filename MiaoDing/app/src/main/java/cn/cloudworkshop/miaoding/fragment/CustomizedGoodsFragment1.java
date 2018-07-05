@@ -87,8 +87,6 @@ public class CustomizedGoodsFragment1 extends BaseFragment {
      * 加载商品种类
      */
     private void initTitle() {
-        loadingView.setIndicator(new BallSpinFadeLoaderIndicator());
-        loadingView.setIndicatorColor(Color.GRAY);
         OkHttpUtils
                 .get()
                 .url(Constant.GOODS_TITLE)

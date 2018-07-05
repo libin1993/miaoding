@@ -163,8 +163,6 @@ public class ChangeOrderActivity extends BaseActivity implements EasyPermissions
      * 加载视图
      */
     private void initView() {
-        loadingView.setIndicator(new BallSpinFadeLoaderIndicator());
-        loadingView.setIndicatorColor(Color.GRAY);
         isSelected = new boolean[orderBean.getData().getCar_list().size()];
         for (int i = 0; i < orderBean.getData().getCar_list().size(); i++) {
             isSelected[i] = false;

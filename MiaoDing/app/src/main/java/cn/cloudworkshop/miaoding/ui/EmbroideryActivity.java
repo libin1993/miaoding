@@ -176,9 +176,6 @@ public class EmbroideryActivity extends BaseActivity implements EasyPermissions.
         getData();
         initData();
         selectMore();
-
-        loadingView.setIndicator(new BallSpinFadeLoaderIndicator());
-        loadingView.setIndicatorColor(Color.GRAY);
     }
 
     /**
