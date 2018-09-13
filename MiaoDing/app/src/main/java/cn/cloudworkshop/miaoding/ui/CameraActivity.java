@@ -22,6 +22,7 @@ import com.wang.avi.indicators.BallSpinFadeLoaderIndicator;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.opencv.android.CameraBridgeViewBase;
 
 import java.io.File;
 import java.io.IOException;

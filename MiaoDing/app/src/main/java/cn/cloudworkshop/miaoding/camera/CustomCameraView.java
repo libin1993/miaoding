@@ -92,7 +92,6 @@ public class CustomCameraView extends FrameLayout implements SurfaceHolder.Callb
 
         if (camera != null) {
             Camera.Parameters p = camera.getParameters();
-
             return p.getMaxZoom();
         }
 
@@ -173,8 +172,10 @@ public class CustomCameraView extends FrameLayout implements SurfaceHolder.Callb
                     if (arg0) {
                         updateCameraParameters();// 实现相机的参数初始化
                     }
+
                 }
             });
+
         }
 
     }
@@ -232,6 +233,7 @@ public class CustomCameraView extends FrameLayout implements SurfaceHolder.Callb
                     p.setPreviewSize(previewSize.width, previewSize.height);
                 }
 
+
                 List<Size> supportedPictureSizes = p.getSupportedPictureSizes();
                 Size bestPictureSize = findBestPictureSize(supportedPictureSizes);
                 p.setPictureSize(bestPictureSize.width, bestPictureSize.height);
@@ -243,7 +245,6 @@ public class CustomCameraView extends FrameLayout implements SurfaceHolder.Callb
                     frameLayout.setAspectRatio((double) previewSize.width
                             / previewSize.height);
                 }
-
                 if (context.getResources().getConfiguration().orientation != Configuration.ORIENTATION_LANDSCAPE) {
                     camera.setDisplayOrientation(90);
                 }
@@ -405,6 +406,7 @@ public class CustomCameraView extends FrameLayout implements SurfaceHolder.Callb
         } catch (Exception ignored) {
         }
         camera.autoFocus(this);
+
     }
 
     /**

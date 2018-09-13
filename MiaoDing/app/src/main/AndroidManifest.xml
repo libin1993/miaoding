@@ -62,8 +62,12 @@
             android:value="${UMENG_CHANNEL_VALUE}"/>
 
         <!-- 填写您从Mob开发者后台中得到的Appkey和AppSecret -->
-        <meta-data android:name="Mob-AppKey" android:value="188b0b9b49186"/>
-        <meta-data android:name="Mob-AppSecret" android:value="b1509ef6babc997da927e069b5bb877e"/>
+        <meta-data
+            android:name="Mob-AppKey"
+            android:value="188b0b9b49186"/>
+        <meta-data
+            android:name="Mob-AppSecret"
+            android:value="b1509ef6babc997da927e069b5bb877e"/>
 
         <provider
             android:name="android.support.v4.content.FileProvider"
@@ -77,14 +81,12 @@
                 tools:replace="android:resource"/>
         </provider>
 
-        <activity
-            android:name=".ui.SplashActivity">
+        <activity android:name=".ui.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-
         </activity>
         <activity
             android:name=".ui.MainActivity"
@@ -113,7 +115,6 @@
         <activity android:name="me.iwf.photopicker.PhotoPagerActivity"/>
         <activity android:name=".ui.AboutUsActivity"/>
         <activity android:name=".ui.OrderDetailActivity"/>
-
         <activity
             android:name="com.mob.tools.MobUIShell"
             android:configChanges="keyboardHidden|orientation|screenSize"
@@ -247,7 +248,6 @@
                 <action android:name="com.tencent.mm.plugin.openapi.Intent.ACTION_REFRESH_WXAPP"/>
             </intent-filter>
         </receiver>
-
     </application>
 
 </manifest>

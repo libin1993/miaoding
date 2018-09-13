@@ -70,6 +70,7 @@ public class RecyclerItemDecoration extends RecyclerView.ItemDecoration {
         this.mHorizontalDivider = horizontalDivider;
     }
 
+
     @Override
     public void onDraw(Canvas c, RecyclerView parent, RecyclerView.State state) {
         drawHorizontalDividers(c, parent);

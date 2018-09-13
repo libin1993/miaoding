@@ -239,25 +239,33 @@ public class NewCameraActivity extends BaseActivity implements SensorEventListen
     Handler handler = new Handler(new Handler.Callback() {
         @Override
         public boolean handleMessage(Message msg) {
-//            ToastUtils.showToast(NewCameraActivity.this, String.valueOf(msg.what));
+
             switch (msg.what) {
+                case -1:
+                    takeFail("暂未检测到人体轮廓");
+                    break;
                 case 0:
-                    takeFail();
+                    takeFail("拍摄距离过近，请保持三米左右距离拍摄全身照片");
                     break;
                 case 1:
                     takeSuccess();
                     break;
+                case 2:
+                    takeFail("拍摄距离过远，请保持三米左右距离拍摄全身照片");
+                    break;
             }
+
             return false;
         }
     });
 
+
     /**
      * 拍摄失败
      */
-    private void takeFail() {
+    private void takeFail(String msg) {
         loadingView.smoothToHide();
-        ToastUtils.showToast(NewCameraActivity.this, "拍摄失败，请保持三米左右距离拍摄全身照片");
+        ToastUtils.showToast(NewCameraActivity.this, msg);
         imgTakePhoto.setVisibility(View.VISIBLE);
     }
 
@@ -322,11 +330,17 @@ public class NewCameraActivity extends BaseActivity implements SensorEventListen
 //                Imgcodecs.imwrite(Environment.getExternalStorageDirectory().getAbsolutePath() +
 //                        "/CloudWorkshop/people" + System.currentTimeMillis() + ".jpg", gray); // 将已经完成检测的Mat对象写出，参数：输出路径，检测完毕的Mat对象。
                 double distance = Float.parseFloat(height) * 0.8973 * gray.height() / maxHeight;
-                //拍摄距离在2.5米和4米之间
-                if (distance >= 250 && distance <= 400) {
-                    handler.sendEmptyMessage(1);
+                //拍摄距离在2.7米和4米之间
+                if (maxHeight == 0) {
+                    handler.sendEmptyMessage(-1);
                 } else {
-                    handler.sendEmptyMessage(0);
+                    if (distance < 270) {
+                        handler.sendEmptyMessage(0);
+                    } else if (distance <= 400) {
+                        handler.sendEmptyMessage(1);
+                    } else {
+                        handler.sendEmptyMessage(2);
+                    }
                 }
             }
         }).start();
@@ -534,5 +548,6 @@ public class NewCameraActivity extends BaseActivity implements SensorEventListen
 
 
     }
+
 
 }

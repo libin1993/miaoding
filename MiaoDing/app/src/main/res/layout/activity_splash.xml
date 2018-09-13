@@ -2,14 +2,49 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@android:color/white"
-                android:orientation="vertical">
+                android:background="@android:color/white">
+
+    <RelativeLayout
+        android:id="@+id/rl_splash_page"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/vp_splash_page"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </android.support.v4.view.ViewPager>
+
+        <RadioGroup
+            android:id="@+id/rgs_splash"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="15dp"
+            android:orientation="horizontal">
+        </RadioGroup>
+
+        <ImageView
+            android:id="@+id/iv_start_app"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/rgs_splash"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="27dp"
+            android:scaleType="center"
+            android:src="@mipmap/btn_start"
+            android:visibility="gone"/>
+
+    </RelativeLayout>
 
     <ImageView
         android:id="@+id/img_splash"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:scaleType="centerCrop"
         android:src="@mipmap/bg_splash"
-        android:scaleType="centerCrop"/>
+        android:visibility="gone"/>
 
 </RelativeLayout>
