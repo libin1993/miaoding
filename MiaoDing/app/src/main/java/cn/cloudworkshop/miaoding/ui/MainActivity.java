@@ -224,6 +224,7 @@ public class MainActivity extends BaseActivity implements EasyPermissions.Permis
         }
     }
 
+
     /**
      * 检测更新
      */

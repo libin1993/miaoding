@@ -233,6 +233,7 @@
         <activity android:name=".ui.CameraFormActivity"/>
         <activity android:name=".ui.AddMeasureActivity"/>
         <activity android:name=".ui.MeasureDataActivity"/>
+        <activity android:name=".ui.TestActivity"/>
 
         <service android:name="com.amap.api.location.APSService"/>
         <service

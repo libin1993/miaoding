@@ -25,9 +25,9 @@ public class Constant {
     public static final String DESIGNER_WORKS = HOST_INDEX + "cobbler_goods_list";
     //商品详情
     public static final String GOODS_DETAILS = HOST_INDEX + "new_goods_detailNew";
-    //定制配件（）
+    //定制配件（老版）
     public static final String CUSTOMIZE = HOST_INDEX + "customize";
-    //定制配件（最新版版）
+    //定制配件（最新版）
     public static final String CUSTOMIZE_NEW = HOST_INDEX + "customizenew";
     //定制配件（新版）
     public static final String NEW_CUSTOMIZE = HOST_INDEX + "new_customize";

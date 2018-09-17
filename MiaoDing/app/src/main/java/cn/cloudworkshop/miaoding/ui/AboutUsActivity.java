@@ -127,8 +127,7 @@ public class AboutUsActivity extends BaseActivity {
         //下载完成后通知栏可见
         request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
         //当前网络状态
-        ConnectivityManager mConnectivityManager = (ConnectivityManager)
-                getSystemService(Context.CONNECTIVITY_SERVICE);
+        ConnectivityManager mConnectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = null;
         if (mConnectivityManager != null) {
             networkInfo = mConnectivityManager.getActiveNetworkInfo();

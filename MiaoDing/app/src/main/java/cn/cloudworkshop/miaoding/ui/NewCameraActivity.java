@@ -132,6 +132,9 @@ public class NewCameraActivity extends BaseActivity implements SensorEventListen
     //防止连续点击
     private boolean isClickable = true;
 
+    private double h;
+    private double d;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -254,7 +257,7 @@ public class NewCameraActivity extends BaseActivity implements SensorEventListen
                     takeFail("拍摄距离过远，请保持三米左右距离拍摄全身照片");
                     break;
             }
-
+//            ToastUtils.showToast(NewCameraActivity.this, h + "," + d);
             return false;
         }
     });
@@ -298,12 +301,12 @@ public class NewCameraActivity extends BaseActivity implements SensorEventListen
                 Utils.bitmapToMat(bitmap, mat);
                 bitmap.recycle();
                 //压缩图片
-                Mat detMat = new Mat();
-                Imgproc.resize(mat, detMat, new Size(mat.width() / 2, mat.height() / 2));
+//                Mat detMat = new Mat();
+//                Imgproc.resize(mat, detMat, new Size(mat.width() / 2, mat.height() / 2));
                 //建立灰度图像存储空间
-                Mat gray = new Mat(detMat.size(), CvType.CV_8U);
+                Mat gray = new Mat(mat.size(), CvType.CV_8U);
                 //彩色图像灰度化
-                Imgproc.cvtColor(detMat, gray, Imgproc.COLOR_BGR2GRAY);
+                Imgproc.cvtColor(mat, gray, Imgproc.COLOR_BGR2GRAY);
                 //人体轮廓检测
                 HOGDescriptor hogDescriptor = new HOGDescriptor();
                 hogDescriptor.setSVMDetector(HOGDescriptor.getDefaultPeopleDetector());
@@ -327,11 +330,14 @@ public class NewCameraActivity extends BaseActivity implements SensorEventListen
                     }
                 }
 
-//                Imgcodecs.imwrite(Environment.getExternalStorageDirectory().getAbsolutePath() +
-//                        "/CloudWorkshop/people" + System.currentTimeMillis() + ".jpg", gray); // 将已经完成检测的Mat对象写出，参数：输出路径，检测完毕的Mat对象。
+//                Imgcodecs.imwrite(Environment.getExternalStorageDirectory().getAbsolutePath()
+//                        + "/CloudWorkshop/people" + System.currentTimeMillis() + ".jpg", gray); // 将已经完成检测的Mat对象写出，参数：输出路径，检测完毕的Mat对象。
                 double distance = Float.parseFloat(height) * 0.8973 * gray.height() / maxHeight;
                 //拍摄距离在2.7米和4米之间
-                if (maxHeight == 0) {
+                h = maxHeight;
+                d = distance;
+
+                if (maxHeight < 400) {
                     handler.sendEmptyMessage(-1);
                 } else {
                     if (distance < 270) {
@@ -551,3 +557,4 @@ public class NewCameraActivity extends BaseActivity implements SensorEventListen
 
 
 }
+

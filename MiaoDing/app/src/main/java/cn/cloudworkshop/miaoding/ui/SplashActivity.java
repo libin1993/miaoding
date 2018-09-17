@@ -39,7 +39,7 @@ public class SplashActivity extends BaseActivity {
     ImageView imgSplash;
     @BindView(R.id.iv_start_app)
     ImageView ivStart;
-    
+
     //引导图当前页
     private int currentItem = 0;
 
