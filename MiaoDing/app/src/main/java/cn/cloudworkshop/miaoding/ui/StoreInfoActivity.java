@@ -179,7 +179,7 @@ public class StoreInfoActivity extends BaseActivity implements EasyPermissions.P
                     login.putExtra("page_name", "店铺");
                     startActivity(login);
                 } else {
-                    Intent intent = new Intent(this, LoginActivity.class);
+                    Intent intent = new Intent(this, StoreOrderActivity.class);
                     intent.putExtra("shop_id", storeBean.getId());
                     intent.putExtra("shop_name", storeBean.getName());
                     intent.putExtra("shop_icon", storeBean.getImg());

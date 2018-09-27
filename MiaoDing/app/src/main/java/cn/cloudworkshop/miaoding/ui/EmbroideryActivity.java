@@ -543,14 +543,6 @@ public class EmbroideryActivity extends BaseActivity implements EasyPermissions.
         etEmbroideryContent.setFilters(new InputFilter[]{filter});
 
 
-        etEmbroideryContent.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                scrollUp();
-                return false;
-            }
-        });
-
         etEmbroideryContent.addTextChangedListener(new TextWatcher() {
             private CharSequence temp;
             private int selectionStart;
@@ -611,18 +603,6 @@ public class EmbroideryActivity extends BaseActivity implements EasyPermissions.
                 }
             }
         }
-    }
-
-    /**
-     * 使ScrollView指向底部
-     */
-    private void scrollUp() {
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                scrollView.scrollTo(0, scrollView.getHeight());
-            }
-        }, 300);
     }
 
     @OnClick({R.id.img_header_back, R.id.tv_header_next, R.id.tv_confirm_embroidery,
@@ -926,8 +906,8 @@ public class EmbroideryActivity extends BaseActivity implements EasyPermissions.
      */
     private boolean isMeasureData() {
         return !TextUtils.isEmpty(etUsername.getText().toString().trim())
-                && !TextUtils.isEmpty(etUserHeight.getText().toString().trim())
-                && !TextUtils.isEmpty(etUserWeight.getText().toString().trim());
+                && DisplayUtils.isNumberDecimal(etUserHeight.getText().toString().trim())
+                && DisplayUtils.isNumberDecimal(etUserWeight.getText().toString().trim());
     }
 
     /**
@@ -987,3 +967,5 @@ public class EmbroideryActivity extends BaseActivity implements EasyPermissions.
     }
 
 }
+
+

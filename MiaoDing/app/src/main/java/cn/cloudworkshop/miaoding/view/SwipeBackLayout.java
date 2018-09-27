@@ -192,8 +192,7 @@ public class SwipeBackLayout extends FrameLayout {
 		super.dispatchDraw(canvas);
 		if (mShadowDrawable != null && mContentView != null) {
 
-			int left = mContentView.getLeft()
-					- mShadowDrawable.getIntrinsicWidth();
+			int left = mContentView.getLeft() - mShadowDrawable.getIntrinsicWidth();
 			int right = left + mShadowDrawable.getIntrinsicWidth();
 			int top = mContentView.getTop();
 			int bottom = mContentView.getBottom();

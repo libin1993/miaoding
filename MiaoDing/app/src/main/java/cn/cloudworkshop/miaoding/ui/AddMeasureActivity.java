@@ -34,6 +34,7 @@ import butterknife.OnClick;
 import cn.cloudworkshop.miaoding.R;
 import cn.cloudworkshop.miaoding.base.BaseActivity;
 import cn.cloudworkshop.miaoding.constant.Constant;
+import cn.cloudworkshop.miaoding.utils.DisplayUtils;
 import cn.cloudworkshop.miaoding.utils.LogUtils;
 import cn.cloudworkshop.miaoding.utils.PermissionUtils;
 import cn.cloudworkshop.miaoding.utils.SharedPreferencesUtils;
@@ -238,8 +239,8 @@ public class AddMeasureActivity extends BaseActivity implements EasyPermissions.
     private boolean isMeasureData() {
 
         return !TextUtils.isEmpty(etMeasureName.getText().toString().trim())
-                && !TextUtils.isEmpty(etMeasureHeight.getText().toString().trim())
-                && !TextUtils.isEmpty(etMeasureWeight.getText().toString().trim());
+                && DisplayUtils.isNumberDecimal(etMeasureHeight.getText().toString().trim())
+                && DisplayUtils.isNumberDecimal(etMeasureWeight.getText().toString().trim());
     }
 
     /**

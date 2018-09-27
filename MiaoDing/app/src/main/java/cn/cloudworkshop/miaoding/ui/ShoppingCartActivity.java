@@ -470,7 +470,7 @@ public class ShoppingCartActivity extends BaseActivity {
                                     customItemBean.setDefault_img(cartDetails.getData().getGoods_thumb());
                                     break;
                                 case 1:
-                                    customItemBean.setDefault_img(cartDetails.getData().getDefault_img());
+                                    customItemBean.setDefault_img(cartDetails.getData().getGoods_thumb());
                                     break;
                             }
 

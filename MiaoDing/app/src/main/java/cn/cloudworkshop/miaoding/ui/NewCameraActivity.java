@@ -558,3 +558,9 @@ public class NewCameraActivity extends BaseActivity implements SensorEventListen
 
 }
 
+
+
+
+
+
+

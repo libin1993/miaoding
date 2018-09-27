@@ -23,6 +23,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.cloudworkshop.miaoding.R;
 import cn.cloudworkshop.miaoding.base.BaseActivity;
+import cn.cloudworkshop.miaoding.utils.DisplayUtils;
 import cn.cloudworkshop.miaoding.utils.PermissionUtils;
 import cn.cloudworkshop.miaoding.utils.ToastUtils;
 import pub.devrel.easypermissions.EasyPermissions;
@@ -149,8 +150,8 @@ public class CameraFormActivity extends BaseActivity implements EasyPermissions.
     private boolean isMeasureData() {
 
         return !TextUtils.isEmpty(etUsername.getText().toString().trim())
-                && !TextUtils.isEmpty(etHeight.getText().toString().trim())
-                && !TextUtils.isEmpty(etWeight.getText().toString().trim());
+                && DisplayUtils.isNumberDecimal(etHeight.getText().toString().trim())
+                && DisplayUtils.isNumberDecimal(etWeight.getText().toString().trim());
     }
 
     /**

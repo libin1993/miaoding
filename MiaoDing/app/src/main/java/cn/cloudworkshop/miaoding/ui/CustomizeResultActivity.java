@@ -89,6 +89,7 @@ public class CustomizeResultActivity extends BaseActivity {
     RelativeLayout rlCustomResult;
 
     //1:直接购买 2：加入购物袋
+
     private int type;
 
     private float x1 = 0;

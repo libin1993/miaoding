@@ -222,5 +222,4 @@ public class StoreOrderActivity extends BaseActivity {
                 });
     }
 
-
 }

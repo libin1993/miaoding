@@ -5,12 +5,14 @@ import android.app.Activity;
 import android.content.Context;
 
 import android.graphics.Typeface;
+import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.WindowManager;
 import android.widget.RadioGroup;
 
 import java.text.DecimalFormat;
+import java.util.regex.Pattern;
 
 /**
  * Author：Libin on 2017-04-07 13:24
@@ -99,4 +101,39 @@ public class DisplayUtils {
     public static String decimalFormat(Float value) {
         return new DecimalFormat("0.00").format(value);
     }
+
+    /**
+     * 判断字符串是否是数字
+     */
+    public static boolean isNumberDecimal(String value) {
+        if (!TextUtils.isEmpty(value)) {
+            return isInteger(value) || isDouble(value);
+        }
+        return false;
+    }
+
+    /**
+     * 判断字符串是否是整数
+     */
+    public static boolean isInteger(String value) {
+        try {
+            Integer.parseInt(value);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
+    /**
+     * 判断字符串是否是浮点数
+     */
+    public static boolean isDouble(String value) {
+        try {
+            Double.parseDouble(value);
+            return value.contains(".");
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
 }

@@ -149,6 +149,7 @@ public class TestActivity extends BaseActivity implements CameraBridgeViewBase.C
                 }
             }
             LogUtils.log(maxHeight+"");
+
             if (rMax != null) {
                 rMax.x += Math.round(rMax.width * 0.1);
                 rMax.width = (int) Math.round(rMax.width * 0.8);
@@ -159,8 +160,8 @@ public class TestActivity extends BaseActivity implements CameraBridgeViewBase.C
 //                Imgcodecs.imwrite(Environment.getExternalStorageDirectory().getAbsolutePath()
 //                        + "/CloudWorkshop/people" + System.currentTimeMillis() + ".jpg", mat);
             }
-
         }
-
     }
 }
+
+
