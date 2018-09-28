@@ -156,7 +156,7 @@ public class FragmentTabUtils implements TabLayout.OnTabSelectedListener {
             }
         }
         //提交事务
-        ft.commit();
+        ft.commitAllowingStateLoss();
 
     }
 

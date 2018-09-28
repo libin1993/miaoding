@@ -4,7 +4,6 @@ import android.Manifest;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -29,7 +28,6 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.umeng.analytics.MobclickAgent;
 import com.wang.avi.AVLoadingIndicatorView;
-import com.wang.avi.indicators.BallSpinFadeLoaderIndicator;
 import com.zhy.adapter.recyclerview.CommonAdapter;
 import com.zhy.adapter.recyclerview.MultiItemTypeAdapter;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
@@ -57,7 +55,6 @@ import cn.cloudworkshop.miaoding.constant.Constant;
 import cn.cloudworkshop.miaoding.utils.CharacterUtils;
 import cn.cloudworkshop.miaoding.utils.DisplayUtils;
 import cn.cloudworkshop.miaoding.utils.GsonUtils;
-import cn.cloudworkshop.miaoding.utils.LogUtils;
 import cn.cloudworkshop.miaoding.utils.PermissionUtils;
 import cn.cloudworkshop.miaoding.utils.SharedPreferencesUtils;
 import cn.cloudworkshop.miaoding.utils.ToastUtils;
@@ -72,12 +69,6 @@ import pub.devrel.easypermissions.EasyPermissions;
  */
 
 public class EmbroideryActivity extends BaseActivity implements EasyPermissions.PermissionCallbacks {
-    @BindView(R.id.img_header_back)
-    ImageView imgHeaderBack;
-    @BindView(R.id.tv_header_title)
-    TextView tvHeaderTitle;
-    @BindView(R.id.tv_header_next)
-    TextView tvHeaderNext;
     @BindView(R.id.rv_embroidery_position)
     RecyclerView rvEmbroideryPosition;
     @BindView(R.id.rv_embroidery_font)
@@ -132,6 +123,10 @@ public class EmbroideryActivity extends BaseActivity implements EasyPermissions.
     ImageView imgCustomGuide;
     @BindView(R.id.et_username_measure)
     EditText etUsername;
+    @BindView(R.id.img_embroidery_back)
+    ImageView ivBack;
+    @BindView(R.id.tv_more_customize)
+    TextView tvMoreCustomize;
 
     private EmbroideryBean embroideryBean;
     //当前绣花位置
@@ -170,9 +165,7 @@ public class EmbroideryActivity extends BaseActivity implements EasyPermissions.
         setContentView(R.layout.activity_embroidery);
         ButterKnife.bind(this);
         EventBus.getDefault().register(this);
-        tvHeaderTitle.setText("个性定制");
-        tvHeaderNext.setVisibility(View.VISIBLE);
-        tvHeaderNext.setText("更多");
+
         getData();
         initData();
         selectMore();
@@ -605,15 +598,15 @@ public class EmbroideryActivity extends BaseActivity implements EasyPermissions.
         }
     }
 
-    @OnClick({R.id.img_header_back, R.id.tv_header_next, R.id.tv_confirm_embroidery,
+    @OnClick({R.id.img_embroidery_back,R.id.tv_more_customize, R.id.tv_confirm_embroidery,
             R.id.tv_add_shop_cart, R.id.img_load_error, R.id.tv_photo_help, R.id.rl_user_photo,
             R.id.img_custom_guide})
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.img_header_back:
+            case R.id.img_embroidery_back:
                 finish();
                 break;
-            case R.id.tv_header_next:
+            case R.id.tv_more_customize:
                 if (embroideryBean != null) {
                     if (isMeasureData()) {
                         if (!etUsername.getText().toString().trim().equals(name)
@@ -688,7 +681,7 @@ public class EmbroideryActivity extends BaseActivity implements EasyPermissions.
                 .addParams("height", etUserHeight.getText().toString().trim())
                 .addParams("weight", etUserWeight.getText().toString().trim())
                 .addParams("is_index", "1")
-                .addParams("scale","1,1,1,1")
+                .addParams("scale", "1,1,1,1")
                 .build()
                 .execute(new StringCallback() {
                     @Override

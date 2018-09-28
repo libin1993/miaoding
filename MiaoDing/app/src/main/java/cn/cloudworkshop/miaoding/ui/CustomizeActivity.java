@@ -209,7 +209,7 @@ public class CustomizeActivity extends BaseActivity {
      * 加载视图
      */
     private void initView() {
-        tvHeaderTitle.setText("选版型");
+        tvHeaderTitle.setText("个性定制");
         animation = (AnimationDrawable) imgTailorIcon.getDrawable();
         ((RadioButton) rgsSelectOrientation.getChildAt(0)).setChecked(true);
         //进入页面显示默认部件图

@@ -6,16 +6,68 @@
                 android:background="@color/light_gray_ed"
                 android:fitsSystemWindows="true">
 
-    <include
-        layout="@layout/widget_header_layout"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="@color/dark_gray_15">
+
+        <ImageView
+            android:id="@+id/img_embroidery_back"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:paddingRight="20dp"
+            android:scaleType="center"
+            android:src="@mipmap/back_white"/>
+
+        <View
+            android:id="@+id/view_embroidery"
+            android:layout_width="1px"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"/>
+
+        <TextView
+            android:id="@+id/tv_embroidery_customize"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="32dp"
+            android:layout_toLeftOf="@id/view_embroidery"
+            android:text="快速定制"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
+            android:textStyle="bold"/>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="2dp"
+            android:background="@android:color/white"
+            android:layout_alignLeft="@id/tv_embroidery_customize"
+            android:layout_alignRight="@id/tv_embroidery_customize"
+            android:layout_below="@id/tv_embroidery_customize"
+            android:layout_marginTop="1dp"/>
+
+        <TextView
+            android:id="@+id/tv_more_customize"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="32dp"
+            android:layout_toRightOf="@id/view_embroidery"
+            android:gravity="center"
+            android:text="个性定制"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"/>
+
+
+    </RelativeLayout>
 
 
     <ScrollView
         android:id="@+id/scroll_embroidery"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="50dp"
         android:layout_marginTop="44dp"
+        android:layout_marginBottom="50dp"
         android:scrollbars="none">
 
         <LinearLayout
@@ -96,9 +148,9 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@null"
-                        android:inputType="numberDecimal"
                         android:gravity="center_vertical"
                         android:hint="净身高"
+                        android:inputType="numberDecimal"
                         android:maxLength="6"
                         android:paddingLeft="26dp"
                         android:singleLine="true"
@@ -130,8 +182,8 @@
                         android:layout_height="35dp"
                         android:layout_weight="1"
                         android:background="@null"
-                        android:inputType="numberDecimal"
                         android:hint="净体重"
+                        android:inputType="numberDecimal"
                         android:maxLength="6"
                         android:paddingLeft="26dp"
                         android:singleLine="true"
@@ -466,9 +518,9 @@
                         android:id="@+id/et_embroidery_content"
                         android:layout_width="match_parent"
                         android:layout_height="72dp"
-                        android:layout_marginBottom="12dp"
                         android:layout_marginLeft="12dp"
                         android:layout_marginRight="12dp"
+                        android:layout_marginBottom="12dp"
                         android:background="@drawable/bound_ed_ff"
                         android:hint="请输入绣花内容(不超过12个字符)"
                         android:maxLength="12"
