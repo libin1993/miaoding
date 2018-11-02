@@ -76,7 +76,7 @@ public class StoreListActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_store_list);
         ButterKnife.bind(this);
-        tvHeaderTitle.setText("定制店");
+        tvHeaderTitle.setText(R.string.store);
         initData();
 
     }
@@ -155,8 +155,8 @@ public class StoreListActivity extends BaseActivity {
                         .diskCacheStrategy(DiskCacheStrategy.SOURCE)
                         .into((ImageView) holder.getView(R.id.img_store));
                 holder.setText(R.id.tv_store_name, dataBean.getName());
-                holder.setText(R.id.tv_store_love_num, "粉丝： " + dataBean.getLovenum());
-                holder.setText(R.id.tv_address_store, "地址： " + dataBean.getAddress());
+                holder.setText(R.id.tv_store_love_num, getString(R.string.fans)+"： " + dataBean.getLovenum());
+                holder.setText(R.id.tv_address_store, getString(R.string.store_address)+"： " + dataBean.getAddress());
             }
 
         };

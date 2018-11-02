@@ -108,7 +108,7 @@ public class MessageDetailActivity extends BaseActivity {
                         holder.setText(R.id.tv_notice_time, DateUtils.getDate("yyyy-MM-dd HH:mm:ss",
                                 dataBean.getC_time()));
                         holder.setText(R.id.tv_notice_content, dataBean.getContent());
-                        holder.setText(R.id.tv_notice_date, DateUtils.getDate("yyyy年MM月dd日",
+                        holder.setText(R.id.tv_notice_date, DateUtils.getDate(getString(R.string.year_month_day),
                                 dataBean.getC_time()));
                         break;
                     case 2:
@@ -124,7 +124,7 @@ public class MessageDetailActivity extends BaseActivity {
                     case 3:
                         holder.setText(R.id.tv_logistics_date, DateUtils.getDate("yyyy-MM-dd HH:mm:ss",
                                 msgList.get(position).getC_time()));
-                        holder.setText(R.id.tv_logistics_title, "您的订单：" + dataBean.getTitle());
+                        holder.setText(R.id.tv_logistics_title, getString(R.string.your_order) + dataBean.getTitle());
                         Glide.with(MessageDetailActivity.this)
                                 .load(Constant.IMG_HOST + dataBean.getImg())
                                 .diskCacheStrategy(DiskCacheStrategy.SOURCE)
@@ -132,12 +132,12 @@ public class MessageDetailActivity extends BaseActivity {
                         logisticsStr = dataBean.getContent().split(",");
                         holder.setText(R.id.tv_logistics_name, logisticsStr[0]);
                         if (logisticsStr[1].equals("1")) {
-                            holder.setText(R.id.tv_logistics_size, "定制款");
+                            holder.setText(R.id.tv_logistics_size, getString(R.string.customize_type));
                         } else {
                             holder.setText(R.id.tv_logistics_size, logisticsStr[1]);
                         }
 
-                        holder.setText(R.id.tv_logistics_company, "配送单位：" + logisticsStr[2]);
+                        holder.setText(R.id.tv_logistics_company, getString(R.string.send_company) + logisticsStr[2]);
                         break;
                     default:
                         break;
@@ -179,15 +179,15 @@ public class MessageDetailActivity extends BaseActivity {
         switch (type) {
             case 1:
                 layoutId = R.layout.listitem_notice_message;
-                tvHeaderTitle.setText("通知消息");
+                tvHeaderTitle.setText(R.string.notic_msg);
                 break;
             case 2:
                 layoutId = R.layout.listitem_select_message;
-                tvHeaderTitle.setText("活动精选");
+                tvHeaderTitle.setText(R.string.activity_pop);
                 break;
             case 3:
                 layoutId = R.layout.listitem_logistics_message;
-                tvHeaderTitle.setText("物流通知");
+                tvHeaderTitle.setText(R.string.logistics_notice);
                 break;
             default:
                 break;

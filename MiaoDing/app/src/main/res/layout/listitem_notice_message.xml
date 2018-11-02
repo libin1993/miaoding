@@ -27,7 +27,7 @@
             android:id="@+id/tv_notice_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="亲爱的用户："
+            android:text="@string/dear_member"
             android:textColor="@color/dark_gray_22"
             android:textSize="15sp"/>
 
@@ -53,7 +53,7 @@
             android:id="@+id/tv_notice_company"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="云工场科技有限公司"
+            android:text="@string/company_name"
             android:textColor="@color/dark_gray_22"
             android:textSize="13sp"
             android:layout_gravity="right"

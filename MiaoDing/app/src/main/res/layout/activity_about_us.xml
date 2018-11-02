@@ -38,7 +38,7 @@
             android:layout_marginLeft="20dp"
             android:layout_weight="1"
             android:gravity="center_vertical"
-            android:text="检查更新"
+            android:text="@string/check_update"
             android:textColor="@color/dark_gray_22"
             android:textSize="15sp"/>
 
@@ -47,7 +47,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
-            android:text="有新版本！"
+            android:text="@string/new_version"
             android:textColor="@color/dark_red"
             android:textSize="14sp"
             android:visibility="gone"/>
@@ -77,7 +77,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
-        android:text="杭州云工场科技有限公司"
+        android:text="@string/company_name"
         android:textColor="@android:color/darker_gray"/>
 
 </RelativeLayout>

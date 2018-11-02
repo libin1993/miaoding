@@ -121,8 +121,8 @@ public class DesignerDetailActivity extends BaseActivity {
         List<String> titleList = new ArrayList<>();
         List<Fragment> fragmentList = new ArrayList<>();
 
-        titleList.add("介绍");
-        titleList.add("作品");
+        titleList.add(getString(R.string.introduct));
+        titleList.add(getString(R.string.works));
         fragmentList.add(DesignerStoryFragment.newInstance(designerBean.getData().getStory()));
         fragmentList.add(DesignerGoodsFragment.newInstance(designerBean.getData().getGoods_list()));
 

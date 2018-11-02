@@ -71,6 +71,7 @@ public class SubGoodsFragment extends BaseFragment {
     }
 
     private void getData() {
+
         Bundle bundle = getArguments();
         classifyId = bundle.getInt("classify_id");
     }

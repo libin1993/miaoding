@@ -34,7 +34,6 @@ public class RefreshHeader extends LinearLayout implements IRefreshHeader{
         initView();
     }
 
-
     private void initView(){
         // 初始情况，设置下拉刷新view高度为0
         LayoutParams lp = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);

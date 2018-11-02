@@ -80,7 +80,7 @@ public class UserHelpActivity extends BaseActivity implements EasyPermissions.Pe
      * 加载数据
      */
     private void initData() {
-        tvHeaderTitle.setText("帮助与反馈");
+        tvHeaderTitle.setText(R.string.feed_back);
         tvServerPhone.setText(MyApplication.serverPhone);
         OkHttpUtils.get()
                 .url(Constant.QUESTION_CLASSIFY)
@@ -199,6 +199,6 @@ public class UserHelpActivity extends BaseActivity implements EasyPermissions.Pe
 
     @Override
     public void onPermissionsDenied(int requestCode, List<String> perms) {
-        PermissionUtils.showPermissionDialog(this, "相机");
+        PermissionUtils.showPermissionDialog(this, getString(R.string.feed_back));
     }
 }

@@ -98,7 +98,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:text="关注店铺"
+                android:text="@string/focus_store"
                 android:textColor="@android:color/white"
                 android:textSize="13sp"/>
 
@@ -111,7 +111,7 @@
             android:layout_height="match_parent"
             android:layout_weight="222"
             android:gravity="center"
-            android:text="购买产品"
+            android:text="@string/buy_product"
             android:textColor="@android:color/white"
             android:background="#680000"
             android:textSize="13sp"/>

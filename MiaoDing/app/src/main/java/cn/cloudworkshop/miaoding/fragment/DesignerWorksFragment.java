@@ -49,8 +49,8 @@ public class DesignerWorksFragment extends BaseFragment {
         fragmentList.add(DesignerFragment.newInstance());
 
         ArrayList<CustomTabEntity> tabList = new ArrayList<>();
-        tabList.add(new MemberTabBean("腔调"));
-        tabList.add(new MemberTabBean("设计师"));
+        tabList.add(new MemberTabBean(getString(R.string.accent)));
+        tabList.add(new MemberTabBean(getString(R.string.designer)));
 
         tabWorks.setTabData(tabList);
 

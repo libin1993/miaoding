@@ -166,12 +166,12 @@ public class QuickLoginActivity extends BaseActivity {
 
             @Override
             public void onError(Platform platform, int i, Throwable throwable) {
-                ToastUtils.showToast(QuickLoginActivity.this, "登录失败");
+                ToastUtils.showToast(QuickLoginActivity.this, getString(R.string.login_fail));
             }
 
             @Override
             public void onCancel(Platform platform, int i) {
-                ToastUtils.showToast(QuickLoginActivity.this, "登录取消");
+                ToastUtils.showToast(QuickLoginActivity.this, getString(R.string.login_cancel));
             }
         });
         // 参数null表示获取当前授权用户资料

@@ -80,7 +80,7 @@ public class AllEvaluationActivity extends BaseActivity {
     }
 
     private void initData() {
-        tvHeaderTitle.setText("全部评价");
+        tvHeaderTitle.setText(R.string.all_evaluation);
         OkHttpUtils.get()
                 .url(Constant.EVALUATE_LIST)
                 .addParams("goods_id", goodsId)

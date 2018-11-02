@@ -101,10 +101,10 @@ public class AddAddressActivity extends BaseActivity {
     private void initView() {
         switch (type) {
             case 1:
-                tvHeaderTitle.setText("新增地址");
+                tvHeaderTitle.setText(R.string.add_receive_address);
                 break;
             case 2:
-                tvHeaderTitle.setText("编辑地址");
+                tvHeaderTitle.setText(R.string.edit_address);
                 Bundle bundle = getIntent().getExtras();
                 if (bundle != null) {
                     dataBean = (DeliveryAddressBean.DataBean) bundle.getSerializable("edit");
@@ -185,7 +185,7 @@ public class AddAddressActivity extends BaseActivity {
         if (!TextUtils.isEmpty(provinceAddress)) {
             task.execute(provinceAddress, cityAddress, countAddress);
         } else {
-            task.execute("北京市", "北京市", "朝阳区");
+            task.execute(getString(R.string.beijing), getString(R.string.beijing), getString(R.string.chaoyang));
         }
 
     }
@@ -199,7 +199,7 @@ public class AddAddressActivity extends BaseActivity {
                 TextUtils.isEmpty(tvSelectAddress.getText().toString().trim()) ||
                 TextUtils.isEmpty(etDetailedAddress.getText().toString().trim())) {
 
-            ToastUtils.showToast(this, "请完善个人信息");
+            ToastUtils.showToast(this, getString(R.string.input_personal_info));
         } else {
             if (PhoneNumberUtils.judgePhoneNumber(etAddNumber.getText().toString().trim())) {
                 Map<String, String> map = new HashMap<>();
@@ -236,7 +236,7 @@ public class AddAddressActivity extends BaseActivity {
                                         EventBus.getDefault().post("edit_success");
                                         switch (type) {
                                             case 1:
-                                                ToastUtils.showToast(AddAddressActivity.this, "添加成功");
+                                                ToastUtils.showToast(AddAddressActivity.this, getString(R.string.add_success));
                                                 Intent intent = new Intent();
                                                 ConfirmOrderBean.DataBean.AddressListBean addressListBean
                                                         = new ConfirmOrderBean.DataBean.AddressListBean();
@@ -256,7 +256,7 @@ public class AddAddressActivity extends BaseActivity {
                                                 finish();
                                                 break;
                                             case 2:
-                                                ToastUtils.showToast(AddAddressActivity.this, "修改成功");
+                                                ToastUtils.showToast(AddAddressActivity.this, getString(R.string.edit_success));
                                                 finish();
                                                 break;
                                         }
@@ -267,7 +267,7 @@ public class AddAddressActivity extends BaseActivity {
                             }
                         });
             } else {
-                ToastUtils.showToast(this, "请输入11位手机号码");
+                ToastUtils.showToast(this, getString(R.string.please_input_phone_number));
             }
         }
     }

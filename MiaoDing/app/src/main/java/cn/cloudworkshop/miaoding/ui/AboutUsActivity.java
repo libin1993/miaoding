@@ -61,8 +61,8 @@ public class AboutUsActivity extends BaseActivity {
      * 加载视图
      */
     private void initView() {
-        tvHeaderTitle.setText("关于妙定");
-        tvVersionName.setText("当前版本：" + getVersionName());
+        tvHeaderTitle.setText(R.string.about_app);
+        tvVersionName.setText(getString(R.string.current_version) + getVersionName());
         if (!TextUtils.isEmpty(MyApplication.updateUrl)) {
             tvNewVersion.setVisibility(View.VISIBLE);
         }
@@ -89,10 +89,10 @@ public class AboutUsActivity extends BaseActivity {
         if (!TextUtils.isEmpty(MyApplication.updateUrl)) {
             AlertDialog.Builder dialog = new AlertDialog.Builder(AboutUsActivity.this,
                     R.style.Theme_AppCompat_DayNight_Dialog_Alert);
-            dialog.setTitle("检测到新版本，请更新");
+            dialog.setTitle((R.string.check_new_version));
             dialog.setMessage(MyApplication.updateContent);
             //为“确定”按钮注册监听事件
-            dialog.setPositiveButton("立即更新", new DialogInterface.OnClickListener() {
+            dialog.setPositiveButton(R.string.update_immediately, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     downloadFile();
@@ -100,7 +100,7 @@ public class AboutUsActivity extends BaseActivity {
             });
 
             //为“取消”按钮注册监听事件
-            dialog.setNegativeButton("下次再说", new DialogInterface.OnClickListener() {
+            dialog.setNegativeButton(R.string.cancel_update, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     dialog.dismiss();
@@ -109,7 +109,7 @@ public class AboutUsActivity extends BaseActivity {
             dialog.create();
             dialog.show();
         } else {
-            ToastUtils.showToast(this, "已是最新版本！");
+            ToastUtils.showToast(this, getString(R.string.is_newest_version));
         }
 
     }
@@ -120,8 +120,8 @@ public class AboutUsActivity extends BaseActivity {
     private void downloadFile() {
         DownloadManager manager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
         DownloadManager.Request request = new DownloadManager.Request(Uri.parse(MyApplication.updateUrl));
-        request.setTitle("妙定");
-        request.setDescription("正在下载");
+        request.setTitle(getString(R.string.app_name));
+        request.setDescription(getString(R.string.downloading));
         // 设置下载可见
         request.setVisibleInDownloadsUi(true);
         //下载完成后通知栏可见
@@ -177,4 +177,6 @@ public class AboutUsActivity extends BaseActivity {
     }
 
 }
+
+
 

@@ -282,7 +282,7 @@ public class CustomizedGoodsActivity extends BaseActivity {
 
         //喜爱人数
         if (customBean.getData().getCollect_num() > 0) {
-            tvCollectCount.setText("喜爱  （" + customBean.getData().getCollect_num() + "人）");
+            tvCollectCount.setText(getString(R.string.love) + "  （" + customBean.getData().getCollect_num() + getString(R.string.person) + "）");
             rvCollectUser.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
 
             CommonAdapter<CustomGoodsBean.DataBean.CollectUserBean> collectAdapter = new CommonAdapter
@@ -432,7 +432,7 @@ public class CustomizedGoodsActivity extends BaseActivity {
         RecyclerView rvTailor = (RecyclerView) contentView.findViewById(R.id.rv_tailor_price);
 
 
-        tvTitle.setText("选择价格定制区间");
+        tvTitle.setText(R.string.select_goods_price);
         rvTailor.setLayoutManager(new LinearLayoutManager(CustomizedGoodsActivity.this));
 
         CommonAdapter<CustomGoodsBean.DataBean.PriceBean> priceAdapter = new CommonAdapter
@@ -642,7 +642,7 @@ public class CustomizedGoodsActivity extends BaseActivity {
         TextView tvTitle = (TextView) contentView.findViewById(R.id.tv_select_type);
         RecyclerView rvTailor = (RecyclerView) contentView.findViewById(R.id.rv_tailor_price);
 
-        tvTitle.setText("选择版型");
+        tvTitle.setText(R.string.select_type);
         rvTailor.setLayoutManager(new LinearLayoutManager(CustomizedGoodsActivity.this));
 
         CommonAdapter<CustomGoodsBean.DataBean.BanxingListBean> typeAdapter = new CommonAdapter
@@ -694,7 +694,7 @@ public class CustomizedGoodsActivity extends BaseActivity {
 
                 tailorItemBean.setSpec_ids(customBean.getData().getDefault_spec_ids());
 
-                String spec_content = customBean.getData().getDefault_spec_content() + ";版型:" +
+                String spec_content = customBean.getData().getDefault_spec_content() + ";" + getString(R.string.type) + ":" +
                         customBean.getData().getBanxing_list().get(position).getName() + ";";
                 tailorItemBean.setSpec_content(spec_content);
                 bundle.putSerializable("tailor", tailorItemBean);
@@ -767,11 +767,11 @@ public class CustomizedGoodsActivity extends BaseActivity {
                                 case 1:
                                     MobclickAgent.onEvent(CustomizedGoodsActivity.this, "collection");
                                     imgAddLike.setImageResource(R.mipmap.icon_add_like);
-                                    ToastUtils.showToast(CustomizedGoodsActivity.this, "收藏成功");
+                                    ToastUtils.showToast(CustomizedGoodsActivity.this, getString(R.string.collect_success));
                                     break;
                                 case 2:
                                     imgAddLike.setImageResource(R.mipmap.icon_cancel_like);
-                                    ToastUtils.showToast(CustomizedGoodsActivity.this, "已取消收藏");
+                                    ToastUtils.showToast(CustomizedGoodsActivity.this, getString(R.string.cancel_collect));
                                     break;
 
                             }

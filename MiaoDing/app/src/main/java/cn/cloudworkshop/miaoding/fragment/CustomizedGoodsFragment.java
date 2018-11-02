@@ -199,10 +199,10 @@ public class CustomizedGoodsFragment extends BaseFragment {
     public void showPermissionDialog() {
         AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity(),
                 R.style.Theme_AppCompat_DayNight_Dialog_Alert);
-        dialog.setTitle("帮助");
-        dialog.setMessage("当前应用缺少相机权限，请点击\"设置\" - \"权限管理\"，打开所需权限。");
+        dialog.setTitle(getString(R.string.help));
+        dialog.setMessage(R.string.need_camera);
         //为“确定”按钮注册监听事件
-        dialog.setPositiveButton("设置", new DialogInterface.OnClickListener() {
+        dialog.setPositiveButton(getString(R.string.set), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 // 启动应用的设置
@@ -212,7 +212,7 @@ public class CustomizedGoodsFragment extends BaseFragment {
             }
         });
         //为“取消”按钮注册监听事件
-        dialog.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+        dialog.setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 // 根据实际情况编写相应代码。

@@ -245,16 +245,16 @@ public class NewCameraActivity extends BaseActivity implements SensorEventListen
 
             switch (msg.what) {
                 case -1:
-                    takeFail("暂未检测到人体轮廓");
+                    takeFail(getString(R.string.not_test_person));
                     break;
                 case 0:
-                    takeFail("拍摄距离过近，请保持三米左右距离拍摄全身照片");
+                    takeFail(getString(R.string.too_near));
                     break;
                 case 1:
                     takeSuccess();
                     break;
                 case 2:
-                    takeFail("拍摄距离过远，请保持三米左右距离拍摄全身照片");
+                    takeFail(getString(R.string.too_far));
                     break;
             }
 //            ToastUtils.showToast(NewCameraActivity.this, h + "," + d);
@@ -278,7 +278,7 @@ public class NewCameraActivity extends BaseActivity implements SensorEventListen
     private void takeSuccess() {
         loadingView.smoothToHide();
 
-        ToastUtils.showToast(NewCameraActivity.this, "拍摄成功");
+        ToastUtils.showToast(NewCameraActivity.this, getString(R.string.take_success));
         imgTakeAgain.setVisibility(View.VISIBLE);
         imgTakeSuccess.setVisibility(View.VISIBLE);
         imgTakePhoto.setVisibility(View.GONE);

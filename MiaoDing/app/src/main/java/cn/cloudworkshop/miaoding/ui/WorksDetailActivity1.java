@@ -231,7 +231,7 @@ public class WorksDetailActivity1 extends BaseActivity {
 
         //喜爱人数
         if (worksBean.getData().getCollect_num() > 0) {
-            tvCollectCount.setText("喜爱  （" + worksBean.getData().getCollect_num() + "人）");
+            tvCollectCount.setText(getString(R.string.love)+"  （" + worksBean.getData().getCollect_num() + getString(R.string.person)+"）");
             rvCollectUser.setVisibility(View.VISIBLE);
             rvCollectUser.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
 
@@ -254,7 +254,7 @@ public class WorksDetailActivity1 extends BaseActivity {
 
         //评价人数
         if (worksBean.getData().getComment_num() > 0) {
-            tvCommentCount.setText("评价  （" + worksBean.getData().getComment_num() + "）");
+            tvCommentCount.setText(getString(R.string.evaluate)+"  （" + worksBean.getData().getComment_num() + "）");
             Glide.with(getApplicationContext())
                     .load(Constant.IMG_HOST + worksBean.getData().getNew_comment().getAvatar())
                     .centerCrop()
@@ -448,8 +448,8 @@ public class WorksDetailActivity1 extends BaseActivity {
         tvPrice.setTypeface(DisplayUtils.setTextType(this));
         if (worksBean.getData().getSize_list() != null) {
             tvPrice.setText("¥" + worksBean.getData().getSize_list().get(0).getSize_list().get(0).getPrice());
-            tvStock.setText("库存：" + worksBean.getData().getSize_list().get(0).getSize_list()
-                    .get(0).getSku_num() + "件");
+            tvStock.setText(getString(R.string.stock)+"：" + worksBean.getData().getSize_list().get(0).getSize_list()
+                    .get(0).getSku_num() + getString(R.string.piece));
             tvCount.setText("1");
             currentSize = 0;
             currentColor = 0;
@@ -590,8 +590,8 @@ public class WorksDetailActivity1 extends BaseActivity {
         tvPrice.setTypeface(DisplayUtils.setTextType(WorksDetailActivity1.this));
         tvPrice.setText("¥" + worksBean.getData().getSize_list().get(currentSize).getSize_list()
                 .get(currentColor).getPrice());
-        tvStock.setText("库存：" + worksBean.getData().getSize_list()
-                .get(currentSize).getSize_list().get(currentColor).getSku_num() + "件");
+        tvStock.setText(getString(R.string.stock)+"：" + worksBean.getData().getSize_list()
+                .get(currentSize).getSize_list().get(currentColor).getSku_num() + getString(R.string.piece));
         stock = worksBean.getData().getSize_list().get(currentSize)
                 .getSize_list().get(currentColor).getSku_num();
         remainGoodsCount(worksBean.getData().getSize_list().get(currentSize)
@@ -617,8 +617,8 @@ public class WorksDetailActivity1 extends BaseActivity {
                 .addParams("goods_thumb", worksBean.getData().getThumb())
                 .addParams("size_ids", String.valueOf(worksBean.getData().getSize_list()
                         .get(currentSize).getSize_list().get(currentColor).getId()))
-                .addParams("size_content", "颜色:" + worksBean.getData().getSize_list().get(currentSize)
-                        .getSize_list().get(currentColor).getColor_name() + ";尺码:" + worksBean.getData()
+                .addParams("size_content", getString(R.string.color)+":" + worksBean.getData().getSize_list().get(currentSize)
+                        .getSize_list().get(currentColor).getColor_name() + ";"+getString(R.string.size)+":" + worksBean.getData()
                         .getSize_list().get(currentSize).getSize_name())
                 .addParams("num", tvCount.getText().toString().trim())
                 .build()
@@ -651,7 +651,7 @@ public class WorksDetailActivity1 extends BaseActivity {
                                 startActivity(intent);
 
                             } else if (index == 2) {
-                                ToastUtils.showToast(WorksDetailActivity1.this, "加入购物袋成功");
+                                ToastUtils.showToast(WorksDetailActivity1.this, getString(R.string.add_card_success));
                                 mPopupWindow.dismiss();
                             }
                         }
@@ -702,11 +702,11 @@ public class WorksDetailActivity1 extends BaseActivity {
                                 case 1:
                                     MobclickAgent.onEvent(WorksDetailActivity1.this, "collection");
                                     imgAddLike.setImageResource(R.mipmap.icon_add_like);
-                                    ToastUtils.showToast(WorksDetailActivity1.this, "收藏成功");
+                                    ToastUtils.showToast(WorksDetailActivity1.this, getString(R.string.collect_success));
                                     break;
                                 case 2:
                                     imgAddLike.setImageResource(R.mipmap.icon_cancel_like);
-                                    ToastUtils.showToast(WorksDetailActivity1.this, "已取消收藏");
+                                    ToastUtils.showToast(WorksDetailActivity1.this, getString(R.string.cancel_collect));
                                     break;
 
                             }

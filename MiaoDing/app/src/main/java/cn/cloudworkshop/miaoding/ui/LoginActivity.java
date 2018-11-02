@@ -87,10 +87,10 @@ public class LoginActivity extends BaseActivity {
             LoginActivity activity = mActivity.get();
             if (activity != null) {
                 if (msg.what == 1) {
-                    activity.tvVerificationCode.setText("重发(" + msg.arg1 + ")");
+                    activity.tvVerificationCode.setText(activity.getString(R.string.send_again)+"(" + msg.arg1 + ")");
                     activity.tvVerificationCode.setBackgroundResource(R.drawable.bound_c7_15dp);
                 } else if (msg.what == 2) {
-                    activity.tvVerificationCode.setText("获取验证码");
+                    activity.tvVerificationCode.setText(activity.getString(R.string.receive_code));
                     activity.tvVerificationCode.setClickable(true);
                     activity.tvVerificationCode.setBackgroundResource(R.drawable.bound_3d_15dp);
                 }
@@ -226,7 +226,7 @@ public class LoginActivity extends BaseActivity {
             case R.id.tv_user_agreement:
                 if (!TextUtils.isEmpty(MyApplication.userAgreement)) {
                     Intent intent = new Intent(this, UserRuleActivity.class);
-                    intent.putExtra("title", "用户协议");
+                    intent.putExtra("title", getString(R.string.user_aggrement));
                     intent.putExtra("img_url", MyApplication.userAgreement);
                     startActivity(intent);
                 }
@@ -328,7 +328,7 @@ public class LoginActivity extends BaseActivity {
                 }
             }).start();
         } else {
-            ToastUtils.showToast(this, "手机号输入有误，请重新输入");
+            ToastUtils.showToast(this, getString(R.string.error_phone_number));
         }
     }
 

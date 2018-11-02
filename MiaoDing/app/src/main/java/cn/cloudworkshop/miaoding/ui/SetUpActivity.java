@@ -114,7 +114,7 @@ public class SetUpActivity extends BaseActivity implements EasyPermissions.Permi
         setContentView(R.layout.activity_set_up);
         ButterKnife.bind(this);
 
-        tvHeaderTitle.setText("设置");
+        tvHeaderTitle.setText(R.string.set);
         getData();
         initData();
     }
@@ -186,10 +186,10 @@ public class SetUpActivity extends BaseActivity implements EasyPermissions.Permi
      */
     public void logout() {
         AlertDialog.Builder dialog = new AlertDialog.Builder(this, R.style.Theme_AppCompat_DayNight_Dialog_Alert);
-        dialog.setTitle("退出登录");
-        dialog.setMessage("您确定要退出登录吗？");
+        dialog.setTitle(getString(R.string.logout));
+        dialog.setMessage(R.string.is_logout);
         //为“确定”按钮注册监听事件
-        dialog.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+        dialog.setPositiveButton(getString(R.string.confirm), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 OkHttpUtils.get()
@@ -228,7 +228,7 @@ public class SetUpActivity extends BaseActivity implements EasyPermissions.Permi
             }
         });
         //为“取消”按钮注册监听事件
-        dialog.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+        dialog.setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
@@ -344,7 +344,7 @@ public class SetUpActivity extends BaseActivity implements EasyPermissions.Permi
             @Override
             public void onClick(View view) {
                 if (TextUtils.isEmpty(etName.getText().toString().trim())) {
-                    ToastUtils.showToast(SetUpActivity.this, "昵称不能为空");
+                    ToastUtils.showToast(SetUpActivity.this, getString(R.string.nicknane_is_empty));
                 } else {
                     changeInfo("name", etName.getText().toString().trim());
                     mPopupWindow.dismiss();
@@ -389,7 +389,7 @@ public class SetUpActivity extends BaseActivity implements EasyPermissions.Permi
                                     setResult(1, intent);
                                     finish();
                                 }
-                                ToastUtils.showToast(SetUpActivity.this, "修改成功");
+                                ToastUtils.showToast(SetUpActivity.this, getString(R.string.edit_success));
                                 initData();
                             }
                         } catch (JSONException e) {
@@ -418,19 +418,19 @@ public class SetUpActivity extends BaseActivity implements EasyPermissions.Permi
      */
     private void cleanData() {
         AlertDialog.Builder dialog = new AlertDialog.Builder(this, R.style.Theme_AppCompat_DayNight_Dialog_Alert);
-        dialog.setTitle("清除缓存");
-        dialog.setMessage("您确定要清空缓存吗？");
+        dialog.setTitle(getString(R.string.clear_cache));
+        dialog.setMessage(R.string.is_clear_cache);
         //确定
-        dialog.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+        dialog.setPositiveButton(getString(R.string.confirm), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
                 DataManagerUtils.cleanApplicationCache(SetUpActivity.this);
-                ToastUtils.showToast(SetUpActivity.this, "清除成功");
+                ToastUtils.showToast(SetUpActivity.this, getString(R.string.clear_success));
             }
         });
         //取消
-        dialog.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+        dialog.setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
@@ -492,7 +492,7 @@ public class SetUpActivity extends BaseActivity implements EasyPermissions.Permi
 
     @Override
     public void onPermissionsDenied(int requestCode, List<String> perms) {
-        PermissionUtils.showPermissionDialog(this, "相机");
+        PermissionUtils.showPermissionDialog(this, getString(R.string.camera));
     }
 }
 

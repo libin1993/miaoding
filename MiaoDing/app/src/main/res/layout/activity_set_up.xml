@@ -28,7 +28,7 @@
                 android:layout_marginLeft="12dp"
                 android:layout_weight="1"
                 android:gravity="center_vertical"
-                android:text="头像"
+                android:text="@string/avatar"
                 android:textColor="@color/dark_gray_22"
                 android:textSize="16sp"/>
 
@@ -63,7 +63,7 @@
                 android:layout_marginLeft="12dp"
                 android:layout_weight="1"
                 android:gravity="center_vertical"
-                android:text="昵称"
+                android:text="@string/other_name"
                 android:textColor="@color/dark_gray_22"
                 android:textSize="16sp"/>
 
@@ -100,7 +100,7 @@
                 android:layout_marginLeft="12dp"
                 android:layout_weight="1"
                 android:gravity="center_vertical"
-                android:text="年龄"
+                android:text="@string/age"
                 android:textColor="@color/dark_gray_22"
                 android:textSize="16sp"/>
 
@@ -137,7 +137,7 @@
                 android:layout_marginLeft="12dp"
                 android:layout_weight="1"
                 android:gravity="center_vertical"
-                android:text="量体数据"
+                android:text="@string/measure_data"
                 android:textColor="@color/dark_gray_22"
                 android:textSize="16sp"/>
 
@@ -165,7 +165,7 @@
                 android:layout_marginLeft="12dp"
                 android:layout_weight="1"
                 android:gravity="center_vertical"
-                android:text="收货地址"
+                android:text="@string/receive_goods_address"
                 android:textColor="@color/dark_gray_22"
                 android:textSize="16sp"/>
 
@@ -192,7 +192,7 @@
                 android:layout_marginLeft="12dp"
                 android:layout_weight="1"
                 android:gravity="center_vertical"
-                android:text="清除缓存"
+                android:text="@string/clear_cache"
                 android:textColor="@color/dark_gray_22"
                 android:textSize="16sp"/>
 
@@ -218,7 +218,7 @@
                 android:layout_marginLeft="12dp"
                 android:layout_weight="1"
                 android:gravity="center_vertical"
-                android:text="帮助与反馈"
+                android:text="@string/feed_back"
                 android:textColor="@color/dark_gray_22"
                 android:textSize="16sp"/>
 
@@ -245,7 +245,7 @@
                 android:layout_marginLeft="12dp"
                 android:layout_weight="1"
                 android:gravity="center_vertical"
-                android:text="关于妙定"
+                android:text="@string/about_app"
                 android:textColor="@color/dark_gray_22"
                 android:textSize="16sp"/>
 
@@ -267,7 +267,7 @@
         android:background="@color/dark_gray_15"
         android:layout_alignParentBottom="true"
         android:gravity="center"
-        android:text="退出登录"
+        android:text="@string/logout"
         android:textColor="@android:color/white"
         android:textSize="14sp"/>
 

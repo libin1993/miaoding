@@ -115,8 +115,8 @@ public class ShoppingCartActivity extends BaseActivity {
         ButterKnife.bind(this);
 
         EventBus.getDefault().register(this);
-        tvHeaderTitle.setText("购物袋");
-        tvHeaderNext.setText("编辑");
+        tvHeaderTitle.setText(R.string.cart);
+        tvHeaderNext.setText(R.string.edit);
 
         initData();
     }
@@ -243,7 +243,6 @@ public class ShoppingCartActivity extends BaseActivity {
 
                 intent.putExtra("id", String.valueOf(recommendBean.get(position).getGoods_id()));
                 startActivity(intent);
-
             }
 
             @Override
@@ -283,7 +282,7 @@ public class ShoppingCartActivity extends BaseActivity {
                         holder.setText(R.id.tv_goods_content, dataBean.getSize_content());
                         break;
                     default:
-                        holder.setText(R.id.tv_goods_content, "定制款");
+                        holder.setText(R.id.tv_goods_content, getString(R.string.customize_type));
                         break;
                 }
 
@@ -529,7 +528,7 @@ public class ShoppingCartActivity extends BaseActivity {
                                 getTotalPrice();
                                 getTotalCount();
                             } else {
-                                ToastUtils.showToast(ShoppingCartActivity.this, "库存不足");
+                                ToastUtils.showToast(ShoppingCartActivity.this, getString(R.string.stock_null));
                             }
 
                         } catch (JSONException e) {
@@ -546,10 +545,10 @@ public class ShoppingCartActivity extends BaseActivity {
      */
     private void deleteGoods(final List<Integer> itemList) {
         AlertDialog.Builder dialog = new AlertDialog.Builder(this, R.style.Theme_AppCompat_DayNight_Dialog_Alert);
-        dialog.setTitle("删除宝贝");
-        dialog.setMessage("您确定要删除该宝贝吗？");
+        dialog.setTitle(R.string.delete_goods);
+        dialog.setMessage(R.string.is_delete_goods);
         //为“确定”按钮注册监听事件
-        dialog.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+        dialog.setPositiveButton(getString(R.string.confirm), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 StringBuilder sb = new StringBuilder();
@@ -596,7 +595,7 @@ public class ShoppingCartActivity extends BaseActivity {
                                             getTotalCount();
                                             getTotalPrice();
                                         }
-                                        ToastUtils.showToast(ShoppingCartActivity.this, "删除成功");
+                                        ToastUtils.showToast(ShoppingCartActivity.this, getString(R.string.delete_success));
                                     }
                                 } catch (JSONException e) {
                                     e.printStackTrace();
@@ -607,7 +606,7 @@ public class ShoppingCartActivity extends BaseActivity {
             }
         });
         //为“取消”按钮注册监听事件
-        dialog.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+        dialog.setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 // 根据实际情况编写相应代码。
@@ -630,13 +629,13 @@ public class ShoppingCartActivity extends BaseActivity {
                     if (getTotalCount() > 0) {
                         deleteGoods(getSelected());
                     } else {
-                        ToastUtils.showToast(this, "请选择商品");
+                        ToastUtils.showToast(this, getString(R.string.please_select_goods));
                     }
                 } else {
                     if (getTotalCount() > 0) {
                         buyGoods();
                     } else {
-                        ToastUtils.showToast(this, "请选择商品");
+                        ToastUtils.showToast(this, getString(R.string.please_select_goods));
                     }
                 }
 
@@ -651,12 +650,12 @@ public class ShoppingCartActivity extends BaseActivity {
                 if (!isEdited) {
                     isEdited = true;
                     adapter.notifyDataSetChanged();
-                    tvHeaderNext.setText("确定");
-                    tvGoodsBuy.setText("删除");
+                    tvHeaderNext.setText(R.string.confirm);
+                    tvGoodsBuy.setText(R.string.delete);
                 } else {
                     isEdited = false;
                     adapter.notifyDataSetChanged();
-                    tvHeaderNext.setText("编辑");
+                    tvHeaderNext.setText(R.string.edit);
                     getTotalCount();
                 }
                 break;
@@ -742,9 +741,9 @@ public class ShoppingCartActivity extends BaseActivity {
             }
         }
         if (isEdited) {
-            tvGoodsBuy.setText("删除");
+            tvGoodsBuy.setText(R.string.delete);
         } else {
-            tvGoodsBuy.setText("下单(" + selectCount + ")");
+            tvGoodsBuy.setText(getString(R.string.confirm_order)+"(" + selectCount + ")");
         }
         return selectCount;
     }

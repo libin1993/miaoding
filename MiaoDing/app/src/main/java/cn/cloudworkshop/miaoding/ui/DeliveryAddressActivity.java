@@ -99,10 +99,10 @@ public class DeliveryAddressActivity extends BaseActivity {
     private void initData() {
         switch (type) {
             case 1:
-                tvHeaderTitle.setText("收货地址");
+                tvHeaderTitle.setText(R.string.receive_goods_address);
                 break;
             case 2:
-                tvHeaderTitle.setText("选择地址");
+                tvHeaderTitle.setText(R.string.select_address_receive);
                 addressId = getIntent().getIntExtra("address_id", -1);
                 break;
         }
@@ -311,10 +311,10 @@ public class DeliveryAddressActivity extends BaseActivity {
 
         AlertDialog.Builder dialog = new AlertDialog.Builder(this,
                 R.style.Theme_AppCompat_DayNight_Dialog_Alert);
-        dialog.setTitle("删除地址");
-        dialog.setMessage("您确定要删除该地址吗？");
+        dialog.setTitle(R.string.delete_address);
+        dialog.setMessage(R.string.is_delete_address);
         //为“确定”按钮注册监听事件
-        dialog.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+        dialog.setPositiveButton(getString(R.string.confirm), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 OkHttpUtils.post()
@@ -338,7 +338,7 @@ public class DeliveryAddressActivity extends BaseActivity {
             }
         });
         //为“取消”按钮注册监听事件
-        dialog.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+        dialog.setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 // 根据实际情况编写相应代码。

@@ -106,7 +106,7 @@
                             android:id="@+id/tv_comment_count"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="评价"
+                            android:text="@string/evaluate"
                             android:textColor="@color/light_gray_3d"
                             android:textSize="14sp"
                             android:textStyle="bold"/>
@@ -116,7 +116,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
-                            android:text="查看全部 >"
+                            android:text="@string/view_whole"
                             android:textColor="@color/light_gray_3d"
                             android:textSize="14sp"/>
                     </RelativeLayout>
@@ -132,7 +132,7 @@
                     android:layout_marginBottom="60dp"
                     android:layout_marginTop="20dp"
                     android:gravity="center"
-                    android:text="-- 继续拖动，查看商品描述 --"
+                    android:text="@string/goods_detail"
                     android:textColor="@color/light_gray_93"
                     android:textSize="13sp"/>
 
@@ -270,7 +270,7 @@
             android:layout_alignParentRight="true"
             android:background="#4C4C4C"
             android:gravity="center"
-            android:text="购买同款"
+            android:text="@string/buy_same_style"
             android:textColor="@android:color/white"
             android:textSize="14sp"
             android:textStyle="bold"
@@ -283,7 +283,7 @@
             android:layout_weight="1"
             android:background="@color/dark_gray_15"
             android:gravity="center"
-            android:text="购    买"
+            android:text="@string/buy"
             android:textColor="@android:color/white"
             android:textSize="16sp"/>
 

@@ -3,6 +3,8 @@ package cn.cloudworkshop.miaoding.utils;
 import android.app.Activity;
 import android.widget.Toast;
 
+import cn.cloudworkshop.miaoding.R;
+
 /**
  * Author：Libin on 2016/10/31 15:20
  * Email：1993911441@qq.com
@@ -17,7 +19,7 @@ public class CharacterUtils {
         if (charaString.matches("^[a-zA-Z]*")) {
             return true;
         } else {
-            ToastUtils.showToast(activity, "请输入英文");
+            ToastUtils.showToast(activity, activity.getString(R.string.please_input_english));
             return false;
         }
     }
@@ -32,7 +34,7 @@ public class CharacterUtils {
         char[] cTemp = charaString.toCharArray();
         for (int i = 0; i < charaString.length(); i++) {
             if (!isChinese(cTemp[i])) {
-                ToastUtils.showToast(activity, "请输入中文");
+                ToastUtils.showToast(activity, activity.getString(R.string.please_input_chinese));
                 flag = false;
                 break;
             }

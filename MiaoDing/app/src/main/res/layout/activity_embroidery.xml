@@ -33,7 +33,7 @@
             android:layout_centerVertical="true"
             android:layout_marginRight="32dp"
             android:layout_toLeftOf="@id/view_embroidery"
-            android:text="快速定制"
+            android:text="@string/fast_customize"
             android:textColor="@android:color/white"
             android:textSize="14sp"
             android:textStyle="bold"/>
@@ -54,7 +54,7 @@
             android:layout_marginLeft="32dp"
             android:layout_toRightOf="@id/view_embroidery"
             android:gravity="center"
-            android:text="个性定制"
+            android:text="@string/prosonal_customize"
             android:textColor="@android:color/white"
             android:textSize="14sp"/>
 
@@ -88,7 +88,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="12dp"
-                    android:text="输入基本信息"
+                    android:text="@string/input_infomation"
                     android:textColor="@color/dark_gray_22"
                     android:textSize="13sp"/>
 
@@ -97,7 +97,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="12dp"
                     android:singleLine="true"
-                    android:text="为了确保衣服合身，请准确输入您的净身高、净体重"
+                    android:text="@string/measure_info"
                     android:textColor="@color/red_b1"
                     android:textSize="10sp"/>
             </LinearLayout>
@@ -149,7 +149,7 @@
                         android:layout_weight="1"
                         android:background="@null"
                         android:gravity="center_vertical"
-                        android:hint="净身高"
+                        android:hint="@string/net_height"
                         android:inputType="numberDecimal"
                         android:maxLength="6"
                         android:paddingLeft="26dp"
@@ -182,7 +182,7 @@
                         android:layout_height="35dp"
                         android:layout_weight="1"
                         android:background="@null"
-                        android:hint="净体重"
+                        android:hint="@string/net_weight"
                         android:inputType="numberDecimal"
                         android:maxLength="6"
                         android:paddingLeft="26dp"
@@ -212,7 +212,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="12dp"
-                    android:text="拍照量体"
+                    android:text="@string/take_picture_measure"
                     android:textColor="@color/dark_gray_22"
                     android:textSize="13sp"/>
 
@@ -222,7 +222,7 @@
                     android:layout_marginLeft="12dp"
                     android:layout_weight="1"
                     android:singleLine="true"
-                    android:text="若不方便拍照量体可稍后与客服确认形体数据"
+                    android:text="@string/take_picture_info"
                     android:textColor="@color/red_b1"
                     android:textSize="10sp"/>
 
@@ -233,7 +233,7 @@
                     android:drawableLeft="@drawable/ring_black"
                     android:drawablePadding="6dp"
                     android:paddingRight="12dp"
-                    android:text="帮助"
+                    android:text="@string/help"
                     android:textColor="@color/dark_gray_22"
                     android:textSize="13sp"/>
             </LinearLayout>
@@ -275,7 +275,7 @@
                     android:layout_marginLeft="24dp"
                     android:layout_marginRight="12dp"
                     android:layout_toRightOf="@id/img_camera_photo"
-                    android:text="系统会自动对图像脸部进行模糊处理"
+                    android:text="@string/measur_explain"
                     android:textColor="@color/red_b1"
                     android:textSize="10dp"/>
 
@@ -293,7 +293,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="12dp"
-                    android:text="选择版型"
+                    android:text="@string/select_type"
                     android:textColor="@color/dark_gray_22"
                     android:textSize="13sp"/>
 
@@ -329,7 +329,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="12dp"
-                    android:text="选择面料 (长按显示大图)"
+                    android:text="@string/select_fabric"
                     android:textColor="@color/dark_gray_22"
                     android:textSize="13sp"/>
 
@@ -365,7 +365,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="12dp"
-                    android:text="选择刺绣"
+                    android:text="@string/select_embroider"
                     android:textColor="@color/dark_gray_22"
                     android:textSize="13sp"/>
 
@@ -399,7 +399,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="12dp"
-                        android:text="选择刺绣位置"
+                        android:text="@string/select_embroider_position"
                         android:textColor="@color/dark_gray_22"
                         android:textSize="13sp"/>
 
@@ -435,7 +435,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="12dp"
-                        android:text="选择字体颜色"
+                        android:text="@string/select_font_color"
                         android:textColor="@color/dark_gray_22"
                         android:textSize="13sp"/>
 
@@ -471,7 +471,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="12dp"
-                        android:text="选择字体"
+                        android:text="@string/slelect_font"
                         android:textColor="@color/dark_gray_22"
                         android:textSize="13sp"/>
 
@@ -505,7 +505,7 @@
                     android:background="@android:color/white"
                     android:gravity="center_vertical"
                     android:paddingLeft="12dp"
-                    android:text="绣花内容"
+                    android:text="@string/select_embroider_content"
                     android:textColor="@color/dark_gray_22"
                     android:textSize="13sp"/>
 
@@ -522,7 +522,7 @@
                         android:layout_marginRight="12dp"
                         android:layout_marginBottom="12dp"
                         android:background="@drawable/bound_ed_ff"
-                        android:hint="请输入绣花内容(不超过12个字符)"
+                        android:hint="@string/input_embroider_content"
                         android:maxLength="12"
                         android:paddingLeft="10dp"
                         android:singleLine="true"
@@ -552,7 +552,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:text="小计："
+                android:text="@string/subtotal"
                 android:textColor="@color/dark_gray_22"
                 android:textSize="14sp"/>
 
@@ -575,7 +575,7 @@
             android:layout_weight="3"
             android:background="#4C4C4C"
             android:gravity="center"
-            android:text="加入购物袋"
+            android:text="@string/add_cart"
             android:textColor="@android:color/white"
             android:textSize="14sp"/>
 
@@ -586,7 +586,7 @@
             android:layout_weight="3"
             android:background="@color/dark_gray_15"
             android:gravity="center"
-            android:text="立即购买"
+            android:text="@string/buy_immediately"
             android:textColor="@android:color/white"
             android:textSize="14sp"/>
     </LinearLayout>

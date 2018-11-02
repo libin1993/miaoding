@@ -68,9 +68,9 @@ public class DressingTestActivity extends BaseActivity {
      * 加载视图
      */
     private void initView() {
-        tvHeaderTitle.setText("穿衣测试");
+        tvHeaderTitle.setText(R.string.dressing_test);
         tvHeaderNext.setVisibility(View.VISIBLE);
-        tvHeaderNext.setText("下一步");
+        tvHeaderNext.setText(R.string.next_step);
         rulerHeight.setValue(180);
         rulerHeight.setOnValueChangeListener(new Ruler.OnValueChangeListener() {
             @Override
@@ -104,7 +104,7 @@ public class DressingTestActivity extends BaseActivity {
             case R.id.tv_header_next:
                 if (TextUtils.isEmpty(tvUserHeight.getText().toString().trim())
                         || TextUtils.isEmpty(tvUserWeight.getText().toString().trim())) {
-                    ToastUtils.showToast(DressingTestActivity.this, "请完善身高体重");
+                    ToastUtils.showToast(DressingTestActivity.this, getString(R.string.please_input_height));
                 } else {
                     selectAge();
                 }
@@ -121,7 +121,7 @@ public class DressingTestActivity extends BaseActivity {
         picker.setOffset(2);//偏移量
         picker.setRange(10, 100);//数字范围
         picker.setTextSize(14);
-        picker.setLabel("岁");
+        picker.setLabel(getString(R.string.year));
         picker.setSelectedItem(25);
         picker.setOnNumberPickListener(new NumberPicker.OnNumberPickListener() {
             @Override
@@ -163,8 +163,8 @@ public class DressingTestActivity extends BaseActivity {
                             String uid = jsonObject1.getString("id");
 
                             Intent intent = new Intent(DressingTestActivity.this, DressingResultActivity.class);
-                            intent.putExtra("title", "测试结果");
-                            intent.putExtra("share_title","穿衣测试");
+                            intent.putExtra("title", R.string.test_result);
+                            intent.putExtra("share_title",getString(R.string.dressing_test));
                             intent.putExtra("share_content", "");
                             intent.putExtra("url", Constant.DRESSING_TEST_RESULT + "?id=" + uid);
                             intent.putExtra("share_url", Constant.DRESSING_TEST_SHARE + "?id=" + uid);

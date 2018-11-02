@@ -103,7 +103,7 @@ public class AddMeasureActivity extends BaseActivity implements EasyPermissions.
      * 加载视图
      */
     private void initView() {
-        tvHeaderTitle.setText("添加量体数据");
+        tvHeaderTitle.setText(R.string.insert_measure_data);
         switchDefault.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -132,17 +132,17 @@ public class AddMeasureActivity extends BaseActivity implements EasyPermissions.
                 if (isMeasureData()) {
                     AlertDialog.Builder dialog = new AlertDialog.Builder(this,
                             R.style.Theme_AppCompat_DayNight_Dialog_Alert);
-                    dialog.setTitle("上传量体数据");
-                    dialog.setMessage("您尚未完善量体照片，是否去拍照？");
+                    dialog.setTitle(getString(R.string.upload_measure_data));
+                    dialog.setMessage(getString(R.string.no_measure_photo));
                     //为“确定”按钮注册监听事件
-                    dialog.setPositiveButton("去拍照", new DialogInterface.OnClickListener() {
+                    dialog.setPositiveButton(getString(R.string.to_take_picture), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             takePhoto(false);
                         }
                     });
                     //为“取消”按钮注册监听事件
-                    dialog.setNegativeButton("不用了", new DialogInterface.OnClickListener() {
+                    dialog.setNegativeButton(getString(R.string.no_need), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             dialog.dismiss();
@@ -153,7 +153,7 @@ public class AddMeasureActivity extends BaseActivity implements EasyPermissions.
                     dialog.show();
 
                 } else {
-                    ToastUtils.showToast(this, "请完善基本信息");
+                    ToastUtils.showToast(this, getString(R.string.input_personal_info));
                 }
                 break;
         }
@@ -229,7 +229,7 @@ public class AddMeasureActivity extends BaseActivity implements EasyPermissions.
             }
 
         } else {
-            ToastUtils.showToast(this, "请完善基本信息");
+            ToastUtils.showToast(this, getString(R.string.input_personal_info));
         }
     }
 
@@ -268,7 +268,7 @@ public class AddMeasureActivity extends BaseActivity implements EasyPermissions.
 
     @Override
     public void onPermissionsDenied(int requestCode, List<String> perms) {
-        PermissionUtils.showPermissionDialog(this, "相机");
+        PermissionUtils.showPermissionDialog(this, getString(R.string.camera));
     }
 
     @Override

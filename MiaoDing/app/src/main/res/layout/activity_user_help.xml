@@ -28,7 +28,7 @@
                 android:drawableLeft="@mipmap/icon_feedback_question"
                 android:drawablePadding="6dp"
                 android:gravity="center_vertical"
-                android:text="常见问题"
+                android:text="@string/common_question"
                 android:textColor="@color/dark_gray_22"
                 android:textSize="14sp"
                 android:textStyle="bold"/>
@@ -69,7 +69,7 @@
                 android:drawableLeft="@mipmap/icon_feedback_phone"
                 android:drawablePadding="6dp"
                 android:gravity="center_vertical"
-                android:text="客服热线"
+                android:text="@string/hotline"
                 android:textColor="@color/dark_gray_22"
                 android:textSize="14sp"
                 android:textStyle="bold"/>
@@ -122,7 +122,7 @@
                 android:drawableLeft="@mipmap/icon_consult_small"
                 android:drawablePadding="6dp"
                 android:gravity="center_vertical"
-                android:text="在线客服"
+                android:text="@string/online_service"
                 android:textColor="@color/dark_gray_22"
                 android:textSize="14sp"
                 android:textStyle="bold"/>
@@ -143,7 +143,7 @@
             android:layout_marginTop="30dp"
             android:background="@drawable/btn_white_1dp"
             android:gravity="center"
-            android:text="意见反馈"
+            android:text="@string/suggestions"
             android:textColor="@color/dark_gray_22"
             android:textSize="15sp"/>
     </LinearLayout>

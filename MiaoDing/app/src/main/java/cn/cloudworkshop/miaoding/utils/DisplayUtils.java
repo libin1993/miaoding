@@ -103,6 +103,13 @@ public class DisplayUtils {
     }
 
     /**
+     * @return 保留两位小数
+     */
+    public static String decimalFormat(Double value) {
+        return new DecimalFormat("0.00").format(value);
+    }
+
+    /**
      * 判断字符串是否是数字
      */
     public static boolean isNumberDecimal(String value) {

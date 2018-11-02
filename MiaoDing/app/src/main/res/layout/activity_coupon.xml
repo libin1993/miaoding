@@ -28,7 +28,7 @@
             android:layout_marginLeft="12dp"
             android:layout_weight="1"
             android:background="@drawable/frame_gray"
-            android:hint="请输入兑换码"
+            android:hint="@string/input_exchange_code"
             android:maxLength="20"
             android:paddingLeft="17dp"
             android:singleLine="true"
@@ -44,7 +44,7 @@
             android:layout_marginRight="12dp"
             android:background="@drawable/btn_gray_bg"
             android:gravity="center"
-            android:text="兑换"
+            android:text="@string/exchange"
             android:textColor="@android:color/white"
             android:textSize="16sp"/>
     </LinearLayout>
@@ -76,7 +76,7 @@
                 android:layout_below="@id/rv_coupon_usable"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="11dp"
-                android:text="没有更多优惠券了 | 查看无效券 ＞＞"
+                android:text="@string/no_more_coupon"
                 android:layout_marginBottom="20dp"
                 android:textColor="@color/light_gray_4f"
                 android:textSize="12sp"/>

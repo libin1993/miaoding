@@ -82,7 +82,7 @@ public class AppointmentActivity extends BaseActivity {
     private void initView() {
         switch (type) {
             case "appoint_measure":
-                tvHeaderTitle.setText("预约详情");
+                tvHeaderTitle.setText(R.string.appointment_detail);
                 tvAppointResult.setTextSize(15);
 
                 OkHttpUtils.get()
@@ -106,15 +106,14 @@ public class AppointmentActivity extends BaseActivity {
                                         switch (status) {
                                             case 1:
                                             case 2:
-                                                tvAppointResult.setText("当前状态：预约成功，等待客服受理");
+                                                tvAppointResult.setText(R.string.state_appoint_success);
                                                 break;
                                             case 3:
                                             case 4:
-                                                tvAppointResult.setText("当前状态：派单成功，等待上门量体\n"
-                                                        + "上门时间：" + DateUtils.getDate("yyyy.MM.dd HH:mm", time));
+                                                tvAppointResult.setText(getString(R.string.state_measure_time) + DateUtils.getDate("yyyy.MM.dd HH:mm", time));
                                                 break;
                                             case -1:
-                                                tvAppointResult.setText("当前状态：已取消");
+                                                tvAppointResult.setText(R.string.state_cancel);
                                                 break;
                                         }
 
@@ -128,13 +127,13 @@ public class AppointmentActivity extends BaseActivity {
 
                 break;
             case "apply_join":
-                tvHeaderTitle.setText("申请详情");
-                tvAppointResult.setText("申请成功");
+                tvHeaderTitle.setText(R.string.apply_detail);
+                tvAppointResult.setText(R.string.apply_success);
                 imgPayResult.setImageResource(R.mipmap.icon_appoint_success);
                 break;
             case "pay_success":
-                tvHeaderTitle.setText("支付成功");
-                tvAppointResult.setText("支付成功");
+                tvHeaderTitle.setText(R.string.pay_success);
+                tvAppointResult.setText(R.string.pay_success);
                 imgPayResult.setImageResource(R.mipmap.icon_appoint_success);
                 tvCheckOrder.setVisibility(View.VISIBLE);
                 tvGoBack.setTextColor(ContextCompat.getColor(this, R.color.dark_gray_22));
@@ -142,8 +141,8 @@ public class AppointmentActivity extends BaseActivity {
                 shareCoupon();
                 break;
             case "pay_fail":
-                tvHeaderTitle.setText("支付失败");
-                tvAppointResult.setText("支付失败");
+                tvHeaderTitle.setText(R.string.pay_fail);
+                tvAppointResult.setText(R.string.pay_fail);
                 tvCheckOrder.setVisibility(View.VISIBLE);
                 imgPayResult.setImageResource(R.mipmap.icon_appoint_fail);
                 tvGoBack.setTextColor(ContextCompat.getColor(this, R.color.dark_gray_22));
@@ -199,8 +198,8 @@ public class AppointmentActivity extends BaseActivity {
                                 public void onClick(View v) {
                                     ShareUtils.showShare(AppointmentActivity.this,
                                             Constant.IMG_HOST + guideBean.getData().getImg_urls().get(0),
-                                            "【妙定APP】送你1000元定制红包，手快有，手慢无！",
-                                            "做你不敢想的黑科技服饰定制，雅痞还是绅士，成熟还是睿智，先从一件衬衣开始。",
+                                            getString(R.string.order_share_title),
+                                            getString(R.string.order_share_content),
                                             Constant.SHARE_COUPON + "?pay_ids=" + MyApplication.payId
                                                     + "&uid=" + SharedPreferencesUtils.getStr(AppointmentActivity.this, "uid"));
                                 }

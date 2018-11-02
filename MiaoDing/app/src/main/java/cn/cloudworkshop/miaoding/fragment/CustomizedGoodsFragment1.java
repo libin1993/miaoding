@@ -217,10 +217,10 @@ public class CustomizedGoodsFragment1 extends BaseFragment {
                     @Override
                     public void run() {
                         if (position == bitmapList.size() - 1) {
-                            ToastUtils.showToast(getActivity(), "已经是最后一页了");
+                            ToastUtils.showToast(getActivity(), getString(R.string.the_last_page));
                         }
                         if (position == 0) {
-                            ToastUtils.showToast(getActivity(), "已经是第一页了");
+                            ToastUtils.showToast(getActivity(), getString(R.string.the_first_page));
                         }
                     }
                 });

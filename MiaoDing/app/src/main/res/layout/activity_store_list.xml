@@ -30,7 +30,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center_vertical"
-            android:hint="输入定制店名称、关键词"
+            android:hint="@string/input_store_name"
             android:singleLine="true"
             android:textColorHint="@color/light_gray_a6"
             android:background="@null"

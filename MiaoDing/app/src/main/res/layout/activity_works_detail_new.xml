@@ -81,7 +81,7 @@
             android:layout_height="match_parent"
             android:background="#4C4C4C"
             android:gravity="center"
-            android:text="加入购物车"
+            android:text="@string/add_cart"
             android:textColor="@android:color/white"
             android:textSize="14sp"
             android:textStyle="bold"/>
@@ -92,7 +92,7 @@
             android:layout_height="match_parent"
             android:background="@color/dark_gray_22"
             android:gravity="center"
-            android:text="立即购买"
+            android:text="@string/buy_immediately"
             android:textColor="@android:color/white"
             android:textSize="14sp"
             android:textStyle="bold"/>

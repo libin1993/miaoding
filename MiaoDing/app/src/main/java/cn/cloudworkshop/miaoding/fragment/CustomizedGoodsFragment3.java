@@ -43,6 +43,7 @@ import cn.cloudworkshop.miaoding.jazzyviewpager.JazzyViewPager;
 import cn.cloudworkshop.miaoding.ui.CustomizedGoodsActivity;
 import cn.cloudworkshop.miaoding.ui.ScanCodeActivity;
 import cn.cloudworkshop.miaoding.utils.GsonUtils;
+import cn.cloudworkshop.miaoding.utils.PermissionUtils;
 import cn.cloudworkshop.miaoding.utils.SharedPreferencesUtils;
 import cn.cloudworkshop.miaoding.utils.ToastUtils;
 import okhttp3.Call;
@@ -186,7 +187,7 @@ public class CustomizedGoodsFragment3 extends BaseFragment {
                             }
                         } else {
                             if (page != 1) {
-                                ToastUtils.showToast(getActivity(), "已经是最后一页了");
+                                ToastUtils.showToast(getActivity(), getString(R.string.the_last_page));
                                 page--;
                             }
                         }
@@ -255,7 +256,7 @@ public class CustomizedGoodsFragment3 extends BaseFragment {
             public void onPageSelected(int position) {
 
                 if (position == 0) {
-                    ToastUtils.showToast(getActivity(), "已经是第一页了");
+                    ToastUtils.showToast(getActivity(), getString(R.string.the_first_page));
                 }
 
             }
@@ -352,31 +353,7 @@ public class CustomizedGoodsFragment3 extends BaseFragment {
      * 提示对话框
      */
     public void showPermissionDialog() {
-        AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity(),
-                R.style.Theme_AppCompat_DayNight_Dialog_Alert);
-        dialog.setTitle("帮助");
-        dialog.setMessage("当前应用缺少相机权限，请点击\"设置\" - \"权限管理\"，打开所需权限。");
-        //为“确定”按钮注册监听事件
-        dialog.setPositiveButton("设置", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                // 启动应用的设置
-                Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-                intent.setData(Uri.parse("package:" + getActivity().getPackageName()));
-                startActivity(intent);
-            }
-        });
-        //为“取消”按钮注册监听事件
-        dialog.setNegativeButton("取消", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                // 根据实际情况编写相应代码。
-                dialog.dismiss();
-            }
-        });
-        dialog.create();
-        dialog.show();
-
+        PermissionUtils.showPermissionDialog(getActivity(),getString(R.string.camera));
     }
 
 

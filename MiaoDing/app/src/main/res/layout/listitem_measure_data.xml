@@ -16,7 +16,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="姓名："
+            android:text="@string/confirm_order_name"
             android:textColor="@color/dark_gray_22"
             android:textSize="14sp"/>
 
@@ -39,7 +39,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="身高："
+            android:text="@string/confirm_order_height"
             android:textColor="@color/dark_gray_22"
             android:textSize="14sp"/>
 
@@ -54,7 +54,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="22dp"
-            android:text="体重："
+            android:text="@string/confirm_order_weight"
             android:textColor="@color/dark_gray_22"
             android:textSize="14sp"/>
 
@@ -85,7 +85,7 @@
             android:drawableLeft="@mipmap/icon_default_address"
             android:drawablePadding="4dp"
             android:gravity="center_vertical"
-            android:text="默认"
+            android:text="@string/default_address"
             android:textColor="@color/light_gray_85"
             android:textSize="10sp"/>
 
@@ -102,7 +102,7 @@
             android:drawableLeft="@mipmap/icon_delete_address"
             android:drawablePadding="6dp"
             android:gravity="center_vertical"
-            android:text="删除"
+            android:text="@string/delete"
             android:textColor="@color/light_gray_85"
             android:textSize="10sp"
             android:visibility="gone"/>
@@ -114,7 +114,7 @@
             android:drawableLeft="@mipmap/icon_edit_address"
             android:drawablePadding="6dp"
             android:gravity="center_vertical"
-            android:text="编辑"
+            android:text="@string/edit"
             android:textColor="@color/light_gray_85"
             android:textSize="10sp"
             android:visibility="gone"/>

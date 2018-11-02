@@ -80,7 +80,7 @@ public class CameraFormActivity extends BaseActivity implements EasyPermissions.
     }
 
     private void initView() {
-        tvHeaderTitle.setText("用户信息");
+        tvHeaderTitle.setText(R.string.user_info);
         cbMeasure.setChecked(false);
         cbMeasure.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -137,7 +137,7 @@ public class CameraFormActivity extends BaseActivity implements EasyPermissions.
                         startActivity(intent);
                     }
                 } else {
-                    ToastUtils.showToast(this, "请完善基本信息");
+                    ToastUtils.showToast(this, getString(R.string.please_input_common_info));
                 }
 
                 break;
@@ -179,7 +179,7 @@ public class CameraFormActivity extends BaseActivity implements EasyPermissions.
 
     @Override
     public void onPermissionsDenied(int requestCode, List<String> perms) {
-        PermissionUtils.showPermissionDialog(this, "相机");
+        PermissionUtils.showPermissionDialog(this, getString(R.string.camera));
     }
 
     @Override

@@ -105,7 +105,7 @@ public class ApplyMeasureActivity extends BaseActivity implements LocationSource
         setContentView(R.layout.activity_apply_measure);
         ButterKnife.bind(this);
         mMapView.onCreate(savedInstanceState);
-        tvHeaderTitle.setText("预约量体");
+        tvHeaderTitle.setText(R.string.order_measure);
         if (!EasyPermissions.hasPermissions(this, permissionStr)) {
             EasyPermissions.requestPermissions(this, "", 123, permissionStr);
         }
@@ -274,7 +274,7 @@ public class ApplyMeasureActivity extends BaseActivity implements LocationSource
                 String address = etCurrentAddress.getText().toString().trim();
                 //2.判断用户是否输入为空
                 if (TextUtils.isEmpty(address)) {
-                    ToastUtils.showToast(this, "请输入查询条件");
+                    ToastUtils.showToast(this, getString(R.string.search_condition));
                 } else {
                     //3.不为空进行搜索
                     search(address);
@@ -282,7 +282,7 @@ public class ApplyMeasureActivity extends BaseActivity implements LocationSource
                 break;
             case R.id.tv_submit_appointment:
                 if (TextUtils.isEmpty(etCurrentAddress.getText().toString().trim())) {
-                    ToastUtils.showToast(this, "请输入地址");
+                    ToastUtils.showToast(this, getString(R.string.please_input_address));
                 } else {
                     submitAddress();
                 }
@@ -445,6 +445,6 @@ public class ApplyMeasureActivity extends BaseActivity implements LocationSource
 
     @Override
     public void onPermissionsDenied(int requestCode, List<String> perms) {
-        PermissionUtils.showPermissionDialog(this, "定位");
+        PermissionUtils.showPermissionDialog(this, getString(R.string.location));
     }
 }

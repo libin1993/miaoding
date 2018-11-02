@@ -129,6 +129,7 @@ public class DesignerFragment extends BaseFragment {
                         float yDiff = Math.abs(event.getY() - y);
                         isClick = xDiff < mTouchSlop && yDiff < 250;
                         break;
+                        
 
                     case MotionEvent.ACTION_UP:
 
@@ -142,7 +143,7 @@ public class DesignerFragment extends BaseFragment {
                                         .get(currentItem).getId()));
                                 startActivity(intent);
                             } else {
-                                ToastUtils.showToast(getParentFragment().getActivity(), "敬请期待");
+                                ToastUtils.showToast(getParentFragment().getActivity(), getString(R.string.coming_soon));
                             }
                         }
                         break;

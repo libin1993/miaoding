@@ -33,7 +33,6 @@ import cn.cloudworkshop.miaoding.constant.Constant;
 import cn.cloudworkshop.miaoding.utils.DateUtils;
 import cn.cloudworkshop.miaoding.utils.DisplayUtils;
 import cn.cloudworkshop.miaoding.utils.GsonUtils;
-import cn.cloudworkshop.miaoding.utils.LogUtils;
 import cn.cloudworkshop.miaoding.utils.MyLinearLayoutManager;
 import cn.cloudworkshop.miaoding.utils.SharedPreferencesUtils;
 import cn.cloudworkshop.miaoding.utils.ToastUtils;
@@ -87,7 +86,7 @@ public class SelectCouponActivity extends BaseActivity {
      * 加载数据
      */
     private void initData() {
-        tvHeaderTitle.setText("选择优惠券");
+        tvHeaderTitle.setText(R.string.select_coupon);
         OkHttpUtils.get()
                 .url(Constant.SELECT_COUPON)
                 .addParams("token", SharedPreferencesUtils.getStr(this, "token"))
@@ -162,8 +161,8 @@ public class SelectCouponActivity extends BaseActivity {
                 tvMoney.setText("¥" + (int) Float.parseFloat(usableBean.getMoney()));
                 holder.setText(R.id.tv_coupon_range, usableBean.getTitle());
                 holder.setText(R.id.tv_coupon_discount, usableBean.getSub_title());
-                String term = "有效期：" + DateUtils.getDate("yyyy-MM-dd", usableBean.getS_time())
-                        + " 至 " + DateUtils.getDate("yyyy-MM-dd", usableBean.getE_time());
+                String term = getString(R.string.validity_term)+"：" + DateUtils.getDate("yyyy-MM-dd", usableBean.getS_time())
+                        + getString(R.string.to) + DateUtils.getDate("yyyy-MM-dd", usableBean.getE_time());
                 holder.setText(R.id.tv_coupon_term, term);
 
             }
@@ -210,8 +209,8 @@ public class SelectCouponActivity extends BaseActivity {
                 tvMoney.setText("¥" + (int) Float.parseFloat(disableBean.getMoney()));
                 holder.setText(R.id.tv_coupon_range, disableBean.getTitle());
                 holder.setText(R.id.tv_coupon_discount, disableBean.getSub_title());
-                String term = "有效期：" + DateUtils.getDate("yyyy-MM-dd", disableBean.getS_time())
-                        + " 至 " + DateUtils.getDate("yyyy-MM-dd", disableBean.getE_time());
+                String term = getString(R.string.validity_term)+"：" + DateUtils.getDate("yyyy-MM-dd", disableBean.getS_time())
+                        + getString(R.string.to) + DateUtils.getDate("yyyy-MM-dd", disableBean.getE_time());
                 holder.setText(R.id.tv_coupon_term, term);
 
             }

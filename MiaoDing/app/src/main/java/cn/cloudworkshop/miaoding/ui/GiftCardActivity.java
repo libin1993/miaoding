@@ -71,7 +71,7 @@ public class GiftCardActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gift_card);
         ButterKnife.bind(this);
-        tvHeaderTitle.setText("礼品卡");
+        tvHeaderTitle.setText(R.string.gift_card);
         imgHeaderShare.setVisibility(View.VISIBLE);
         imgHeaderShare.setImageResource(R.mipmap.icon_member_rule);
         getData();
@@ -141,7 +141,7 @@ public class GiftCardActivity extends BaseActivity {
             case R.id.img_header_share:
                 if (cardBean != null && !TextUtils.isEmpty(cardBean.getInfo().getCard_rule())) {
                     Intent intent = new Intent(this, UserRuleActivity.class);
-                    intent.putExtra("title", "礼品卡使用规则");
+                    intent.putExtra("title", R.string.gift_card_rule);
                     intent.putExtra("img_url", cardBean.getInfo().getCard_rule());
                     startActivity(intent);
                 }
@@ -178,7 +178,7 @@ public class GiftCardActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 if (TextUtils.isEmpty(etNumber.getText().toString().trim())) {
-                    ToastUtils.showToast(GiftCardActivity.this, "请输入密码");
+                    ToastUtils.showToast(GiftCardActivity.this, getString(R.string.input_pwd));
                 } else {
                     exchangeCard(etNumber.getText().toString());
                     mPopupWindow.dismiss();

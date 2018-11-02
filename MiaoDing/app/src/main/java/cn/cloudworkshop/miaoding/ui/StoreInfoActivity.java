@@ -127,8 +127,8 @@ public class StoreInfoActivity extends BaseActivity implements EasyPermissions.P
                 .diskCacheStrategy(DiskCacheStrategy.SOURCE)
                 .into(imgStoreIcon);
         tvStoreName.setText(storeBean.getName());
-        tvLoveNum.setText("粉丝： " + storeBean.getLovenum());
-        tvStoreAddress.setText("地址： " + storeBean.getAddress());
+        tvLoveNum.setText(getString(R.string.fans)+"： " + storeBean.getLovenum());
+        tvStoreAddress.setText(getString(R.string.store_address)+"： " + storeBean.getAddress());
         if (storeBean.getIs_collect() == 1) {
             imgFocusStore.setImageResource(R.mipmap.icon_collect_check);
         } else {
@@ -247,7 +247,7 @@ public class StoreInfoActivity extends BaseActivity implements EasyPermissions.P
 
     @Override
     public void onPermissionsDenied(int requestCode, List<String> perms) {
-        PermissionUtils.showPermissionDialog(this, "定位");
+        PermissionUtils.showPermissionDialog(this, getString(R.string.location));
     }
 
     @Override

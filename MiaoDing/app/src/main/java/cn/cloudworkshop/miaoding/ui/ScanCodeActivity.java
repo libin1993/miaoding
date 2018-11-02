@@ -115,7 +115,7 @@ public class ScanCodeActivity extends BaseActivity {
      * 二维码扫描结果非本平台商品
      */
     private void scanFail() {
-        ToastUtils.showToast(this, "仅支持本平台商品");
+        ToastUtils.showToast(this, getString(R.string.support_platform));
         finish();
     }
 

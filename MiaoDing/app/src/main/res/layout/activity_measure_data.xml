@@ -31,7 +31,7 @@
             android:drawableLeft="@mipmap/icon_add_measure"
             android:drawablePadding="13dp"
             android:gravity="center"
-            android:text="新增量体数据"
+            android:text="@string/add_measure_data"
             android:textColor="@android:color/white"
             android:textSize="14sp"/>
     </RelativeLayout>

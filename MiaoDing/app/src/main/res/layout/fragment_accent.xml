@@ -10,7 +10,7 @@
         android:layout_height="44dp"
         android:background="@color/dark_gray_15"
         android:gravity="center"
-        android:text="腔调"
+        android:text="@string/accent"
         android:textColor="@android:color/white"
         android:textSize="16sp"/>
 

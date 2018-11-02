@@ -53,7 +53,7 @@ public class JoinUsActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_join_us);
         ButterKnife.bind(this);
-        tvHeaderTitle.setText("设计师入驻");
+        tvHeaderTitle.setText(R.string.designer_join);
         initData();
 
     }
@@ -114,7 +114,7 @@ public class JoinUsActivity extends BaseActivity {
                         if (isApply == 0) {
                             startActivity(new Intent(this, ApplyJoinActivity.class));
                         } else {
-                            ToastUtils.showToast(this, "您已经提交申请，请耐心等待");
+                            ToastUtils.showToast(this, getString(R.string.has_apply));
                         }
                     }
                 } else {

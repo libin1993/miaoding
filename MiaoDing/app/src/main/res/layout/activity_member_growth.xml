@@ -20,7 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:text="我目前的成长值："
+            android:text="@string/member_growth"
             android:textColor="@color/dark_gray_22"
             android:textSize="17sp"/>
 
@@ -45,7 +45,7 @@
         android:id="@+id/tv_null_growth"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="暂无成长记录~"
+        android:text="@string/no_growth_recod"
         android:textColor="@android:color/darker_gray"
         android:textSize="16sp"
         android:layout_centerInParent="true"

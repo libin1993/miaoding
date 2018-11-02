@@ -101,7 +101,7 @@ public class EvaluateActivity extends BaseActivity implements EasyPermissions.Pe
     }
 
     private void initView() {
-        tvHeaderTitle.setText("发表评论");
+        tvHeaderTitle.setText(R.string.publish_evaluate);
         Glide.with(getApplicationContext())
                 .load(Constant.IMG_HOST + goodsImg)
                 .diskCacheStrategy(DiskCacheStrategy.SOURCE)
@@ -196,7 +196,7 @@ public class EvaluateActivity extends BaseActivity implements EasyPermissions.Pe
 
             new Thread(myRunnable).start();
         } else {
-            ToastUtils.showToast(this, "请填写评论");
+            ToastUtils.showToast(this, getString(R.string.please_input_evaluate));
         }
     }
 
@@ -241,7 +241,7 @@ public class EvaluateActivity extends BaseActivity implements EasyPermissions.Pe
                         @Override
                         public void onResponse(String response, int id) {
                             loadingView.smoothToHide();
-                            ToastUtils.showToast(EvaluateActivity.this, "评价成功！");
+                            ToastUtils.showToast(EvaluateActivity.this, getString(R.string.evaluate_success));
                             finish();
                         }
                     });
@@ -297,6 +297,6 @@ public class EvaluateActivity extends BaseActivity implements EasyPermissions.Pe
 
     @Override
     public void onPermissionsDenied(int requestCode, List<String> perms) {
-        PermissionUtils.showPermissionDialog(this, "相机");
+        PermissionUtils.showPermissionDialog(this, getString(R.string.camera));
     }
 }

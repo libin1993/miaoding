@@ -210,10 +210,10 @@ public class MyOrderFragment extends BaseFragment {
                             holder.setText(R.id.tv_order_content, dataBean.getList().get(0).getSize_content());
                             break;
                         default:
-                            holder.setText(R.id.tv_order_content, "定制款");
+                            holder.setText(R.id.tv_order_content, getString(R.string.customize_type));
                             break;
                     }
-                    holder.setText(R.id.tv_order_count, "共" + dataBean.getList().get(0).getNum() + "件商品");
+                    holder.setText(R.id.tv_order_count, getString(R.string.together) + dataBean.getList().get(0).getNum() + getString(R.string.piece_goods));
                 }
 
                 holder.setText(R.id.tv_order_price, "¥" + dataBean.getMoney());
@@ -223,37 +223,37 @@ public class MyOrderFragment extends BaseFragment {
                         holder.setVisible(R.id.tv_after_sale, false);
                         holder.setVisible(R.id.tv_order_control, true);
                         holder.setVisible(R.id.tv_order_pay, true);
-                        holder.setText(R.id.tv_order_status, "待付款");
-                        holder.setText(R.id.tv_order_control, "取消订单");
-                        holder.setText(R.id.tv_order_pay, "付款");
+                        holder.setText(R.id.tv_order_status, getString(R.string.not_pay_order));
+                        holder.setText(R.id.tv_order_control, getString(R.string.cancel_order));
+                        holder.setText(R.id.tv_order_pay, getString(R.string.pay));
                         break;
                     case 2:
                         holder.setVisible(R.id.tv_after_sale, false);
                         holder.setVisible(R.id.tv_order_control, true);
                         holder.setVisible(R.id.tv_order_pay, false);
-                        holder.setText(R.id.tv_order_status, "待发货");
-                        holder.setText(R.id.tv_order_control, "提醒发货");
+                        holder.setText(R.id.tv_order_status, getString(R.string.has_pay_order));
+                        holder.setText(R.id.tv_order_control, getString(R.string.notice_send_goods));
                         break;
                     case 3:
                         holder.setVisible(R.id.tv_after_sale, false);
                         holder.setVisible(R.id.tv_order_control, true);
                         holder.setVisible(R.id.tv_order_pay, true);
-                        holder.setText(R.id.tv_order_status, "已发货");
-                        holder.setText(R.id.tv_after_sale, "售后服务");
-                        holder.setText(R.id.tv_order_control, "查看物流");
-                        holder.setText(R.id.tv_order_pay, "确认收货");
+                        holder.setText(R.id.tv_order_status, getString(R.string.has_send_order));
+                        holder.setText(R.id.tv_after_sale, getString(R.string.after_sale));
+                        holder.setText(R.id.tv_order_control, getString(R.string.view_logistics));
+                        holder.setText(R.id.tv_order_pay, getString(R.string.confirm_receive));
                         break;
                     case 4:
                         holder.setVisible(R.id.tv_after_sale, false);
                         holder.setVisible(R.id.tv_order_control, true);
 
-                        holder.setText(R.id.tv_order_status, "已完成");
-                        holder.setText(R.id.tv_after_sale, "售后服务");
-                        holder.setText(R.id.tv_order_control, "再次购买");
+                        holder.setText(R.id.tv_order_status, getString(R.string.completed));
+                        holder.setText(R.id.tv_after_sale, getString(R.string.after_sale));
+                        holder.setText(R.id.tv_order_control, getString(R.string.buy_again));
                         //订单未评价
                         if (dataBean.getComment_id() == 0) {
                             holder.setVisible(R.id.tv_order_pay, true);
-                            holder.setText(R.id.tv_order_pay, "评价");
+                            holder.setText(R.id.tv_order_pay, getString(R.string.evaluate));
                         } else {
                             holder.setVisible(R.id.tv_order_pay, false);
                         }
@@ -262,8 +262,8 @@ public class MyOrderFragment extends BaseFragment {
                         holder.setVisible(R.id.tv_after_sale, false);
                         holder.setVisible(R.id.tv_order_control, true);
                         holder.setVisible(R.id.tv_order_pay, false);
-                        holder.setText(R.id.tv_order_status, "已取消");
-                        holder.setText(R.id.tv_order_control, "删除订单");
+                        holder.setText(R.id.tv_order_status, getString(R.string.cancelled));
+                        holder.setText(R.id.tv_order_control, getString(R.string.delete_order));
                         break;
                 }
 
@@ -275,7 +275,7 @@ public class MyOrderFragment extends BaseFragment {
                                 cancelOrder(dataBean.getId());
                                 break;
                             case 2:
-                                ToastUtils.showToast(getActivity(), "已提醒商家发货，请耐心等待");
+                                ToastUtils.showToast(getActivity(), getString(R.string.has_notice));
                                 break;
                             case 3:
                                 Intent intent = new Intent(getActivity(), LogisticsActivity.class);
@@ -320,7 +320,7 @@ public class MyOrderFragment extends BaseFragment {
                                         intent.putExtra("goods_type", dataBean.getList().get(0).getSize_content());
                                         break;
                                     default:
-                                        intent.putExtra("goods_type", "定制款");
+                                        intent.putExtra("goods_type", getString(R.string.customize_type));
                                         break;
                                 }
 
@@ -429,10 +429,10 @@ public class MyOrderFragment extends BaseFragment {
     private void confirmReceive(final int id) {
         AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity(),
                 R.style.Theme_AppCompat_DayNight_Dialog_Alert);
-        dialog.setTitle("确认收货");
-        dialog.setMessage("您要确认收货吗？");
+        dialog.setTitle(R.string.confirm_receive);
+        dialog.setMessage(R.string.is_confirm_receive);
         //为“确定”按钮注册监听事件
-        dialog.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+        dialog.setPositiveButton(getString(R.string.confirm), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 OkHttpUtils.get()
@@ -451,14 +451,14 @@ public class MyOrderFragment extends BaseFragment {
                             public void onResponse(String response, int id) {
 
                                 MobclickAgent.onEvent(getActivity(), "trade_success");
-                                ToastUtils.showToast(getActivity(), "交易完成，祝您购物愉快！");
+                                ToastUtils.showToast(getActivity(), getString(R.string.transaction_success));
                                 onStateChangeListener.onStateChange(0);
                             }
                         });
             }
         });
         //为“取消”按钮注册监听事件
-        dialog.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+        dialog.setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
@@ -477,10 +477,10 @@ public class MyOrderFragment extends BaseFragment {
     private void deleteOrder(final int id, final int position) {
         AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity(),
                 R.style.Theme_AppCompat_DayNight_Dialog_Alert);
-        dialog.setTitle("删除订单");
-        dialog.setMessage("您确定要删除订单吗？");
+        dialog.setTitle(R.string.delete_order);
+        dialog.setMessage(R.string.is_delete_order);
         //为“确定”按钮注册监听事件
-        dialog.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+        dialog.setPositiveButton(getString(R.string.confirm), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 OkHttpUtils.get()
@@ -509,7 +509,7 @@ public class MyOrderFragment extends BaseFragment {
                                             imgNoOrder.setImageResource(R.mipmap.icon_null_order);
                                             llNullOrder.setVisibility(View.VISIBLE);
                                         }
-                                        ToastUtils.showToast(getActivity(), "删除成功");
+                                        ToastUtils.showToast(getActivity(), getString(R.string.delete_success));
                                     }
                                 } catch (JSONException e) {
                                     e.printStackTrace();
@@ -520,7 +520,7 @@ public class MyOrderFragment extends BaseFragment {
             }
         });
         //为“取消”按钮注册监听事件
-        dialog.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+        dialog.setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 // 根据实际情况编写相应代码。
@@ -538,10 +538,10 @@ public class MyOrderFragment extends BaseFragment {
     private void cancelOrder(final int id) {
         AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity(),
                 R.style.Theme_AppCompat_DayNight_Dialog_Alert);
-        dialog.setTitle("取消订单");
-        dialog.setMessage("您确定要取消订单吗？");
+        dialog.setTitle(getString(R.string.cancel_order));
+        dialog.setMessage(R.string.is_cancel_order);
         //为“确定”按钮注册监听事件
-        dialog.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+        dialog.setPositiveButton(getString(R.string.confirm), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 OkHttpUtils.get()
@@ -558,14 +558,14 @@ public class MyOrderFragment extends BaseFragment {
                             @Override
                             public void onResponse(String response, int id) {
                                 MobclickAgent.onEvent(getActivity(), "cancel_order");
-                                ToastUtils.showToast(getActivity(), "取消成功");
+                                ToastUtils.showToast(getActivity(), getString(R.string.cancel_scuccess));
                                 onStateChangeListener.onStateChange(0);
                             }
                         });
             }
         });
         //为“取消”按钮注册监听事件
-        dialog.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+        dialog.setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 // 根据实际情况编写相应代码。

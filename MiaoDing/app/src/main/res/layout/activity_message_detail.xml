@@ -20,7 +20,7 @@
         android:id="@+id/tv_no_message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="暂无相关消息~"
+        android:text="@string/no_related_msg"
         android:layout_centerInParent="true"
         android:textColor="@android:color/darker_gray"
         android:textSize="16sp"

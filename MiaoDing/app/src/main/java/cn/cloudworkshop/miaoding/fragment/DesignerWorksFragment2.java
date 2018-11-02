@@ -66,8 +66,8 @@ public class DesignerWorksFragment2 extends BaseFragment {
         List<String> titleList = new ArrayList<>();
         List<Fragment> fragmentList = new ArrayList<>();
 
-        titleList.add("腔调");
-        titleList.add("设计师");
+        titleList.add(getString(R.string.accent));
+        titleList.add(getString(R.string.designer));
         fragmentList.add(WorksFragment.newInstance());
         fragmentList.add(OldDesignerFragment.newInstance());
 

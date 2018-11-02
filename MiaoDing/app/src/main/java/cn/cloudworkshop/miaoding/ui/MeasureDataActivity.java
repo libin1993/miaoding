@@ -88,10 +88,10 @@ public class MeasureDataActivity extends BaseActivity {
     private void initData() {
         switch (type) {
             case 1:
-                tvHeaderTitle.setText("量体数据");
+                tvHeaderTitle.setText(R.string.measure_data);
                 break;
             case 2:
-                tvHeaderTitle.setText("选择量体数据");
+                tvHeaderTitle.setText(R.string.slelct_current_measure_data);
                 break;
         }
         OkHttpUtils.get()

@@ -50,7 +50,7 @@
             android:layout_weight="1"
             android:background="@drawable/text_black"
             android:gravity="center"
-            android:text="返回首页"
+            android:text="@string/return_homepage"
             android:textColor="@android:color/white"
             android:textSize="14sp"/>
 
@@ -61,7 +61,7 @@
             android:layout_marginLeft="12dp"
             android:background="@drawable/text_black"
             android:gravity="center"
-            android:text="查看订单"
+            android:text="@string/view_order"
             android:textColor="@android:color/white"
             android:textSize="14sp"
             android:visibility="gone"/>

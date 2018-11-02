@@ -48,7 +48,7 @@ public class AfterSalesActivity extends BaseActivity {
     }
 
     private void initView() {
-        tvHeaderTitle.setText("售后服务");
+        tvHeaderTitle.setText(R.string.after_sale);
     }
 
     @OnClick({R.id.img_header_back, R.id.ll_apply_change, R.id.ll_sale_progress, R.id.ll_sale_consult})

@@ -77,7 +77,7 @@
             android:layout_above="@id/capture_crop_view"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="30dp"
-            android:text="请将二维码放置识别框中"
+            android:text="@string/scan_code"
             android:textColor="@android:color/white"
             android:textSize="15sp"/>
     </RelativeLayout>

@@ -29,7 +29,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="收货人: "
+                android:text="@string/consignee"
                 android:textColor="@color/dark_gray_22"
                 android:textSize="14sp"/>
 
@@ -61,7 +61,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="地址: "
+                android:text="@string/current_address"
                 android:textColor="@color/dark_gray_22"
                 android:textSize="14sp"/>
 
@@ -84,7 +84,7 @@
                 android:paddingRight="3dp"
                 android:paddingTop="2dp"
                 android:paddingBottom="2dp"
-                android:text="默认"
+                android:text="@string/default_address"
                 android:textColor="@android:color/white"
                 android:textSize="6sp"
                 android:visibility="gone"/>
@@ -116,7 +116,7 @@
             android:drawableLeft="@mipmap/icon_default_address"
             android:drawablePadding="4dp"
             android:gravity="center_vertical"
-            android:text="默认"
+            android:text="@string/set_default_address"
             android:textColor="@color/light_gray_85"
             android:textSize="10sp"/>
 
@@ -131,7 +131,7 @@
             android:layout_height="match_parent"
             android:drawablePadding="6dp"
             android:gravity="center_vertical"
-            android:text="删除"
+            android:text="@string/delete"
             android:drawableLeft="@mipmap/icon_delete_address"
             android:textColor="@color/light_gray_85"
             android:textSize="10sp"
@@ -143,7 +143,7 @@
             android:layout_height="match_parent"
             android:drawablePadding="6dp"
             android:gravity="center_vertical"
-            android:text="编辑"
+            android:text="@string/edit"
             android:drawableLeft="@mipmap/icon_edit_address"
             android:textColor="@color/light_gray_85"
             android:textSize="10sp"/>

@@ -37,7 +37,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="22dp"
             android:gravity="center"
-            android:text="您还没有收货地址"
+            android:text="@string/no_address"
             android:textColor="#808080"
             android:textSize="16sp"/>
     </LinearLayout>
@@ -48,7 +48,7 @@
         android:layout_height="49dp"
         android:background="@color/dark_gray_15"
         android:layout_alignParentBottom="true"
-        android:text="新增地址"
+        android:text="@string/add_receive_address"
         android:textSize="14sp"
         android:textColor="@android:color/white"
         android:gravity="center"/>

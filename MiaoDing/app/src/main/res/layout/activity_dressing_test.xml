@@ -66,7 +66,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="身高："
+                android:text="@string/confirm_order_height"
                 android:textColor="@color/dark_gray_22"
                 android:textSize="15sp"/>
 
@@ -94,7 +94,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="体重："
+                android:text="@string/confirm_order_weight"
                 android:textColor="@color/dark_gray_22"
                 android:textSize="15sp"/>
 
@@ -124,7 +124,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="年龄："
+                android:text="@string/test_age"
                 android:textColor="@color/dark_gray_22"
                 android:textSize="15sp"/>
 

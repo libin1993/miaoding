@@ -73,14 +73,14 @@ public class OrderActivity extends BaseActivity implements MyOrderFragment.OnSta
      * 加载数据
      */
     private void initData() {
-        tvHeaderTitle.setText("我的订单");
+        tvHeaderTitle.setText(R.string.my_order);
         titleList = new ArrayList<>();
         fragmentList = new ArrayList<>();
-        titleList.add("全部");
-        titleList.add("待付款");
-        titleList.add("待发货");
-        titleList.add("已发货");
-//        titleList.add("售后");
+        titleList.add(getString(R.string.all));
+        titleList.add(getString(R.string.not_pay_order));
+        titleList.add(getString(R.string.has_pay_order));
+        titleList.add(getString(R.string.has_send_order));
+//        titleList.add(getString(R.string.return_order));
         for (int i = 0; i < titleList.size(); i++) {
             fragmentList.add(MyOrderFragment.newInstance(i));
         }

@@ -102,7 +102,7 @@ public class ApplyJoinActivity extends BaseActivity implements EasyPermissions.P
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         ButterKnife.bind(this);
 
-        tvHeaderTitle.setText("申请入驻");
+        tvHeaderTitle.setText(R.string.apply_join);
     }
 
 
@@ -230,7 +230,7 @@ public class ApplyJoinActivity extends BaseActivity implements EasyPermissions.P
                 || !PhoneNumberUtils.judgePhoneNumber(etApplyPhone.getText().toString().trim())
                 || selectedPhotos1.size() == 0
                 || selectedPhotos2.size() == 0) {
-            ToastUtils.showToast(this, "请按要求填写个人信息");
+            ToastUtils.showToast(this, getString(R.string.please_input_personal_information));
         } else {
             loadingView.smoothToShow();
             tvSubmitApply.setEnabled(false);
@@ -314,7 +314,7 @@ public class ApplyJoinActivity extends BaseActivity implements EasyPermissions.P
 
     @Override
     public void onPermissionsDenied(int requestCode, List<String> perms) {
-        PermissionUtils.showPermissionDialog(this, "相机");
+        PermissionUtils.showPermissionDialog(this, getString(R.string.camera));
     }
 }
 

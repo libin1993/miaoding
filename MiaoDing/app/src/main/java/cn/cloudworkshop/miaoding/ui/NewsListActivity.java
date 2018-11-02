@@ -72,7 +72,7 @@ public class NewsListActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news_list);
         ButterKnife.bind(this);
-        tvHeaderTitle.setText("资讯");
+        tvHeaderTitle.setText(R.string.news);
         initData();
     }
 

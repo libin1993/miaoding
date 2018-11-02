@@ -25,7 +25,7 @@
             android:drawableLeft="@mipmap/icon_consult_small"
             android:drawablePadding="6dp"
             android:gravity="center_vertical"
-            android:text="申请修改"
+            android:text="@string/apply_alter"
             android:textColor="@color/dark_gray_22"
             android:textSize="16sp"/>
 
@@ -53,7 +53,7 @@
             android:drawableLeft="@mipmap/icon_consult_small"
             android:drawablePadding="6dp"
             android:gravity="center_vertical"
-            android:text="售后进度"
+            android:text="@string/after_sale_progress"
             android:textColor="@color/dark_gray_22"
             android:textSize="16sp"/>
 
@@ -81,7 +81,7 @@
             android:drawableLeft="@mipmap/icon_consult_small"
             android:drawablePadding="6dp"
             android:gravity="center_vertical"
-            android:text="售后客服"
+            android:text="@string/after_sale_service"
             android:textColor="@color/dark_gray_22"
             android:textSize="16sp"/>
 

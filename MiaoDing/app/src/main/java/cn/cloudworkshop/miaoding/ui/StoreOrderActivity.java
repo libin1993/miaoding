@@ -68,7 +68,7 @@ public class StoreOrderActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_store_order);
         ButterKnife.bind(this);
-        tvHeaderTitle.setText("男装定制");
+        tvHeaderTitle.setText(R.string.menswear_customize);
         getData();
         initView();
     }
@@ -161,14 +161,14 @@ public class StoreOrderActivity extends BaseActivity {
                                 }
                             });
                 } else {
-                    ToastUtils.showToast(this, "请输入有效金额");
+                    ToastUtils.showToast(this, getString(R.string.please_input_money));
                 }
             } else {
-                ToastUtils.showToast(this, "金额格式有误");
+                ToastUtils.showToast(this, getString(R.string.incorrect_amount_of_money));
             }
 
         } else {
-            ToastUtils.showToast(this, "请输入金额");
+            ToastUtils.showToast(this, getString(R.string.please_input_money));
         }
 
 

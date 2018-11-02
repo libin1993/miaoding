@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">妙定</string>
+    <string name="app_name">miaoding</string>
     <string name="content_description_item_custom_image">image</string>
     <string-array name="jazzy_effects">
         <item>Standard</item>
@@ -160,7 +160,7 @@
     <string name="receive_goods_address">收货地址</string>
     <string name="clear_cache">清除缓存</string>
     <string name="feed_back">帮助与反馈</string>
-    <string name="about_app">关于妙定</string>
+    <string name="about_app">about miaoding</string>
     <string name="logout">退出登录</string>
     <string name="select_all">全选</string>
     <string name="confirm_order">下单</string>

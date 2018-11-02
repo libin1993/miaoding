@@ -77,7 +77,7 @@ public class UsableCouponActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_coupon);
         ButterKnife.bind(this);
-        tvHeaderTitle.setText("优惠券");
+        tvHeaderTitle.setText(R.string.coupon);
         imgHeaderShare.setVisibility(View.VISIBLE);
         imgHeaderShare.setImageResource(R.mipmap.icon_member_rule);
         initData();
@@ -181,9 +181,9 @@ public class UsableCouponActivity extends BaseActivity {
                 holder.setText(R.id.tv_coupon_range, dataBean.getTitle());
                 holder.setText(R.id.tv_coupon_discount, dataBean.getSub_title());
                 StringBuilder sb = new StringBuilder();
-                sb.append("有效期：")
+                sb.append(getString(R.string.validity_term)+"：")
                         .append(DateUtils.getDate("yyyy-MM-dd", dataBean.getS_time()))
-                        .append(" 至 ")
+                        .append(getString(R.string.to))
                         .append(DateUtils.getDate("yyyy-MM-dd", dataBean.getE_time()));
                 holder.setText(R.id.tv_coupon_term, sb.toString());
 
@@ -228,7 +228,7 @@ public class UsableCouponActivity extends BaseActivity {
             case R.id.img_header_share:
                 if (couponRule != null) {
                     Intent intent = new Intent(this, UserRuleActivity.class);
-                    intent.putExtra("title", "使用规则");
+                    intent.putExtra("title", R.string.use_rule);
                     intent.putExtra("img_url", couponRule);
                     startActivity(intent);
                 }

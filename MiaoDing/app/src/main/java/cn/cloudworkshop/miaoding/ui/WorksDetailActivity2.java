@@ -300,8 +300,8 @@ public class WorksDetailActivity2 extends BaseActivity {
             tvPrice.setTypeface(DisplayUtils.setTextType(this));
             if (worksBean.getData().getSize_list() != null) {
                 tvPrice.setText("¥" + worksBean.getData().getSize_list().get(0).getSize_list().get(0).getPrice());
-                tvStock.setText("库存：" + worksBean.getData().getSize_list().get(0).getSize_list()
-                        .get(0).getSku_num() + "件");
+                tvStock.setText(getString(R.string.stock)+"：" + worksBean.getData().getSize_list().get(0).getSize_list()
+                        .get(0).getSku_num() + getString(R.string.piece));
                 tvCount.setText("1");
                 currentSize = 0;
                 currentColor = 0;
@@ -443,8 +443,8 @@ public class WorksDetailActivity2 extends BaseActivity {
         tvPrice.setTypeface(DisplayUtils.setTextType(WorksDetailActivity2.this));
         tvPrice.setText("¥" + worksBean.getData().getSize_list().get(currentSize).getSize_list()
                 .get(currentColor).getPrice());
-        tvStock.setText("库存：" + worksBean.getData().getSize_list()
-                .get(currentSize).getSize_list().get(currentColor).getSku_num() + "件");
+        tvStock.setText(getString(R.string.stock)+"：" + worksBean.getData().getSize_list()
+                .get(currentSize).getSize_list().get(currentColor).getSku_num() + getString(R.string.piece));
         stock = worksBean.getData().getSize_list().get(currentSize)
                 .getSize_list().get(currentColor).getSku_num();
         remainGoodsCount(worksBean.getData().getSize_list().get(currentSize)
@@ -470,8 +470,8 @@ public class WorksDetailActivity2 extends BaseActivity {
                 .addParams("goods_thumb", worksBean.getData().getThumb())
                 .addParams("size_ids", String.valueOf(worksBean.getData().getSize_list()
                         .get(currentSize).getSize_list().get(currentColor).getId()))
-                .addParams("size_content", "颜色:" + worksBean.getData().getSize_list().get(currentSize)
-                        .getSize_list().get(currentColor).getColor_name() + ";尺码:" + worksBean.getData()
+                .addParams("size_content", getString(R.string.color)+":" + worksBean.getData().getSize_list().get(currentSize)
+                        .getSize_list().get(currentColor).getColor_name() + ";"+getString(R.string.size)+":" + worksBean.getData()
                         .getSize_list().get(currentSize).getSize_name())
                 .addParams("num", tvCount.getText().toString().trim())
                 .build()
@@ -504,7 +504,7 @@ public class WorksDetailActivity2 extends BaseActivity {
                                 startActivity(intent);
 
                             } else if (index == 2) {
-                                ToastUtils.showToast(WorksDetailActivity2.this, "加入购物袋成功");
+                                ToastUtils.showToast(WorksDetailActivity2.this, getString(R.string.add_card_success));
                                 mPopupWindow.dismiss();
                             }
                         }
@@ -555,11 +555,11 @@ public class WorksDetailActivity2 extends BaseActivity {
                                 case 1:
                                     MobclickAgent.onEvent(WorksDetailActivity2.this, "collection");
                                     imgWorksCollect.setImageResource(R.mipmap.icon_add_like);
-                                    ToastUtils.showToast(WorksDetailActivity2.this, "收藏成功");
+                                    ToastUtils.showToast(WorksDetailActivity2.this, getString(R.string.collect_success));
                                     break;
                                 case 2:
                                     imgWorksCollect.setImageResource(R.mipmap.icon_cancel_like);
-                                    ToastUtils.showToast(WorksDetailActivity2.this, "已取消收藏");
+                                    ToastUtils.showToast(WorksDetailActivity2.this, getString(R.string.cancel_collect));
                                     break;
 
                             }

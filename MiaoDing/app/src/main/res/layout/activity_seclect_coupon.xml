@@ -24,7 +24,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/text_white_2dp"
-            android:hint="请输入邀请码、兑换码"
+            android:hint="@string/input_coupon_code"
             android:maxLength="20"
             android:singleLine="true"
             android:paddingLeft="10dp"
@@ -39,7 +39,7 @@
             android:layout_marginLeft="10dp"
             android:background="@drawable/btn_gray_bg"
             android:gravity="center"
-            android:text="兑换"
+            android:text="@string/exchange"
             android:textColor="@android:color/white"
             android:textSize="14sp"/>
     </LinearLayout>
@@ -75,7 +75,7 @@
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="20dp"
                 android:gravity="center"
-                android:text="以下优惠券不适用此订单"
+                android:text="@string/coupon_disable"
                 android:textColor="@android:color/darker_gray"
                 android:textSize="13sp"
                 android:visibility="gone"/>
@@ -108,7 +108,7 @@
             android:layout_margin="25dp"
             android:background="@drawable/btn_black_bg"
             android:gravity="center"
-            android:text="不使用优惠券"
+            android:text="@string/not_use_coupon"
             android:textColor="@android:color/white"
             android:textSize="17sp"/>
     </LinearLayout>

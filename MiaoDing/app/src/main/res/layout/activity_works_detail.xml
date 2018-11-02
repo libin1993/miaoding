@@ -145,7 +145,7 @@
                             android:id="@+id/tv_count_comment"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="评价"
+                            android:text="@string/evaluate"
                             android:textColor="@color/light_gray_3d"
                             android:textSize="14sp"
                             android:textStyle="bold"/>
@@ -155,7 +155,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
-                            android:text="查看全部 >"
+                            android:text="@string/view_whole"
                             android:textColor="@color/light_gray_3d"
                             android:textSize="14sp"/>
                     </RelativeLayout>
@@ -170,7 +170,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:gravity="center"
-                    android:text="上滑查看商品详情"
+                    android:text="@string/view_works_detail"
                     android:textColor="@color/light_gray_93"
                     android:textSize="12sp"/>
 
@@ -260,7 +260,7 @@
             android:layout_height="match_parent"
             android:background="#4C4C4C"
             android:gravity="center"
-            android:text="加入购物袋"
+            android:text="@string/add_cart"
             android:textColor="@android:color/white"
             android:textSize="14sp"
             android:textStyle="bold"/>

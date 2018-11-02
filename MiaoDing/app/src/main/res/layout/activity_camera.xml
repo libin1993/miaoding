@@ -47,7 +47,7 @@
             android:layout_centerVertical="true"
             android:background="@drawable/btn_black_bg"
             android:gravity="center"
-            android:text="重拍"
+            android:text="@string/take_again"
             android:textColor="@android:color/white"
             android:textSize="14sp"
             android:visibility="gone"/>
@@ -67,7 +67,7 @@
             android:layout_centerVertical="true"
             android:background="@drawable/btn_black_bg"
             android:gravity="center"
-            android:text="下一步"
+            android:text="@string/next_step"
             android:textColor="@android:color/white"
             android:textSize="14sp"
             android:visibility="gone"/>

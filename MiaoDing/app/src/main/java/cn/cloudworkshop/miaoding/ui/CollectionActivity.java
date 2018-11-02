@@ -52,12 +52,12 @@ public class CollectionActivity extends BaseActivity {
     }
 
     private void initData() {
-        tvHeaderTitle.setText("我的收藏");
+        tvHeaderTitle.setText(R.string.my_collection);
         titleList = new ArrayList<>();
         fragmentList = new ArrayList<>();
-        titleList.add("商品");
-        titleList.add("资讯");
-        titleList.add("定制店");
+        titleList.add(getString(R.string.goods));
+        titleList.add(getString(R.string.news));
+        titleList.add(getString(R.string.store));
 
         fragmentList.add(CollectionFragment.newInstance(2));
         fragmentList.add(CollectionFragment.newInstance(1));

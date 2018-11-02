@@ -25,10 +25,10 @@ public class PermissionUtils {
     public static void showPermissionDialog(final Context context, String msg) {
         AlertDialog.Builder dialog = new AlertDialog.Builder(context,
                 R.style.Theme_AppCompat_DayNight_Dialog_Alert);
-        dialog.setTitle("帮助");
-        dialog.setMessage("当前应用缺少" + msg + "权限，请点击\"设置\" - \"权限管理\"，打开所需权限。");
+        dialog.setTitle(context.getString(R.string.help));
+        dialog.setMessage(context.getString(R.string.app_need) + msg + context.getString(R.string.permission));
         //为“确定”按钮注册监听事件
-        dialog.setPositiveButton("设置", new DialogInterface.OnClickListener() {
+        dialog.setPositiveButton(context.getString(R.string.set), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 // 启动应用的设置
@@ -38,7 +38,7 @@ public class PermissionUtils {
             }
         });
         //为“取消”按钮注册监听事件
-        dialog.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+        dialog.setNegativeButton(context.getString(R.string.cancel), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 // 根据实际情况编写相应代码。

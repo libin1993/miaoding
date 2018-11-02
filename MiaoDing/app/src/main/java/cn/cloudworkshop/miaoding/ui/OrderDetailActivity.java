@@ -1,5 +1,6 @@
 package cn.cloudworkshop.miaoding.ui;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -147,47 +148,47 @@ public class OrderDetailActivity extends BaseActivity {
                 }
 
                 tvPayTime.setTextColor(ContextCompat.getColor(this, R.color.dark_red));
-                tvOrderStatus.setText("待付款");
-                tvOrderCancel.setText("取消订单");
-                tvOrderPayMoney.setText("付款");
+                tvOrderStatus.setText(R.string.not_pay_order);
+                tvOrderCancel.setText(R.string.cancel_order);
+                tvOrderPayMoney.setText(R.string.pay);
                 tvOrderCancel.setVisibility(View.VISIBLE);
                 tvOrderPayMoney.setVisibility(View.VISIBLE);
                 break;
             case 2:
                 tvPayTime.setText(orderBean.getData().getP_time());
-                tvOrderStatus.setText("待发货");
-                tvOrderCancel.setText("提醒发货");
+                tvOrderStatus.setText(R.string.has_pay_order);
+                tvOrderCancel.setText(R.string.notice_send_goods);
                 tvOrderCancel.setVisibility(View.VISIBLE);
                 break;
             case 3:
                 tvPayTime.setText(orderBean.getData().getP_time());
                 tvOrderAfter.setVisibility(View.GONE);
-                tvOrderAfter.setText("售后服务");
-                tvOrderStatus.setText("已发货");
+                tvOrderAfter.setText(R.string.after_sale);
+                tvOrderStatus.setText(R.string.has_send_order);
                 tvOrderCancel.setVisibility(View.VISIBLE);
                 tvOrderPayMoney.setVisibility(View.VISIBLE);
-                tvOrderCancel.setText("查看物流");
-                tvOrderPayMoney.setText("确认收货");
+                tvOrderCancel.setText(R.string.view_logistics);
+                tvOrderPayMoney.setText(R.string.confirm_receive);
                 break;
             case 4:
                 tvPayTime.setText(orderBean.getData().getP_time());
                 tvOrderAfter.setVisibility(View.GONE);
-                tvOrderAfter.setText("售后服务");
+                tvOrderAfter.setText(R.string.after_sale);
                 tvOrderCancel.setVisibility(View.VISIBLE);
-                tvOrderStatus.setText("已完成");
-                tvOrderCancel.setText("再次购买");
+                tvOrderStatus.setText(R.string.completed);
+                tvOrderCancel.setText(R.string.buy_again);
                 if (orderBean.getData().getOrder_comment().getId() == 0) {
                     tvOrderPayMoney.setVisibility(View.VISIBLE);
-                    tvOrderPayMoney.setText("评价");
+                    tvOrderPayMoney.setText(R.string.evaluate);
                 } else {
                     tvOrderPayMoney.setVisibility(View.GONE);
                 }
                 break;
             case -2:
-                tvPayTime.setText("已取消");
-                tvOrderStatus.setText("已取消");
+                tvPayTime.setText(R.string.cancelled);
+                tvOrderStatus.setText(R.string.cancelled);
                 tvOrderCancel.setVisibility(View.VISIBLE);
-                tvOrderCancel.setText("删除订单");
+                tvOrderCancel.setText(R.string.delete_order);
                 break;
         }
         tvOrderNum.setText(orderBean.getData().getOrder_no());
@@ -217,13 +218,13 @@ public class OrderDetailActivity extends BaseActivity {
 
         switch (orderBean.getData().getPay_type()) {
             case 0:
-                tvOrderPayStyle.setText("待付款");
+                tvOrderPayStyle.setText(R.string.not_pay_order);
                 break;
             case 1:
-                tvOrderPayStyle.setText("支付宝");
+                tvOrderPayStyle.setText(R.string.alipay);
                 break;
             case 2:
-                tvOrderPayStyle.setText("微信");
+                tvOrderPayStyle.setText(R.string.wechat);
                 break;
         }
 
@@ -278,7 +279,7 @@ public class OrderDetailActivity extends BaseActivity {
     }
 
     private void getData() {
-        tvHeaderTitle.setText("订单详情");
+        tvHeaderTitle.setText(R.string.order_detail);
 
         Intent intent = getIntent();
         orderId = intent.getStringExtra("id");
@@ -313,19 +314,20 @@ public class OrderDetailActivity extends BaseActivity {
         @Override
         public void run() {
             runOnUiThread(new Runnable() {
+                @SuppressLint("SetTextI18n")
                 @Override
                 public void run() {
                     recLen--;
                     if (recLen > 0) {
                         tvPayTime.setTextColor(ContextCompat.getColor(OrderDetailActivity.this, R.color.dark_red));
-                        tvPayTime.setText("请在 " + recLen / 60 + "分" + recLen % 60 + "秒 内完成支付，超时订单将自动取消");
+                        tvPayTime.setText(getString(R.string.please_in) + recLen / 60 + getString(R.string.minute) + recLen % 60 + getString(R.string.second)+getString(R.string.please_pay));
                     } else {
                         if (timer != null && task != null) {
                             timer.cancel();
                             task.cancel();
                         }
                         finish();
-                        ToastUtils.showToast(OrderDetailActivity.this, "订单已过期");
+                        ToastUtils.showToast(OrderDetailActivity.this, getString(R.string.order_expired));
                     }
                 }
             });
@@ -364,7 +366,7 @@ public class OrderDetailActivity extends BaseActivity {
                         intent.putExtra("goods_type", orderBean.getData().getCar_list().get(0).getSize_content());
                         break;
                     default:
-                        intent.putExtra("goods_type", "定制款");
+                        intent.putExtra("goods_type", getString(R.string.customize_type));
                         break;
                 }
 
@@ -379,7 +381,7 @@ public class OrderDetailActivity extends BaseActivity {
                 cancelOrder();
                 break;
             case 2:
-                ToastUtils.showToast(this, "已提醒商家发货，请耐心等待");
+                ToastUtils.showToast(this, getString(R.string.has_notice));
                 break;
             case 3:
                 Intent intent = new Intent(this, LogisticsActivity.class);
@@ -443,10 +445,10 @@ public class OrderDetailActivity extends BaseActivity {
      */
     private void confirmReceive(final String id) {
         AlertDialog.Builder dialog = new AlertDialog.Builder(this, R.style.Theme_AppCompat_DayNight_Dialog_Alert);
-        dialog.setTitle("确认收货");
-        dialog.setMessage("您要确认收货吗？");
+        dialog.setTitle(R.string.confirm_receive);
+        dialog.setMessage(R.string.is_confirm_receive);
         //为“确定”按钮注册监听事件
-        dialog.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+        dialog.setPositiveButton(getString(R.string.confirm), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 OkHttpUtils.get()
@@ -464,13 +466,13 @@ public class OrderDetailActivity extends BaseActivity {
                             @Override
                             public void onResponse(String response, int id) {
                                 finish();
-                                ToastUtils.showToast(OrderDetailActivity.this, "交易完成，祝您购物愉快！");
+                                ToastUtils.showToast(OrderDetailActivity.this, getString(R.string.transaction_success));
                             }
                         });
             }
         });
         //为“取消”按钮注册监听事件
-        dialog.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+        dialog.setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 // 根据实际情况编写相应代码。
@@ -488,10 +490,10 @@ public class OrderDetailActivity extends BaseActivity {
      */
     private void deleteOrder() {
         AlertDialog.Builder dialog = new AlertDialog.Builder(this, R.style.Theme_AppCompat_DayNight_Dialog_Alert);
-        dialog.setTitle("删除订单");
-        dialog.setMessage("您确定要删除订单吗？");
+        dialog.setTitle(R.string.delete_order);
+        dialog.setMessage(R.string.is_delete_order);
         //为“确定”按钮注册监听事件
-        dialog.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+        dialog.setPositiveButton(getString(R.string.confirm), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 OkHttpUtils.get()
@@ -508,13 +510,13 @@ public class OrderDetailActivity extends BaseActivity {
                             @Override
                             public void onResponse(String response, int id) {
                                 finish();
-                                ToastUtils.showToast(OrderDetailActivity.this, "删除成功");
+                                ToastUtils.showToast(OrderDetailActivity.this, getString(R.string.delete_success));
                             }
                         });
             }
         });
         //为“取消”按钮注册监听事件
-        dialog.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+        dialog.setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
@@ -530,10 +532,10 @@ public class OrderDetailActivity extends BaseActivity {
      */
     private void cancelOrder() {
         AlertDialog.Builder dialog = new AlertDialog.Builder(this, R.style.Theme_AppCompat_DayNight_Dialog_Alert);
-        dialog.setTitle("取消订单");
-        dialog.setMessage("您确定要取消订单吗？");
+        dialog.setTitle(getString(R.string.cancel_order));
+        dialog.setMessage(R.string.is_cancel_order);
         //为“确定”按钮注册监听事件
-        dialog.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+        dialog.setPositiveButton(getString(R.string.confirm), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 OkHttpUtils.get()
@@ -551,13 +553,13 @@ public class OrderDetailActivity extends BaseActivity {
                             public void onResponse(String response, int id) {
                                 MobclickAgent.onEvent(OrderDetailActivity.this, "cancel_order");
                                 finish();
-                                ToastUtils.showToast(OrderDetailActivity.this, "取消成功");
+                                ToastUtils.showToast(OrderDetailActivity.this, getString(R.string.cancel_scuccess));
                             }
                         });
             }
         });
         //为“取消”按钮注册监听事件
-        dialog.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+        dialog.setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();

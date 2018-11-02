@@ -127,9 +127,9 @@ public class MyCouponFragment extends BaseFragment {
                 holder.setText(R.id.tv_coupon_range, dataBean.getTitle());
                 holder.setText(R.id.tv_coupon_discount, dataBean.getSub_title());
                 StringBuilder sb = new StringBuilder();
-                sb.append("有效期：")
+                sb.append(getString(R.string.validity_term)+"：")
                         .append(DateUtils.getDate("yyyy-MM-dd", dataBean.getS_time()))
-                        .append(" 至 ")
+                        .append(getString(R.string.to))
                         .append(DateUtils.getDate("yyyy-MM-dd", dataBean.getE_time()));
                 holder.setText(R.id.tv_coupon_term, sb.toString());
 

@@ -143,7 +143,7 @@ public class FeedbackActivity extends BaseActivity implements EasyPermissions.Pe
                             //反馈事件监听
                             MobclickAgent.onEvent(FeedbackActivity.this, "feedback");
                             loadingView.smoothToHide();
-                            ToastUtils.showToast(FeedbackActivity.this, "提交成功，感谢您的宝贵意见");
+                            ToastUtils.showToast(FeedbackActivity.this, getString(R.string.feedback_success));
                             finish();
                         }
                     });
@@ -172,7 +172,7 @@ public class FeedbackActivity extends BaseActivity implements EasyPermissions.Pe
                 }
             }).start();
         } else {
-            ToastUtils.showToast(this, "请写下您的宝贵意见");
+            ToastUtils.showToast(this, getString(R.string.please_input_suggestion));
         }
 
     }
@@ -182,7 +182,7 @@ public class FeedbackActivity extends BaseActivity implements EasyPermissions.Pe
      * 加载视图
      */
     private void initView() {
-        tvHeaderTitle.setText("意见反馈");
+        tvHeaderTitle.setText(R.string.suggestions);
         etFeedBack.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -356,6 +356,6 @@ public class FeedbackActivity extends BaseActivity implements EasyPermissions.Pe
 
     @Override
     public void onPermissionsDenied(int requestCode, List<String> perms) {
-        PermissionUtils.showPermissionDialog(this, "相机");
+        PermissionUtils.showPermissionDialog(this, getString(R.string.camera));
     }
 }

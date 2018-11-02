@@ -53,6 +53,7 @@ import cn.cloudworkshop.miaoding.ui.StoreInfoActivity;
 import cn.cloudworkshop.miaoding.ui.WorksDetailActivity;
 import cn.cloudworkshop.miaoding.utils.DisplayUtils;
 import cn.cloudworkshop.miaoding.utils.GsonUtils;
+import cn.cloudworkshop.miaoding.utils.LogUtils;
 import cn.cloudworkshop.miaoding.utils.SharedPreferencesUtils;
 import cn.cloudworkshop.miaoding.utils.SpaceItemDecoration;
 import cn.cloudworkshop.miaoding.utils.ToastUtils;
@@ -207,8 +208,8 @@ public class CollectionFragment extends BaseFragment {
                                 .diskCacheStrategy(DiskCacheStrategy.SOURCE)
                                 .into((ImageView) holder.getView(R.id.img_store));
                         holder.setText(R.id.tv_store_name, itemBean.getFactory_name());
-                        holder.setText(R.id.tv_store_love_num, "粉丝： " + itemBean.getLovenum());
-                        holder.setText(R.id.tv_address_store, "地址： " + itemBean.getAddress());
+                        holder.setText(R.id.tv_store_love_num, getString(R.string.fans)+"： " + itemBean.getLovenum());
+                        holder.setText(R.id.tv_address_store, getString(R.string.store_address)+"： " + itemBean.getAddress());
                     }
                 };
                 break;
@@ -293,10 +294,10 @@ public class CollectionFragment extends BaseFragment {
     private void cancelCollection(final int cid, final int position) {
         AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity(),
                 R.style.Theme_AppCompat_DayNight_Dialog_Alert);
-        dialog.setTitle("取消收藏");
-        dialog.setMessage("您确定要取消收藏？");
+        dialog.setTitle(getString(R.string.cancel_collect));
+        dialog.setMessage(R.string.is_cancel_collect);
         //为“确定”按钮注册监听事件
-        dialog.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+        dialog.setPositiveButton(getString(R.string.confirm), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 OkHttpUtils.get()
@@ -341,7 +342,7 @@ public class CollectionFragment extends BaseFragment {
             }
         });
         //为“取消”按钮注册监听事件
-        dialog.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+        dialog.setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 // 根据实际情况编写相应代码。

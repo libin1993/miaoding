@@ -53,13 +53,13 @@ public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler {
         if (resp.getType() == ConstantsAPI.COMMAND_PAY_BY_WX) {
             switch (resp.errCode) {
                 case 0:
-                    errCode = "支付成功";
+                    errCode = getString(R.string.pay_success);
                     break;
                 case -1:
-                    errCode = "支付失败";
+                    errCode = getString(R.string.pay_fail);
                     break;
                 case -2:
-                    errCode = "支付取消";
+                    errCode = getString(R.string.pay_cancel);
                     break;
             }
             ToastUtils.showToast(this, errCode);

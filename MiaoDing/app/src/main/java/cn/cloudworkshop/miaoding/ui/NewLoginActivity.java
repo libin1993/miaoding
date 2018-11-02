@@ -107,11 +107,11 @@ public class NewLoginActivity extends BaseActivity {
             NewLoginActivity activity = mActivity.get();
             if (activity != null) {
                 if (msg.what == 1) {
-                    activity.tvGetCode.setText("重发(" + msg.arg1 + ")");
+                    activity.tvGetCode.setText(activity.getString(R.string.send_again)+"(" + msg.arg1 + ")");
                     activity.tvGetCode.setBackgroundResource(R.drawable.bound_ed_3dp);
                     activity.tvGetCode.setTextColor(ContextCompat.getColor(activity, R.color.light_gray_43));
                 } else if (msg.what == 2) {
-                    activity.tvGetCode.setText("获取验证码");
+                    activity.tvGetCode.setText(R.string.receive_code);
                     activity.tvGetCode.setClickable(true);
                     activity.tvGetCode.setBackgroundResource(R.drawable.bound_15_3dp);
                     activity.tvGetCode.setTextColor(Color.WHITE);
@@ -126,9 +126,9 @@ public class NewLoginActivity extends BaseActivity {
     private void initView() {
         viewHeaderLine.setVisibility(View.GONE);
         if (!TextUtils.isEmpty(userId)) {
-            tvHeaderTitle.setText("绑定手机");
+            tvHeaderTitle.setText(R.string.bind_phone);
         } else {
-            tvHeaderTitle.setText("手机登录");
+            tvHeaderTitle.setText(R.string.phone_login);
         }
 
         msgToken = SharedPreferencesUtils.getStr(this, "msg_token");
@@ -318,7 +318,7 @@ public class NewLoginActivity extends BaseActivity {
                 }
             }).start();
         } else {
-            ToastUtils.showToast(this, "手机号输入有误，请重新输入");
+            ToastUtils.showToast(this, getString(R.string.error_phone_number));
         }
     }
 

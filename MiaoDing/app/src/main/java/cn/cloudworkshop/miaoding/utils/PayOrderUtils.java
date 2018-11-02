@@ -92,7 +92,7 @@ public class PayOrderUtils {
                     // 判断resultStatus 为9000则代表支付成功
                     if (TextUtils.equals(resultStatus, "9000")) {
                         // 该笔订单是否真实支付成功，需要依赖服务端的异步通知。
-                        ToastUtils.showToast(context, "支付成功");
+                        ToastUtils.showToast(context, context.getString(R.string.pay_success));
                         MobclickAgent.onEvent(context, "pay");
 
 
@@ -105,7 +105,7 @@ public class PayOrderUtils {
 
                     } else {
                         // 该笔订单真实的支付结果，需要依赖服务端的异步通知。
-                        ToastUtils.showToast(context, "支付失败");
+                        ToastUtils.showToast(context, context.getString(R.string.pay_fail));
 
                         Intent intent = new Intent(context, AppointmentActivity.class);
                         intent.putExtra("type", "pay_fail");
@@ -142,7 +142,7 @@ public class PayOrderUtils {
         TextView tvTotalPrice = (TextView) popupView.findViewById(R.id.tv_pay_price);
         TextView tvConfirmBuy = (TextView) popupView.findViewById(R.id.tv_pay_confirm);
 
-        tvTotalPrice.setText("合计：   ¥" + money);
+        tvTotalPrice.setText(context.getString(R.string.total_price)+"   ¥" + money);
 
         mPopupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
             @Override
@@ -152,7 +152,7 @@ public class PayOrderUtils {
                 EventBus.getDefault().post("pay_result");
 
                 if (!isConfirmBuy) {
-                    ToastUtils.showToast(context, "取消支付");
+                    ToastUtils.showToast(context, context.getString(R.string.cancel_pay));
                     Intent intent = new Intent(context, OrderActivity.class);
                     intent.putExtra("page", 1);
                     context.startActivity(intent);
@@ -163,8 +163,8 @@ public class PayOrderUtils {
 
 
         final List<PayTypeBean> payList = new ArrayList<>();
-        payList.add(new PayTypeBean(R.mipmap.icon_ali_pay, "支付宝", "推荐支付宝用户使用"));
-        payList.add(new PayTypeBean(R.mipmap.icon_wechat_pay, "微信", "推荐微信用户使用"));
+        payList.add(new PayTypeBean(R.mipmap.icon_ali_pay, context.getString(R.string.alipay), context.getString(R.string.recommend_alipay)));
+        payList.add(new PayTypeBean(R.mipmap.icon_wechat_pay, context.getString(R.string.wechat), context.getString(R.string.recommend_wechat)));
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
 
         final CommonAdapter<PayTypeBean> adapter = new CommonAdapter<PayTypeBean>(context,
@@ -234,10 +234,10 @@ public class PayOrderUtils {
                         WeChatPayBean weChatPay = GsonUtils.jsonToBean(response, WeChatPayBean.class);
                         if (weChatPay.getCode() == 1) {
                             if (!api.isWXAppInstalled()) {
-                                ToastUtils.showToast(context, "没有安装微信");
+                                ToastUtils.showToast(context, context.getString(R.string.not_install_wechat));
                             }
                             if (!api.isWXAppSupportAPI()) {
-                                ToastUtils.showToast(context, "当前版本不支持支付功能");
+                                ToastUtils.showToast(context, context.getString(R.string.not_support_wechat));
                             }
                             MyApplication.payId = weChatPay.getPay_code();
                             PayReq req = new PayReq();

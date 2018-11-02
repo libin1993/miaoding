@@ -384,8 +384,8 @@ public class WorksDetailActivity extends BaseActivity {
             if (worksBean.getData().getSize_list() != null && worksBean.getData().getSize_list().size() > 0) {
                 tvPrice.setText("¥" + worksBean.getData().getSize_list().get(0).getSize_list()
                         .get(0).getPrice());
-                tvStock.setText("库存：" + worksBean.getData().getSize_list().get(0).getSize_list()
-                        .get(0).getSku_num() + "件");
+                tvStock.setText(getString(R.string.stock)+"：" + worksBean.getData().getSize_list().get(0).getSize_list()
+                        .get(0).getSku_num() + getString(R.string.piece));
                 tvCount.setText("1");
                 currentSize = 0;
                 currentColor = 0;
@@ -528,8 +528,8 @@ public class WorksDetailActivity extends BaseActivity {
         tvPrice.setTypeface(DisplayUtils.setTextType(WorksDetailActivity.this));
         tvPrice.setText("¥" + worksBean.getData().getSize_list().get(currentSize).getSize_list()
                 .get(currentColor).getPrice());
-        tvStock.setText("库存：" + worksBean.getData().getSize_list()
-                .get(currentSize).getSize_list().get(currentColor).getSku_num() + "件");
+        tvStock.setText(getString(R.string.stock)+"：" + worksBean.getData().getSize_list()
+                .get(currentSize).getSize_list().get(currentColor).getSku_num() + getString(R.string.piece));
         stock = worksBean.getData().getSize_list().get(currentSize)
                 .getSize_list().get(currentColor).getSku_num();
         remainGoodsCount(worksBean.getData().getSize_list().get(currentSize)
@@ -560,7 +560,7 @@ public class WorksDetailActivity extends BaseActivity {
         map.put("goods_name", worksBean.getData().getName());
         map.put("goods_thumb", worksBean.getData().getImg_often());
         map.put("size_ids", String.valueOf(sizeListBean.getId()));
-        map.put("size_content", "颜色:" + sizeListBean.getColor_name() + ";尺码:" + worksBean.getData()
+        map.put("size_content", getString(R.string.color)+":" + sizeListBean.getColor_name() + ";"+getString(R.string.size)+":" + worksBean.getData()
                 .getSize_list().get(currentSize).getSize_name());
         map.put("num", tvCount.getText().toString().trim());
         map.put("size_type", String.valueOf(sizeListBean.getType()));

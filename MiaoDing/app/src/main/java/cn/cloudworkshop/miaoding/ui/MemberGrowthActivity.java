@@ -121,7 +121,7 @@ public class MemberGrowthActivity extends BaseActivity {
     private void getData() {
         //会员成长值
         String memberScore = getIntent().getStringExtra("value");
-        tvHeaderTitle.setText("我的成长值");
+        tvHeaderTitle.setText(R.string.my_growth);
         imgHeaderShare.setVisibility(View.VISIBLE);
         imgHeaderShare.setImageResource(R.mipmap.icon_member_rule);
         tvUserScore.setText(memberScore);

@@ -65,7 +65,7 @@ public class MessageCenterActivity extends BaseActivity {
      * 加载数据
      */
     private void initData() {
-        tvHeaderTitle.setText("消息中心");
+        tvHeaderTitle.setText(R.string.msg_center);
         OkHttpUtils.get()
                 .url(Constant.MESSAGE_TYPE)
                 .addParams("token", SharedPreferencesUtils.getStr(this, "token"))

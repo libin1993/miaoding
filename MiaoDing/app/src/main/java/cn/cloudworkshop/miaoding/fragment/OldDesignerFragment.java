@@ -104,7 +104,7 @@ public class OldDesignerFragment extends BaseFragment {
                     intent.putExtra("id", String.valueOf(designerList.get(position).getId()));
                     startActivity(intent);
                 } else {
-                    ToastUtils.showToast(getParentFragment().getActivity(), "敬请期待");
+                    ToastUtils.showToast(getParentFragment().getActivity(), getString(R.string.coming_soon));
                 }
             }
 

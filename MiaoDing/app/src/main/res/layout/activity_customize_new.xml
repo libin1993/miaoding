@@ -33,7 +33,7 @@
                     android:layout_centerInParent="true"
                     android:background="@drawable/ring_gray"
                     android:gravity="center"
-                    android:text="面料"
+                    android:text="@string/fabric"
                     android:textColor="@color/dark_gray_22"
                     android:textSize="13sp"/>
             </RelativeLayout>
@@ -50,7 +50,7 @@
                     android:layout_centerInParent="true"
                     android:background="@drawable/ring_gray"
                     android:gravity="center"
-                    android:text="版型"
+                    android:text="@string/type"
                     android:textColor="@color/dark_gray_22"
                     android:textSize="13sp"/>
             </RelativeLayout>
@@ -67,7 +67,7 @@
                     android:layout_centerInParent="true"
                     android:background="@drawable/ring_gray"
                     android:gravity="center"
-                    android:text="细节"
+                    android:text="@string/details"
                     android:textColor="@color/dark_gray_22"
                     android:textSize="13sp"/>
             </RelativeLayout>
@@ -151,7 +151,7 @@
                 android:layout_marginRight="20dp"
                 android:button="@null"
                 android:gravity="center"
-                android:text="正面"
+                android:text="@string/positive"
                 android:textColor="@color/rgs_text_color"
                 android:textSize="15sp"/>
 
@@ -160,7 +160,7 @@
                 android:layout_height="40dp"
                 android:button="@null"
                 android:gravity="center"
-                android:text="背面"
+                android:text="@string/back"
                 android:textColor="@color/rgs_text_color"
                 android:textSize="16sp"/>
 
@@ -170,7 +170,7 @@
                 android:layout_marginLeft="20dp"
                 android:button="@null"
                 android:gravity="center"
-                android:text="里子"
+                android:text="@string/inside"
                 android:textColor="@color/rgs_text_color"
                 android:textSize="16sp"
                 android:visibility="gone"/>

@@ -130,7 +130,7 @@ public class ChangeOrderActivity extends BaseActivity implements EasyPermissions
      * 加载数据
      */
     private void initData() {
-        tvHeaderTitle.setText("售后服务");
+        tvHeaderTitle.setText(R.string.after_sale);
         OkHttpUtils.get()
                 .url(Constant.ORDER_DETAIL)
                 .addParams("token", SharedPreferencesUtils.getStr(this, "token"))
@@ -187,7 +187,7 @@ public class ChangeOrderActivity extends BaseActivity implements EasyPermissions
                                 .get(position).getSize_content());
                         break;
                     default:
-                        holder.setText(R.id.tv_goods_content, "定制款");
+                        holder.setText(R.id.tv_goods_content, getString(R.string.customize_type));
                         break;
                 }
                 holder.setText(R.id.tv_goods_price, "¥" + orderBean.getData().getCar_list()
@@ -302,7 +302,7 @@ public class ChangeOrderActivity extends BaseActivity implements EasyPermissions
             }
         });
 
-        tvConsultPhone.setText("客服热线：" + MyApplication.serverPhone);
+        tvConsultPhone.setText(getString(R.string.service_hotline) + MyApplication.serverPhone);
     }
 
     /**
@@ -360,7 +360,7 @@ public class ChangeOrderActivity extends BaseActivity implements EasyPermissions
                 || TextUtils.isEmpty(etInputName.getText().toString().trim())
                 || !PhoneNumberUtils.judgePhoneNumber(etInputTel.getText().toString().trim())
                 || selectedPhotos.size() == 0) {
-            ToastUtils.showToast(this, "请按要求填写所有信息");
+            ToastUtils.showToast(this, getString(R.string.please_input_all_info));
         } else {
             loadingView.smoothToShow();
             tvNextStep.setEnabled(false);
@@ -410,7 +410,7 @@ public class ChangeOrderActivity extends BaseActivity implements EasyPermissions
             llSelectGoods.setVisibility(View.GONE);
             svChangeOrder.setVisibility(View.VISIBLE);
         } else {
-            ToastUtils.showToast(this, "请选择商品");
+            ToastUtils.showToast(this, getString(R.string.please_select_goods));
         }
     }
 
@@ -462,7 +462,7 @@ public class ChangeOrderActivity extends BaseActivity implements EasyPermissions
 
     @Override
     public void onPermissionsDenied(int requestCode, List<String> perms) {
-        PermissionUtils.showPermissionDialog(this, "相机");
+        PermissionUtils.showPermissionDialog(this, getString(R.string.camera));
     }
 
 }

@@ -105,7 +105,7 @@ public class CustomizeResultActivity extends BaseActivity {
         ButterKnife.bind(this);
 
         EventBus.getDefault().register(this);
-        tvHeaderTitle.setText("定制详情");
+        tvHeaderTitle.setText(R.string.customize_detail);
         imgShoppingBag.setVisibility(View.VISIBLE);
         imgShoppingBag.setImageResource(R.mipmap.icon_shopping_bag);
         getData();

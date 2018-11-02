@@ -74,7 +74,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="12dp"
-            android:text="尺码"
+            android:text="@string/size"
             android:textColor="@color/dark_gray_22"
             android:textSize="14sp"/>
 
@@ -105,7 +105,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="12dp"
-            android:text="颜色"
+            android:text="@string/color"
             android:textColor="@color/dark_gray_22"
             android:textSize="14sp"/>
 
@@ -136,7 +136,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="12dp"
-            android:text="数量"
+            android:text="@string/num"
             android:textColor="@color/dark_gray_22"
             android:textSize="14sp"/>
 
@@ -173,7 +173,7 @@
         android:layout_height="44dp"
         android:background="@color/dark_gray_22"
         android:gravity="center"
-        android:text="确定"
+        android:text="@string/confirm"
         android:textColor="@android:color/white"
         android:textSize="14sp"/>
 </LinearLayout>

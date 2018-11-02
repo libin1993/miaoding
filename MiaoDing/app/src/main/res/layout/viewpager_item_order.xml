@@ -34,7 +34,7 @@
             android:layout_marginTop="25dp"
             android:background="@drawable/btn_black_6dp"
             android:gravity="center"
-            android:text="去逛逛"
+            android:text="@string/view_goods"
             android:textColor="@android:color/white"
             android:textSize="14sp"/>
     </LinearLayout>

@@ -45,11 +45,7 @@ public class QuestionDetailBean {
         /**
          * id : 1
          * name : 标题
-         * content : 内容内容内容内容内容内容内容
-
-         内容
-         内容内容
-         内容
+         * content : 内容内容内容内容内容内容内容内容内容内容内容
          */
 
         private int id;

@@ -55,13 +55,13 @@ public class CouponActivity extends BaseActivity {
      */
     private void initData() {
 
-        tvHeaderTitle.setText("优惠券");
+        tvHeaderTitle.setText(R.string.coupon);
 
         titleList = new ArrayList<>();
         fragmentList = new ArrayList<>();
 
-        titleList.add("已使用");
-        titleList.add("已失效");
+        titleList.add(getString(R.string.used));
+        titleList.add(getString(R.string.invalid));
 
         fragmentList.add(MyCouponFragment.newInstance(2));
         fragmentList.add(MyCouponFragment.newInstance(-1));

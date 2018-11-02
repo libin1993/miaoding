@@ -57,7 +57,7 @@
                             android:layout_centerInParent="true"
                             android:layout_marginLeft="15dp"
                             android:gravity="center"
-                            android:text="请创建收货地址"
+                            android:text="@string/add_address"
                             android:textColor="@android:color/darker_gray"
                             android:textSize="16sp"
                             android:visibility="gone"/>
@@ -83,7 +83,7 @@
                         android:layout_marginBottom="10dp"
                         android:layout_marginLeft="15dp"
                         android:layout_marginTop="12dp"
-                        android:text="量体数据确认"
+                        android:text="@string/confirm_measure_data"
                         android:textColor="@color/dark_gray_22"
                         android:textSize="15sp"/>
 
@@ -96,7 +96,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="姓名："
+                            android:text="@string/confirm_order_name"
                             android:textColor="@color/dark_gray_22"
                             android:textSize="14sp"/>
 
@@ -119,7 +119,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="身高："
+                            android:text="@string/confirm_order_height"
                             android:textColor="@color/dark_gray_22"
                             android:textSize="14sp"/>
 
@@ -134,7 +134,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="22dp"
-                            android:text="体重："
+                            android:text="@string/confirm_order_weight"
                             android:textColor="@color/dark_gray_22"
                             android:textSize="14sp"/>
 
@@ -180,7 +180,7 @@
                         android:layout_weight="1"
                         android:ellipsize="end"
                         android:singleLine="true"
-                        android:text="请选择优惠券"
+                        android:text="@string/please_select_coupon"
                         android:textColor="@color/dark_gray_22"
                         android:textSize="15sp"/>
 
@@ -234,7 +234,7 @@
                         android:layout_weight="1"
                         android:ellipsize="end"
                         android:singleLine="true"
-                        android:text="礼品卡余额（）"
+                        android:text="@string/gift_card_money"
                         android:textColor="@color/dark_gray_22"
                         android:textSize="15sp"/>
 
@@ -283,7 +283,7 @@
                         android:layout_marginLeft="15dp"
                         android:layout_weight="1"
                         android:gravity="center_vertical"
-                        android:text="商品合计："
+                        android:text="@string/goods_total_money"
                         android:textColor="@color/dark_gray_22"
                         android:textSize="15sp"/>
 
@@ -316,7 +316,7 @@
                         android:layout_marginLeft="15dp"
                         android:layout_weight="1"
                         android:gravity="center_vertical"
-                        android:text="运费："
+                        android:text="@string/freight"
                         android:textColor="@color/dark_gray_22"
                         android:textSize="15sp"/>
 
@@ -351,7 +351,7 @@
                         android:layout_marginLeft="15dp"
                         android:layout_weight="1"
                         android:gravity="center_vertical"
-                        android:text="优惠："
+                        android:text="@string/discount_money"
                         android:textColor="@color/dark_gray_22"
                         android:textSize="15sp"/>
 
@@ -411,7 +411,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:gravity="center_vertical"
-                        android:text="总计："
+                        android:text="@string/total_money"
                         android:textColor="@color/dark_gray_22"
                         android:textSize="16sp"/>
 
@@ -433,7 +433,7 @@
                 android:layout_weight="1"
                 android:background="@color/dark_gray_15"
                 android:gravity="center"
-                android:text="支    付"
+                android:text="@string/pay_money"
                 android:textColor="@android:color/white"
                 android:textSize="16sp"/>
         </LinearLayout>

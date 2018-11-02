@@ -54,7 +54,7 @@ public class MeasureDetailActivity extends BaseActivity {
 
     private void getData() {
         id = getIntent().getIntExtra("id", 0);
-        tvHeaderTitle.setText("量体详情");
+        tvHeaderTitle.setText(R.string.measure_detail);
     }
 
 

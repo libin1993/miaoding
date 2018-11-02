@@ -21,7 +21,7 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="12dp"
             android:gravity="center_vertical"
-            android:text="收货人："
+            android:text="@string/consignee"
             android:textColor="@color/dark_gray_22"
             android:textSize="14sp"/>
 
@@ -33,7 +33,7 @@
             android:layout_marginRight="12dp"
             android:background="@null"
             android:gravity="center_vertical"
-            android:hint="请输入姓名"
+            android:hint="@string/input_name"
             android:singleLine="true"
             android:maxLength="15"
             android:textColor="@color/dark_gray_22"
@@ -60,7 +60,7 @@
             android:layout_marginLeft="12dp"
             android:gravity="center_vertical"
             android:inputType="phone"
-            android:text="联系电话："
+            android:text="@string/contact_number"
             android:textColor="@color/dark_gray_22"
             android:textSize="14sp"/>
 
@@ -71,7 +71,7 @@
             android:layout_marginLeft="15dp"
             android:background="@null"
             android:gravity="center_vertical"
-            android:hint="请输入手机号码"
+            android:hint="@string/input_phone_number"
             android:inputType="phone"
             android:maxLength="11"
             android:singleLine="true"
@@ -98,7 +98,7 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="12dp"
             android:gravity="center_vertical"
-            android:text="所在地区："
+            android:text="@string/current_region"
             android:textColor="@color/dark_gray_22"
             android:textSize="14sp"/>
 
@@ -109,7 +109,7 @@
             android:layout_marginLeft="15dp"
             android:layout_weight="1"
             android:gravity="center_vertical"
-            android:hint="省/市/区"
+            android:hint="@string/address"
             android:textColor="@color/dark_gray_22"
             android:textColorHint="@color/hint_gray"
             android:textSize="15sp"/>
@@ -140,7 +140,7 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="12dp"
             android:gravity="center_vertical"
-            android:text="街道："
+            android:text="@string/street"
             android:textColor="@color/dark_gray_22"
             android:textSize="14sp"/>
 
@@ -150,7 +150,7 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="15dp"
             android:background="@null"
-            android:hint="请填写详细地址"
+            android:hint="@string/detail_address"
             android:maxLength="20"
             android:maxLines="2"
             android:textColor="@color/dark_gray_22"
@@ -172,7 +172,7 @@
             android:layout_marginLeft="12dp"
             android:layout_weight="1"
             android:gravity="center_vertical"
-            android:text="设为默认"
+            android:text="@string/default_address"
             android:textColor="@color/dark_gray_22"
             android:textSize="14sp"/>
 
@@ -195,7 +195,7 @@
         android:layout_marginTop="50dp"
         android:background="@drawable/btn_black_bg"
         android:gravity="center"
-        android:text="保存地址"
+        android:text="@string/save_address"
         android:textColor="@android:color/white"
         android:textSize="16sp"/>
 

@@ -1,7 +1,6 @@
 package cn.cloudworkshop.miaoding.ui;
 
 import android.Manifest;
-import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.app.DownloadManager;
 import android.content.Context;
@@ -15,7 +14,6 @@ import android.graphics.drawable.BitmapDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.NonNull;
@@ -28,14 +26,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
-import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.callback.StringCallback;
 
-import org.greenrobot.eventbus.EventBus;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -61,7 +57,6 @@ import cn.cloudworkshop.miaoding.fragment.CustomizedGoodsFragment;
 import cn.cloudworkshop.miaoding.fragment.HomepageFragment;
 import cn.cloudworkshop.miaoding.fragment.MyCenterFragment;
 import cn.cloudworkshop.miaoding.service.DownloadService;
-import cn.cloudworkshop.miaoding.utils.DisplayUtils;
 import cn.cloudworkshop.miaoding.utils.FragmentTabUtils;
 import cn.cloudworkshop.miaoding.utils.GsonUtils;
 import cn.cloudworkshop.miaoding.utils.LogUtils;
@@ -69,6 +64,13 @@ import cn.cloudworkshop.miaoding.utils.PermissionUtils;
 import cn.cloudworkshop.miaoding.utils.SharedPreferencesUtils;
 import cn.cloudworkshop.miaoding.utils.ToastUtils;
 import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 import pub.devrel.easypermissions.EasyPermissions;
 
 /**
@@ -107,7 +109,9 @@ public class MainActivity extends BaseActivity implements EasyPermissions.Permis
         isLogin();
         submitClientId();
 
+
     }
+
 
     /**
      * 读写权限
@@ -247,17 +251,17 @@ public class MainActivity extends BaseActivity implements EasyPermissions.Permis
                                 isCheckUpdate = false;
                                 AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this,
                                         R.style.Theme_AppCompat_DayNight_Dialog_Alert);
-                                dialog.setTitle("检测到新版本，请更新");
+                                dialog.setTitle(R.string.check_new_version);
                                 dialog.setMessage(appIndexBean.getData().getVersion().getAndroid().getRemark());
                                 //确定
-                                dialog.setPositiveButton("立即更新", new DialogInterface.OnClickListener() {
+                                dialog.setPositiveButton(R.string.update_immediately, new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
                                         downloadFile(appIndexBean.getData().getDownload_url());
                                     }
                                 });
                                 //取消
-                                dialog.setNegativeButton("下次再说", new DialogInterface.OnClickListener() {
+                                dialog.setNegativeButton(R.string.cancel_update, new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
                                         dialog.dismiss();
@@ -278,8 +282,8 @@ public class MainActivity extends BaseActivity implements EasyPermissions.Permis
     private void downloadFile(String url) {
         DownloadManager manager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
         DownloadManager.Request request = new DownloadManager.Request(Uri.parse(url));
-        request.setTitle("妙定");
-        request.setDescription("正在下载");
+        request.setTitle(getString(R.string.app_name));
+        request.setDescription(getString(R.string.downloading));
         // 设置下载可见
         request.setVisibleInDownloadsUi(true);
         //下载完成后通知栏可见
@@ -418,14 +422,13 @@ public class MainActivity extends BaseActivity implements EasyPermissions.Permis
 
     @Override
     public void onPermissionsDenied(int requestCode, List<String> perms) {
-        PermissionUtils.showPermissionDialog(this, "读写内存");
+        PermissionUtils.showPermissionDialog(this, getString(R.string.read_and_write));
     }
 
     @Override
     public boolean shouldShowRequestPermissionRationale(@NonNull String permission) {
         return false;
     }
-
 
 
     @Override
@@ -440,7 +443,7 @@ public class MainActivity extends BaseActivity implements EasyPermissions.Permis
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
             if ((System.currentTimeMillis() - exitTime) > 2000) {
-                ToastUtils.showToast(getApplicationContext(), "再按一次退出程序");
+                ToastUtils.showToast(getApplicationContext(), getString(R.string.exit_app));
                 exitTime = System.currentTimeMillis();
             } else {
                 finish();
@@ -474,4 +477,5 @@ public class MainActivity extends BaseActivity implements EasyPermissions.Permis
         initIcon();
     }
 }
+
 

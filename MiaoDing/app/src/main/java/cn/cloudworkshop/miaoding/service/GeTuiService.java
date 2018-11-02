@@ -43,3 +43,5 @@ public class GeTuiService extends Service{
         GTServiceManager.getInstance().onLowMemory();
     }
 }
+
+

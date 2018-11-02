@@ -187,7 +187,7 @@ public class NewCustomizeActivity extends BaseActivity {
      */
     private void initView() {
         tvHeaderNext.setVisibility(View.VISIBLE);
-        tvHeaderNext.setText("下一步");
+        tvHeaderNext.setText(R.string.next_step);
         tvItemTitle.setTypeface(DisplayUtils.setTextType(this));
         ((RadioButton) rgsSelect.getChildAt(0)).setChecked(true);
 
@@ -419,7 +419,7 @@ public class NewCustomizeActivity extends BaseActivity {
     private void selectFabric() {
         if (customizeBean != null && customizeBean.getData().getMianliao() != null) {
             rvSelectItem.setVisibility(View.VISIBLE);
-            tvHeaderTitle.setText("面料");
+            tvHeaderTitle.setText(R.string.fabric);
             tvClothFabric.setTextColor(Color.WHITE);
             tvClothFabric.setBackgroundResource(R.drawable.circle_black);
             tvClothType.setTextColor(ContextCompat.getColor(this, R.color.dark_gray_22));
@@ -507,7 +507,7 @@ public class NewCustomizeActivity extends BaseActivity {
     private void selectType() {
         if (customizeBean != null && customizeBean.getData().getBanxin() != null) {
             rvSelectItem.setVisibility(View.VISIBLE);
-            tvHeaderTitle.setText("版型");
+            tvHeaderTitle.setText(R.string.type);
             tvClothType.setTextColor(Color.WHITE);
             tvClothType.setBackgroundResource(R.drawable.circle_black);
             tvClothFabric.setTextColor(ContextCompat.getColor(this, R.color.dark_gray_22));
@@ -571,7 +571,7 @@ public class NewCustomizeActivity extends BaseActivity {
      */
     private void selectParts() {
         if (customizeBean != null && customizeBean.getData() != null) {
-            tvHeaderTitle.setText("细节");
+            tvHeaderTitle.setText(R.string.details);
             llSelectType.setVisibility(View.INVISIBLE);
             rvSelectType.setVisibility(View.VISIBLE);
             rvSelectItem.setVisibility(View.INVISIBLE);
@@ -616,7 +616,7 @@ public class NewCustomizeActivity extends BaseActivity {
             imgClose.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    tvHeaderTitle.setText("细节");
+                    tvHeaderTitle.setText(R.string.details);
                     llSelectType.setVisibility(View.VISIBLE);
                     rvSelectType.setVisibility(View.INVISIBLE);
                     rvSelectItem.setVisibility(View.INVISIBLE);
@@ -839,9 +839,9 @@ public class NewCustomizeActivity extends BaseActivity {
             }
         }
 
-        sbContent.append("面料:")
+        sbContent.append(getString(R.string.fabric)+":")
                 .append(customizeBean.getData().getMianliao().get(currentFabric).getName())
-                .append(";版型:")
+                .append(";"+getString(R.string.type)+":")
                 .append(customizeBean.getData().getBanxin().get(currentType).getName())
                 .append(";");
 

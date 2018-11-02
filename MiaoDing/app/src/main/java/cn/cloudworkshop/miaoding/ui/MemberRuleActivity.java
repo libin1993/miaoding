@@ -56,7 +56,7 @@ public class MemberRuleActivity extends BaseActivity {
     }
 
     private void initData() {
-        tvHeaderTitle.setText("会员制度");
+        tvHeaderTitle.setText(R.string.member_rule);
         OkHttpUtils.get()
                 .url(Constant.MEMBER_RULE)
                 .addParams("token", SharedPreferencesUtils.getStr(this, "token"))

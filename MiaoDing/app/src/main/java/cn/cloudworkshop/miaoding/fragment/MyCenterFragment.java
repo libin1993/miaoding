@@ -323,10 +323,10 @@ public class MyCenterFragment extends BaseFragment {
 
                             if (uid != 0) {
                                 Intent intent = new Intent(getActivity(), DressingResultActivity.class);
-                                intent.putExtra("title", "邀请有礼");
-                                intent.putExtra("share_title", "Hi，新朋友，妙定为您准备了1000元见面礼");
+                                intent.putExtra("title", getString(R.string.invite_join));
+                                intent.putExtra("share_title", R.string.invite_friend_gift);
                                 intent.putExtra("share_content", userInfoBean.getData()
-                                        .getName() + "邀请您一起做腔调绅士，来吧，用1000元见面礼定制一套体面的行头");
+                                        .getName() + getString(R.string.invite_your_friend));
                                 intent.putExtra("url", Constant.HOST + url + uid);
                                 intent.putExtra("share_url", Constant.INVITE_SHARE + "?id=" + uid);
                                 startActivity(intent);

@@ -102,7 +102,7 @@ public class MemberCenterActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_member_center);
         ButterKnife.bind(this);
-        tvHeaderTitle.setText("会员俱乐部");
+        tvHeaderTitle.setText(R.string.member_center);
         imgHeaderShare.setVisibility(View.VISIBLE);
         initData();
     }
@@ -159,7 +159,7 @@ public class MemberCenterActivity extends BaseActivity {
 
         ArrayList<CustomTabEntity> tabList = new ArrayList<>();
         for (int i = 0; i < memberBean.getData().getUser_grade().size(); i++) {
-            tabList.add(new MemberTabBean(memberBean.getData().getUser_grade().get(i).getName() + "权益"));
+            tabList.add(new MemberTabBean(memberBean.getData().getUser_grade().get(i).getName() + getString(R.string.right)));
         }
 
         tabMemberGrade.setTabData(tabList);
@@ -291,23 +291,23 @@ public class MemberCenterActivity extends BaseActivity {
         switch (dataList.get(grade).get(position).getIs_get()) {
             case 1:
                 tvInfo.setText(dataList.get(grade).get(position).getDesc());
-                tvReceive.setText("关闭");
+                tvReceive.setText(R.string.close);
                 tvReceive.setTextColor(ContextCompat.getColor(this, R.color.dark_gray_22));
                 break;
             case 2:
                 if (!TextUtils.isEmpty(birthday)) {
                     tvInfo.setText(dataList.get(grade).get(position).getDesc());
-                    tvReceive.setText("领取");
+                    tvReceive.setText(R.string.receive);
                     tvReceive.setTextColor(ContextCompat.getColor(this, R.color.dark_gray_22));
                 } else {
-                    tvInfo.setText("·完善生日资料后，过生日时可获惊喜生日礼包一份\r\n·礼包领取有效期：生日前三天及后四天");
-                    tvReceive.setText("去设置");
+                    tvInfo.setText(getString(R.string.birthday_info) + "\r\n" + getString(R.string.birthday_gift));
+                    tvReceive.setText(R.string.to_set);
                     tvReceive.setTextColor(ContextCompat.getColor(this, R.color.dark_red));
                 }
                 break;
             case 3:
                 tvInfo.setText(dataList.get(grade).get(position).getDesc());
-                tvReceive.setText("领取");
+                tvReceive.setText(R.string.receive);
                 tvReceive.setTextColor(ContextCompat.getColor(this, R.color.dark_gray_22));
                 break;
         }
@@ -395,7 +395,7 @@ public class MemberCenterActivity extends BaseActivity {
         if (Arrays.asList(split).contains(dataList.get(currentTab).get(currentGift).getId() + "")) {
             submitData(url);
         } else {
-            ToastUtils.showToast(this, "您的会员等级未达到领取要求");
+            ToastUtils.showToast(this, getString(R.string.member_grade));
             mPopupWindow.dismiss();
         }
     }

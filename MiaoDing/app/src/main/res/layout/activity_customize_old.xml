@@ -59,7 +59,7 @@
                 android:layout_marginRight="20dp"
                 android:button="@null"
                 android:gravity="center"
-                android:text="正面"
+                android:text="@string/positive"
                 android:textColor="@color/rgs_text_color"
                 android:textSize="15sp"/>
 
@@ -68,7 +68,7 @@
                 android:layout_height="40dp"
                 android:button="@null"
                 android:gravity="center"
-                android:text="背面"
+                android:text="@string/back"
                 android:textColor="@color/rgs_text_color"
                 android:textSize="16sp"/>
 
@@ -78,7 +78,7 @@
                 android:layout_marginLeft="20dp"
                 android:button="@null"
                 android:gravity="center"
-                android:text="里子"
+                android:text="@string/inside"
                 android:textColor="@color/rgs_text_color"
                 android:textSize="16sp"
                 android:visibility="gone"/>

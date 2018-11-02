@@ -598,7 +598,7 @@ public class EmbroideryActivity extends BaseActivity implements EasyPermissions.
         }
     }
 
-    @OnClick({R.id.img_embroidery_back,R.id.tv_more_customize, R.id.tv_confirm_embroidery,
+    @OnClick({R.id.img_embroidery_back, R.id.tv_more_customize, R.id.tv_confirm_embroidery,
             R.id.tv_add_shop_cart, R.id.img_load_error, R.id.tv_photo_help, R.id.rl_user_photo,
             R.id.img_custom_guide})
     public void onClick(View view) {
@@ -617,7 +617,7 @@ public class EmbroideryActivity extends BaseActivity implements EasyPermissions.
                         customizeData(false);
                         toCustomize();
                     } else {
-                        ToastUtils.showToast(this, "请完善基本信息");
+                        ToastUtils.showToast(this, getString(R.string.please_input_common_info));
                     }
                 }
                 break;
@@ -633,7 +633,7 @@ public class EmbroideryActivity extends BaseActivity implements EasyPermissions.
                         customizeData(true);
                         addToCart();
                     } else {
-                        ToastUtils.showToast(this, "请完善基本信息");
+                        ToastUtils.showToast(this, getString(R.string.please_input_common_info));
                     }
                 }
                 break;
@@ -649,7 +649,7 @@ public class EmbroideryActivity extends BaseActivity implements EasyPermissions.
                         customizeData(true);
                         addToCart();
                     } else {
-                        ToastUtils.showToast(this, "请完善基本信息");
+                        ToastUtils.showToast(this, getString(R.string.please_input_common_info));
                     }
                 }
                 break;
@@ -732,21 +732,21 @@ public class EmbroideryActivity extends BaseActivity implements EasyPermissions.
         String spec_content;
         //是否定制同款
         if (isDefaultType) {
-            spec_content = specContent + ";面料:" + mianliaoBean.getName()
-                    + ";版型:" + embroideryBean.getData().getClassify_id().get(currentType).getName();
+            spec_content = specContent + ";" + getString(R.string.fabric) + ":" + mianliaoBean.getName()
+                    + ";" + getString(R.string.type) + ":" + embroideryBean.getData().getClassify_id().get(currentType).getName();
             customItemBean.setIs_scan(1);
         } else {
-            spec_content = "面料:" + mianliaoBean.getName()
-                    + ";版型:" + embroideryBean.getData().getClassify_id().get(currentType).getName();
+            spec_content = getString(R.string.fabric) + ":" + mianliaoBean.getName()
+                    + ";" + getString(R.string.type) + ":" + embroideryBean.getData().getClassify_id().get(currentType).getName();
             customItemBean.setIs_scan(0);
         }
 
         if (!TextUtils.isEmpty(etEmbroideryContent.getText().toString().trim())) {
             //个性绣花
-            String sb = "位置:" + tvPosition.getText().toString()
-                    + ";颜色:" + tvColor.getText().toString()
-                    + ";字体:" + tvFont.getText().toString()
-                    + ";文字:" + etEmbroideryContent.getText().toString();
+            String sb = getString(R.string.position)+":" + tvPosition.getText().toString()
+                    + ";"+getString(R.string.color)+":" + tvColor.getText().toString()
+                    + ";"+getString(R.string.font)+":" + tvFont.getText().toString()
+                    + ";"+getString(R.string.words)+":" + etEmbroideryContent.getText().toString();
             customItemBean.setDiy_contet(sb);
         } else {
             customItemBean.setDiy_contet(null);
@@ -889,7 +889,7 @@ public class EmbroideryActivity extends BaseActivity implements EasyPermissions.
             }
 
         } else {
-            ToastUtils.showToast(this, "请完善基本信息");
+            ToastUtils.showToast(this, getString(R.string.please_input_common_info));
         }
     }
 
@@ -956,7 +956,7 @@ public class EmbroideryActivity extends BaseActivity implements EasyPermissions.
 
     @Override
     public void onPermissionsDenied(int requestCode, List<String> perms) {
-        PermissionUtils.showPermissionDialog(this, "相机");
+        PermissionUtils.showPermissionDialog(this, getString(R.string.camera));
     }
 
 }

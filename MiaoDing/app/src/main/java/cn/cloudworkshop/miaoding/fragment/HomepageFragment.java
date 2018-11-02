@@ -490,10 +490,10 @@ public class HomepageFragment extends BaseFragment {
                             if (!TextUtils.isEmpty(SharedPreferencesUtils.getStr(getActivity(), "token"))) {
                                 String uid = SharedPreferencesUtils.getStr(getActivity(), "uid");
                                 Intent invite = new Intent(getActivity(), DressingResultActivity.class);
-                                invite.putExtra("title", "邀请有礼");
-                                invite.putExtra("share_title", "邀请有礼");
-                                invite.putExtra("share_content", "好友" + SharedPreferencesUtils
-                                        .getStr(getActivity(), "username") + "邀请您加入妙定，为您定制绅士腔调");
+                                invite.putExtra("title", getString(R.string.invite_gift));
+                                invite.putExtra("share_title", getString(R.string.invite_gift));
+                                invite.putExtra("share_content", getString(R.string.friend) + SharedPreferencesUtils
+                                        .getStr(getActivity(), "username") + getString(R.string.invite_join));
                                 invite.putExtra("url", Constant.HOST + homepageBean.getLunbo()
                                         .get(position).getLink() + uid);
                                 invite.putExtra("share_url", Constant.INVITE_SHARE + "?id=" + uid);

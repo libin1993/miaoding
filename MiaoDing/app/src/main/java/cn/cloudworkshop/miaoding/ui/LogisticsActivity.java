@@ -83,7 +83,7 @@ public class LogisticsActivity extends BaseActivity {
      * 加载数据
      */
     private void initData() {
-        tvHeaderTitle.setText("物流追踪");
+        tvHeaderTitle.setText(R.string.logistics);
         tvNumber.setText(number);
         tvCompany.setText(companyName);
         Glide.with(getApplicationContext())
