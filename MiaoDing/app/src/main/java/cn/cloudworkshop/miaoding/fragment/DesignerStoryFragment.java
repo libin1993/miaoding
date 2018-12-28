@@ -50,7 +50,6 @@ public class DesignerStoryFragment extends BaseFragment {
         } else {
             imgNoStory.setVisibility(View.VISIBLE);
         }
-
     }
 
     private void getData() {
@@ -60,7 +59,6 @@ public class DesignerStoryFragment extends BaseFragment {
 
 
     public static DesignerStoryFragment newInstance(String imgUrl) {
-
         Bundle args = new Bundle();
         args.putString("designer_story", imgUrl);
         DesignerStoryFragment fragment = new DesignerStoryFragment();

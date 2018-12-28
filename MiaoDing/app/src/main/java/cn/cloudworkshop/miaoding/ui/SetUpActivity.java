@@ -50,6 +50,7 @@ import cn.cloudworkshop.miaoding.utils.SharedPreferencesUtils;
 import cn.cloudworkshop.miaoding.utils.ToastUtils;
 import cn.cloudworkshop.miaoding.view.CircleImageView;
 import cn.qqtheme.framework.picker.DatePicker;
+import cn.qqtheme.framework.picker.NumberPicker;
 import me.iwf.photopicker.PhotoPicker;
 import me.iwf.photopicker.PhotoPreview;
 import okhttp3.Call;
@@ -313,6 +314,7 @@ public class SetUpActivity extends BaseActivity implements EasyPermissions.Permi
             }
         });
         picker.show();
+
     }
 
     /**

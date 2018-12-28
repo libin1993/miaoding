@@ -132,11 +132,11 @@ public class WorksFragment extends BaseFragment {
 
                 SimpleDraweeView imgWorks = holder.getView(R.id.img_designer);
 
-                GenericDraweeHierarchy hierarchy = imgWorks.getHierarchy();
-                hierarchy.setPlaceholderImage(R.mipmap.place_holder_goods, ScalingUtils.ScaleType.CENTER_CROP);
-                hierarchy.setRoundingParams(hierarchy.getRoundingParams().setCornersRadius
-                        (DisplayUtils.dp2px(getParentFragment().getActivity(), 4)));
-                imgWorks.setHierarchy(hierarchy);
+//                GenericDraweeHierarchy hierarchy = imgWorks.getHierarchy();
+//                hierarchy.setPlaceholderImage(R.mipmap.place_holder_goods, ScalingUtils.ScaleType.CENTER_CROP);
+//                hierarchy.setRoundingParams(hierarchy.getRoundingParams().setCornersRadius
+//                        (DisplayUtils.dp2px(getParentFragment().getActivity(), 4)));
+//                imgWorks.setHierarchy(hierarchy);
 
                 imgWorks.setImageURI(Constant.IMG_HOST + itemBean.getImg());
                 TextView tvTitle = holder.getView(R.id.tv_works_title);

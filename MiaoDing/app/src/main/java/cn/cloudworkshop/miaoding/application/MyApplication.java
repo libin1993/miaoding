@@ -60,7 +60,7 @@ public class MyApplication extends Application {
         if (EasyPermissions.hasPermissions(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
             File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath()
                     + File.separator + "CloudWorkshop/Cache");
-            builder.cache(new Cache(file, 1024 * 1024 * 100));
+            builder.cache(new Cache(file, 1024L * 1024L * 100L));
         }
         OkHttpClient okHttpClient = builder.connectTimeout(10000L, TimeUnit.MILLISECONDS)
                 .readTimeout(10000L, TimeUnit.MILLISECONDS)
@@ -69,7 +69,6 @@ public class MyApplication extends Application {
         OkHttpUtils.initClient(okHttpClient);
 
         Unicorn.init(this, "e98a79aca99f25ebf9bacbc8c334b76b", options(), new FrescoImageLoader(this));
-
     }
 
 

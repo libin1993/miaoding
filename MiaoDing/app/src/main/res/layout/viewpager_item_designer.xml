@@ -19,8 +19,15 @@
             android:id="@+id/img_designer_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:scaleType="centerCrop"
-            fresco:roundedCornerRadius="5dp"/>
+            fresco:actualImageScaleType="centerCrop"
+            fresco:placeholderImage="@mipmap/place_holder_goods"
+            fresco:placeholderImageScaleType="centerCrop"
+            fresco:roundBottomLeft="false"
+            fresco:roundBottomRight="false"
+            fresco:roundTopLeft="true"
+            fresco:roundTopRight="true"
+            fresco:roundedCornerRadius="10dp"
+            fresco:viewAspectRatio="1.0646"/>
 
         <android.support.v7.widget.CardView
             android:id="@+id/card_designer_icon"
@@ -54,8 +61,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/tv_designers_name"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="20dp"
             android:layout_marginTop="8dp"
+            android:layout_marginBottom="20dp"
             android:textColor="@color/light_gray_4f"
             android:textSize="13sp"/>
 

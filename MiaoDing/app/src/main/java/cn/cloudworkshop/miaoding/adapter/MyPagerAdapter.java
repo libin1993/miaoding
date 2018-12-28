@@ -54,17 +54,16 @@ public class MyPagerAdapter extends PagerAdapter {
         TextView tvContent = (TextView) view.findViewById(R.id.tv_designers_info);
         CircleImageView imgTag = (CircleImageView) view.findViewById(R.id.img_designer_tag);
 
-
         tvTitle.setText(designerList.get(position).getName());
         tvContent.setText(designerList.get(position).getTag());
 
-        GenericDraweeHierarchy hierarchy = imgDesigner.getHierarchy();
-        hierarchy.setPlaceholderImage(R.mipmap.place_holder_goods, ScalingUtils.ScaleType.CENTER_CROP);
-        float px = DisplayUtils.dp2px(context, 10);
-        hierarchy.setRoundingParams(hierarchy.getRoundingParams().setCornersRadii(px,px,0,0));
-
-        imgDesigner.setHierarchy(hierarchy);
-        imgDesigner.setAspectRatio(1.0646f);
+//        GenericDraweeHierarchy hierarchy = imgDesigner.getHierarchy();
+//        hierarchy.setPlaceholderImage(R.mipmap.place_holder_goods, ScalingUtils.ScaleType.CENTER_CROP);
+//        float px = DisplayUtils.dp2px(context, 10);
+//        hierarchy.setRoundingParams(hierarchy.getRoundingParams().setCornersRadii(px, px, 0, 0));
+//
+//        imgDesigner.setHierarchy(hierarchy);
+//        imgDesigner.setAspectRatio(1.0646f);
         imgDesigner.setImageURI(Uri.parse(Constant.IMG_HOST + designerList.get(position).getAvatar()));
 
         Glide.with(context)

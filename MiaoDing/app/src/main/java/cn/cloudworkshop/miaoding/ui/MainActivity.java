@@ -108,8 +108,6 @@ public class MainActivity extends BaseActivity implements EasyPermissions.Permis
         checkUpdate();
         isLogin();
         submitClientId();
-
-
     }
 
 
@@ -225,6 +223,7 @@ public class MainActivity extends BaseActivity implements EasyPermissions.Permis
      * 检测更新
      */
     private void checkUpdate() {
+
         if (isCheckUpdate) {
             OkHttpUtils.get()
                     .url(Constant.APP_INDEX)
@@ -232,11 +231,12 @@ public class MainActivity extends BaseActivity implements EasyPermissions.Permis
                     .execute(new StringCallback() {
                         @Override
                         public void onError(Call call, Exception e, int id) {
-
+                            LogUtils.log(e.getMessage());
                         }
 
                         @Override
                         public void onResponse(String response, int id) {
+                            LogUtils.log(response);
                             final AppIndexBean appIndexBean = GsonUtils.jsonToBean(response, AppIndexBean.class);
                             MyApplication.serverPhone = appIndexBean.getData().getKf_tel();
                             MyApplication.userAgreement = appIndexBean.getData().getUser_manual();

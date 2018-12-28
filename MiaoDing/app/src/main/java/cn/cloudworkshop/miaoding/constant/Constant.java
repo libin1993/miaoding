@@ -7,7 +7,8 @@ package cn.cloudworkshop.miaoding.constant;
  */
 
 public class Constant {
-    public static final String HOST = "http://www.cloudworkshop.cn";
+    public static final String HOST = "https://www.cloudworkshop.cn";
+
     //测试
 //    public static final String HOST = "http://test.cloudworkshop.cn";
     //oss图片

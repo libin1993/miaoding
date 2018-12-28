@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">miaoding</string>
+    <string name="app_name">妙定</string>
     <string name="content_description_item_custom_image">image</string>
     <string-array name="jazzy_effects">
         <item>Standard</item>
@@ -117,7 +117,6 @@
     <string name="back">背面</string>
     <string name="inside">里子</string>
     <string name="subtotal">小计：</string>
-
     <string name="buy_immediately">立即购买</string>
     <string name="no_address">您还没有收货地址</string>
     <string name="add_receive_address">新增地址</string>

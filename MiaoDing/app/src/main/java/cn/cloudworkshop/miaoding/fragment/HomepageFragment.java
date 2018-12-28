@@ -516,8 +516,8 @@ public class HomepageFragment extends BaseFragment {
         int widthPixels = DisplayUtils.getMetrics(getActivity()).widthPixels;
         final int width = (int) ((widthPixels - DisplayUtils.dp2px(getActivity(), 36)) / 2);
         final int height = (int) (width * 105 / 169.5);
-        CommonAdapter<HomepageNewsBean.Indextype> adapter = new CommonAdapter<HomepageNewsBean
-                .Indextype>(getActivity(), R.layout.listitem_recommend_shop, homepageBean.getIndextype()) {
+        CommonAdapter<HomepageNewsBean.Indextype> adapter = new CommonAdapter<HomepageNewsBean.Indextype>(getActivity(),
+                R.layout.listitem_recommend_shop, homepageBean.getIndextype()) {
             @Override
             protected void convert(ViewHolder holder, HomepageNewsBean.Indextype indextype, int position) {
                 SimpleDraweeView imgShop = holder.getView(R.id.img_recommend_shop);
@@ -527,11 +527,10 @@ public class HomepageFragment extends BaseFragment {
                 layoutParams.height = height;
                 imgShop.setLayoutParams(layoutParams);
 
-                GenericDraweeHierarchy hierarchy = imgShop.getHierarchy();
-                imgShop.setHierarchy(hierarchy);
+//                GenericDraweeHierarchy hierarchy = imgShop.getHierarchy();
+//                imgShop.setHierarchy(hierarchy);
                 imgShop.setImageURI(Constant.IMG_HOST + indextype.getImg());
             }
-
         };
 
         rvGoods.setAdapter(adapter);

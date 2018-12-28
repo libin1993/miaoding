@@ -122,7 +122,8 @@ public class AboutUsActivity extends BaseActivity {
         DownloadManager.Request request = new DownloadManager.Request(Uri.parse(MyApplication.updateUrl));
         request.setTitle(getString(R.string.app_name));
         request.setDescription(getString(R.string.downloading));
-        // 设置下载可见
+        //设置下载可见
+
         request.setVisibleInDownloadsUi(true);
         //下载完成后通知栏可见
         request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
@@ -175,8 +176,13 @@ public class AboutUsActivity extends BaseActivity {
         }
         super.onDestroy();
     }
-
+    
 }
+
+
+
+
+
 
 
 

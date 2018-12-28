@@ -87,7 +87,7 @@ public class LoginActivity extends BaseActivity {
             LoginActivity activity = mActivity.get();
             if (activity != null) {
                 if (msg.what == 1) {
-                    activity.tvVerificationCode.setText(activity.getString(R.string.send_again)+"(" + msg.arg1 + ")");
+                    activity.tvVerificationCode.setText(activity.getString(R.string.send_again) + "(" + msg.arg1 + ")");
                     activity.tvVerificationCode.setBackgroundResource(R.drawable.bound_c7_15dp);
                 } else if (msg.what == 2) {
                     activity.tvVerificationCode.setText(activity.getString(R.string.receive_code));
@@ -136,7 +136,6 @@ public class LoginActivity extends BaseActivity {
                         }
                     });
         }
-
     }
 
     /**
@@ -205,7 +204,6 @@ public class LoginActivity extends BaseActivity {
                         imgLogin.setEnabled(false);
                     }
                 }
-
             }
         });
     }
