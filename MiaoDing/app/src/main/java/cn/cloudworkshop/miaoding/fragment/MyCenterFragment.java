@@ -81,7 +81,6 @@ public class MyCenterFragment extends BaseFragment {
     @BindView(R.id.img_grade_center)
     ImageView imgGradeCenter;
 
-
     private Unbinder unbinder;
     //未读消息提醒
     BadgeView badgeView;

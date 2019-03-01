@@ -133,7 +133,6 @@ public class SubGoodsFragment extends BaseFragment {
                 holder.setText(R.id.tv_sub_price, itemDataBean.getPrice());
                 holder.setText(R.id.tv_sub_content, itemDataBean.getSub_name());
             }
-
         };
 
 
